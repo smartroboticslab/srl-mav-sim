@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="vehicle" default="dji_f450_srl"/>
+
+  <node pkg="srl_mpc_examples"
+        type="gt_adapter_gazebo_classic.py"
+        name="gt_adapter_gazebo_classic"
+        output="screen"
+        required="true">
+    <param name="vehicle" type="string" value="$(arg vehicle)"/>
+  </node>
+
+  <node pkg="mav_ekf"
+        type="mav_ekf_node"
+        name="mav_ekf_node"
+        output="screen"
+        required="true">
+    <param name="gyr_noise_density"    type="double" value="5e-3"/>
+    <param name="acc_noise_density"    type="double" value="5e-2"/>
+    <param name="gyr_random_walk"      type="double" value="3e-5"/>
+    <param name="acc_random_walk"      type="double" value="2e-4"/>
+    <param name="sigma_p"              type="double" value="3e-3"/>
+    <param name="sigma_q"              type="double" value="5e-3"/>
+    <param name="calibrate_extrinsics" type="bool"   value="True"/>
+    <param name="publishing_rate"      type="int"    value="40"/>
+    <param name="tracked_frame"        type="string" value="V"/>
+    <param name="velocity_frame"       type="string" value="W"/>
+    <remap from="~imu"      to="/mavros/imu/data_raw"/>
+    <remap from="~pose"     to="/gazebo/$(arg vehicle)/pose"/>
+    <remap from="~odometry" to="/estimated/odometry"/>
+  </node>
+</launch>
