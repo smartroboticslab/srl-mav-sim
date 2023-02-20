@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: px4-sim
+
+Files: README.md */README.md
+Copyright: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
+License: BSD-3-Clause
+
+Files: .gitmodules */launch/*.launch */airframes/*
+Copyright: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
+License: CC0-1.0

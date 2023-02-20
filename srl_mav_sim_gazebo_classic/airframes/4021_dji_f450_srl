@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# @name DJI F450 SRL
+#
+# @type Quadrotor x
+# @class Copter
+
+. "${R}etc/init.d/airframes/4011_dji_f450"
+
+param set-default BAT_N_CELLS 4
+
+MIXER=quad_x
