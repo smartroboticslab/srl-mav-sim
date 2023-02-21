@@ -1,17 +1,19 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="vehicle" default="dji_f450_srl"/>
+  <arg name="vehicle" default="dji_s550_srl"/>
   <arg name="world"   default="$(find mavlink_sitl_gazebo)/worlds/empty.world"/>
+  <arg name="gui"     default="true"/>
 
   <include file="$(find px4)/launch/mavros_posix_sitl.launch">
     <arg name="vehicle" value="$(arg vehicle)"/>
     <arg name="world" value="$(arg world)"/>
-    <!-- Use the Iris as a placeholder model since we don't have a model of the DJI F450 SRL yet. -->
+    <!-- Use the Iris as a placeholder model since we don't have a model of the SRL MAVs yet. -->
     <!--<arg name="sdf" value="$(find px4-sim-gazebo-classic)/models/$(arg vehicle)/$(arg vehicle).sdf"/>-->
-    <arg name="sdf" value="$(find mavlink_sitl_gazebo)/models/iris/iris.sdf"/>
+    <!--<arg name="sdf" value="$(find mavlink_sitl_gazebo)/models/iris/iris.sdf"/>-->
+    <arg name="sdf" value="$(find mavlink_sitl_gazebo)/models/typhoon_h480/typhoon_h480.sdf"/>
 
     <!-- Gazebo config -->
-    <arg name="gui" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
 
     <!-- MAVROS config -->
     <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>

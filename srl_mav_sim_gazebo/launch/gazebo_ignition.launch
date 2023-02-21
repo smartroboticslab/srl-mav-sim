@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="vehicle" default="rmf_owl"/>
+  <arg name="world"   default="depot"/>
+  <arg name="gui"     default="true"/>
+
+  <!-- PX4 with Ignition Gazebo -->
+  <node pkg="srl_mav_sim_gazebo"
+	type="px4_sitl_ignition.bash"
+	name="px4_sitl_ignition"
+	args="$(find px4) $(arg world).sdf $(arg vehicle)"
+	required="true"
+	output="screen">
+    <env unless="$(arg gui)" name="HEADLESS" value="1"/>
+  </node>
+
+  <!-- MAVROS -->
+  <include file="$(find mavros)/launch/px4.launch">
+    <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>
+  </include>
+</launch>
