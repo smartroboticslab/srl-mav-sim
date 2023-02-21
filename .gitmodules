@@ -3,4 +3,4 @@
 	url = https://github.com/PX4/PX4-SITL_gazebo-classic.git
 [submodule "PX4-Autopilot"]
 	path = PX4-Autopilot
-	url = https://github.com/PX4/PX4-Autopilot.git
+	url = git@bitbucket.org:smartroboticslab/px4-autopilot.git
