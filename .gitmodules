@@ -4,3 +4,6 @@
 [submodule "PX4-Autopilot"]
 	path = PX4-Autopilot
 	url = git@bitbucket.org:smartroboticslab/px4-autopilot.git
+[submodule "digiforest_simulation"]
+	path = digiforest_simulation
+	url = git@bitbucket.org:smartroboticslab/digiforest_simulation.git
