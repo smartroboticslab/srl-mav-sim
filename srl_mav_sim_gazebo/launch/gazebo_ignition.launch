@@ -1,18 +1,49 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="vehicle" default="rmf_owl"/>
-  <arg name="world"   default="depot"/>
-  <arg name="gui"     default="true"/>
+  <!--
+  The PX4 airframe to use. For available airframes see
+  PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes
+  Make sure to remove the leading number and underscode, e.g. 10016_iris should
+  be written as iris in the argument.
+  -->
+  <!-- TODO what should the default be? -->
+  <arg name="airframe" default="iris"/>
+
+  <!--
+  The MAV model to load in Gazebo. It should be based on the airframe used for
+  the PX4 for control to work well.
+  -->
+  <!-- TODO what should the default be? -->
+  <arg name="model" default=""/>
+
+  <!-- The world to load in Gazebo. -->
+  <arg name="world" default="$(find px4)/Tools/simulation-ignition/worlds/$(arg airframe).world"/>
+
+  <!-- Whether to show the Gazebo GUI. -->
+  <arg name="gui" default="true"/>
 
   <!-- PX4 with Ignition Gazebo -->
-  <node pkg="srl_mav_sim_gazebo"
-	type="px4_sitl_ignition.bash"
-	name="px4_sitl_ignition"
-	args="$(find px4) $(arg world).sdf $(arg vehicle)"
-	required="true"
-	output="screen">
+  <node pkg="srl_mav_sim_gazebo" type="px4_sitl_ignition.bash"
+        name="px4_sitl_ignition" args="$(find px4) $(arg world) $(arg airframe)"
+        required="true" output="screen">
     <env unless="$(arg gui)" name="HEADLESS" value="1"/>
   </node>
+
+  <!-- Load the MAV model into Ignition Gazebo -->
+  <!-- TODO -->
+  <!--
+  <node pkg="ros_ign_gazebo" type="create" name="spawn_model" args="
+          -world $(arg world_name)
+          -name rmf_owl
+          -allow_renaming $(arg allow_renaming)
+          -file $(arg robot_file)
+          -x $(arg x) -y $(arg y) -z $(arg z)
+          -R $(arg R) -P $(arg P) -Y $(arg Y)
+          ">
+      <env name="IGN_GAZEBO_MODEL_PATH" value="$(arg resource_dir)" />
+      <env name="IGN_GAZEBO_RESOURCE_PATH" value="$(arg resource_dir)" />
+  </node>
+  -->
 
   <!-- MAVROS -->
   <include file="$(find mavros)/launch/px4.launch">

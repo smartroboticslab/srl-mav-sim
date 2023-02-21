@@ -14,4 +14,6 @@
 
   <exec_depend>mavlink_sitl_gazebo</exec_depend>
   <exec_depend>px4</exec_depend>
+  <exec_depend>ros_ign_bridge</exec_depend>
+  <exec_depend>ros_ign_gazebo</exec_depend>
 </package>
