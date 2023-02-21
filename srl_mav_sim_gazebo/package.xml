@@ -3,9 +3,9 @@
 <!-- SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou -->
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <package format="2">
-  <name>srl_mav_sim_gazebo_classic</name>
+  <name>srl_mav_sim_gazebo</name>
   <version>0.1.0</version>
-  <description>Simulator for SRL MAVs using PX4 and Gazebo Classic</description>
+  <description>Simulator for SRL MAVs using PX4 and Gazebo</description>
   <author email="s.papatheodorou18@imperial.ac.uk">Sotiris Papatheodorou</author>
   <maintainer email="s.papatheodorou18@imperial.ac.uk">Sotiris Papatheodorou</maintainer>
   <license>BSD-3-Clause</license>
