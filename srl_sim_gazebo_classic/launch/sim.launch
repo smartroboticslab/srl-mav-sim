@@ -2,35 +2,35 @@
 <launch>
   <!--
   The PX4 airframe to use. For available airframes see
-  PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes
+  PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes/
   Make sure to remove the leading number and underscode, e.g. 10016_iris should
   be written as iris in the argument.
   -->
   <arg name="airframe" default="iris"/>
 
   <!--
-  The MAV model to load in Gazebo. It should be based on the airframe used for
-  the PX4 for control to work well.
+  The MAV model to load into Gazebo. It should be based on the airframe used
+  for the PX4 for control to work well.
   -->
   <arg name="model" default="$(find mavlink_sitl_gazebo)/models/iris_depth_camera/iris_depth_camera.sdf"/>
 
-  <!-- The world to load in Gazebo. -->
+  <!-- The world to load into Gazebo. -->
   <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds/empty.world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
+
+
   <include file="$(find px4)/launch/mavros_posix_sitl.launch">
     <!-- PX4 config -->
     <arg name="vehicle"     value="$(arg airframe)"/>
     <arg name="interactive" value="false"/>
-
     <!-- Gazebo config -->
-    <arg name="world" value="$(arg world)"/>
-    <arg name="sdf"   value="$(arg model)"/>
-    <arg name="gui"   value="$(arg gui)"/>
-
+    <arg name="world"       value="$(arg world)"/>
+    <arg name="sdf"         value="$(arg model)"/>
+    <arg name="gui"         value="$(arg gui)"/>
     <!-- MAVROS config -->
-    <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>
+    <arg name="fcu_url"     value="udp://:14540@127.0.0.1:14557"/>
   </include>
 </launch>
