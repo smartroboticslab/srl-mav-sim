@@ -23,7 +23,7 @@
   <arg name="gui" default="true"/>
 
   <!-- PX4 with Ignition Gazebo -->
-  <node pkg="srl_mav_sim_gazebo" type="px4_sitl_ignition.bash"
+  <node pkg="srl_sim_gazebo_ignition" type="px4_sitl_ignition.bash"
         name="px4_sitl_ignition" args="$(find px4) $(arg world) $(arg airframe)"
         required="true" output="screen">
     <env unless="$(arg gui)" name="HEADLESS" value="1"/>
