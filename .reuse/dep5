@@ -5,6 +5,6 @@ Files: README.md */README.md
 Copyright: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
 License: BSD-3-Clause
 
-Files: .gitmodules */launch/*.launch */airframes/*
+Files: .gitmodules */launch/*.launch */airframes/* *.yaml
 Copyright: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
 License: CC0-1.0

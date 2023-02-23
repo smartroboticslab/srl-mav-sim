@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
+# SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou
+# SPDX-License-Identifier: CC0-1.0
 px4_dir="$1"
 world="$2"
 airframe="$3"
