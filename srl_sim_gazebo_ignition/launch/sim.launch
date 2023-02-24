@@ -43,14 +43,14 @@
   <!-- Load the MAV model into Ignition Gazebo -->
   <!-- TODO -->
   
-  <node pkg="ros_ign_gazebo" type="create" name="spawn_model" if="$(eval arg('model') != '')" args="
+  <!--<node pkg="ros_ign_gazebo" type="create" name="spawn_model" if="$(eval arg('model') != '')" args="
           -world $(arg world_name)
           -name $(arg airframe)
           -file $(arg model)
           -x $(arg x) -y $(arg y) -z $(arg z)
           -R $(arg R) -P $(arg P) -Y $(arg Y)
           ">
-  </node>
+  </node>-->
 
   
   
