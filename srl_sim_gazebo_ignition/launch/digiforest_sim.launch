@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find srl_sim_gazebo_ignition)/launch/sim.launch">
+    <arg name="airframe" value="rmf_owl"/>
+    <!--<arg name="model" value="$(find digiforest_simulation)/resources/robots/rmf_owl/integrated_model.sdf"/>-->
+    <!--<arg name="model" value="/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/PX4-Autopilot/Tools/simulation-ignition/models/rmf_owl/model.sdf"/>-->
+    <!--<arg name="model" value="/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/PX4-Autopilot/Tools/simulation-ignition/models/rmf_owl/model.sdf"/>-->
+    <!--<arg name="world" value="/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/PX4-Autopilot/Tools/simulation-ignition/worlds/depot.world"/>-->
+    <arg name="world" value="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
+    <arg name="world_name" value="depot"/>
+    <!--<env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find digiforest_simulation)/resources/worlds:$(find digiforest_simulation)/resources/models"/>-->
+  </include>
+</launch>
