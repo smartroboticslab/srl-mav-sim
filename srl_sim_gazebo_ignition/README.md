@@ -37,7 +37,7 @@ In order to be able to have a more modular simulator we will describe here how t
 As for the base of this information, we will use the rmf_owl robot and the depot.world, which are the setups we created for our experiments. The rmf_owl just contains all the required sensors and plugins which are needed to have it working in a normal Ignition Gazebo simulator environment. All the requirements needed from PX4's side are added in the depot.world, when we include the rmf_owl drone into the world. 
 
 The main things which are needed are: 
+
 * Adding the libmavlink_sitl_ign_gazebo.so plugin. This plugin enables communication between Ignition Gazebo and Mavlink. As the parameters of the plugin, they are specifying how to connect via udp protocol Mavlink and Ignition Gazebo. Also, it includes the information of the topics where the magnetometer, the barometer and the IMU are publishing the messages into. **Very important**: the imu included in YOUR ROBOT must publish to the same topic as specified in the plugin. Else, failsafe modes will be activated and you will not be able to launch the drone. 
 
 * Adding the libgazebo_barometer_plugin, libgazebo_magnetometer_plugin and the libgazebo_gps_plugin plugins. These are needed to specify QGroundControl the simulated position of the drone. If this is not done, the failsafe will be activated and the drone will not fly. They are attached to the base_link of the drone. 
->>>>>>> af412bcbc896b2f4b450836ef3d3e46367672007
