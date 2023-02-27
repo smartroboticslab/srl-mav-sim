@@ -6,4 +6,12 @@
     <arg name="world_name" value="depot"/>
     <!--<env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find digiforest_simulation)/resources/worlds:$(find digiforest_simulation)/resources/models"/>-->
   </include>
+
+  <!-- Our node to control the drone -->
+	<param name="config_file_autopilot" value="$(find mpc_ros)/config/config_rmf_owl.yaml" />
+	<node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">
+      <remap from="mavros/odometry/data" to="mavros/odometry/in"/>
+  </node>
+
+  
 </launch>
