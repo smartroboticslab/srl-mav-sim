@@ -56,7 +56,7 @@ See the individual package READMEs for details on usage:
 * [`srl_mpc_examples`](srl_mpc_examples/README.md): usage examples for the SRL
   linear MPC.
 
-**IMPORTANT** when running the simulator, you must have QGroundControl in the background to disable some Failsafe modes. It will be a WIP to deactivate this failsafe mode. To download QGroundControl please follow the instructions from [here](http://qgroundcontrol.com/).
+**IMPORTANT** when running the simulator, you must have QGroundControl in the background to disable some Failsafe modes. It will be a WIP to deactivate this failsafe mode. To download QGroundControl please follow the instructions from [here](http://qgroundcontrol.com/). To set up the virtual joysticks you have to go to: QGroundControl symbol (top left corner of QGroundControl) >> ApplicationSettings >> General >> tick the virtual joystick condiguration. 
 
 
 ## TODO
