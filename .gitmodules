@@ -10,3 +10,6 @@
 [submodule "ros_gz"]
 	path = ros_gz
 	url = https://github.com/gazebosim/ros_gz.git
+[submodule "mav_interface_msgs"]
+	path = mav_interface_msgs
+	url = git@bitbucket.org:smartroboticslab/mav_interface_msgs.git
