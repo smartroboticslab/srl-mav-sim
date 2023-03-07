@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+
+  <param name="/use_sim_time" value="true" />
+
   <include file="$(find srl_sim_gazebo_ignition)/launch/sim.launch">
     <arg name="airframe" value="rmf_owl"/>
     <arg name="world" value="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
@@ -7,17 +10,22 @@
     <!--<env name="IGN_GAZEBO_RESOURCE_PATH" value="$(find digiforest_simulation)/resources/worlds:$(find digiforest_simulation)/resources/models"/>-->
   </include>
 
+  <include file="$(find mav_ekf)/launch/pose_estimator_gazebo_classic.launch">
+  </include>
+
   <!-- Our node to control the drone -->
-	<!--<param name="config_file_autopilot" value="$(find mpc_ros)/config/config_rmf_owl.yaml" />
-	<node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">-->
-      <!--<remap from="mavros/odometry/data" to="mavros/odometry/in"/>-->
-      <!--<remap from="mavros/odometry/data" to="/okvis_node_subscriber_submaps/okvis_odometry"/>-->
-      <!--<remap from="mavros/odometry/data" to="/rmf_owl/odom"/>
-  </node>-->
+	<param name="config_file_autopilot" value="$(find mpc_ros)/config/config_rmf_owl.yaml" />
+	<node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">
+      <!--<remap from="mavros/odometry/data" to="/estimated/odometry"/>-->
+      <remap from="mavros/odometry/data" to="/okvis_node_subscriber_submaps/okvis_odometry"/>
+      <!--<remap from="mavros/odometry/data" to="/rmf_owl/odom"/>-->
+  </node>
 
   <!--<node pkg="topic_tools" type="throttle" name="odometry_throttler" args="messages /okvis_node_subscriber_submaps/okvis_odometry 5 /mavros/odometry/data"/>-->
 
-  <!--<include file="$(find okvis_ros)/launch/digiforest_simulation.launch">
-  </include>-->
+  <include file="$(find okvis_ros)/launch/digiforest_simulation.launch">
+  </include>
+
+
   
 </launch>
