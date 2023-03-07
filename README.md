@@ -36,7 +36,7 @@ Install the PX4 dependencies.
 
 ``` sh
 # PX4-Autopilot dependencies
-./PX4-Autopilot/Tools/setup/ubuntu.sh --no-sim-tools --no-nuttx
+./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx
 ```
 
 ### MAVROS
