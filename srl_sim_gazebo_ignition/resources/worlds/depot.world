@@ -2,7 +2,7 @@
 <sdf version="1.6">
   <world name="depot">
     <physics name="10ms" type="ode">
-      <max_step_size>0.01</max_step_size>
+      <max_step_size>0.02</max_step_size>
       <real_time_factor>1.0</real_time_factor>
       <ode>
         <solver>
@@ -526,6 +526,13 @@
     <!--<uri>model://x3</uri>
     <pose>0 0 0.5 0 0 0</pose>-->
     <uri>model://robots/rmf_owl</uri>
+    <pose> 0 0 0 0 0 0</pose>
+    <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+      <odom_frame>depot</odom_frame>
+      <robot_base_frame>rmf_owl/base_link</robot_base_frame>
+      <odom_publish_frequency>100</odom_publish_frequency>
+      <dimensions>3</dimensions>
+    </plugin>
     <plugin
       filename="libgazebo_barometer_plugin.so"
       name="barometer_plugin::BarometerPlugin">
@@ -627,6 +634,7 @@
           name="mavlink_interface::GazeboMavlinkInterface">
                 <robotNamespace/>
         <imuSubTopic>/imu</imuSubTopic>
+        <!--<imuSubTopic>/world/depot/model/rmf_owl/link/rmf_owl/base_link/sensor/imu_sensor/imu</imuSubTopic>-->
         <magSubTopic>/mag</magSubTopic>
         <baroSubTopic>/baro</baroSubTopic>
         <mavlink_addr>INADDR_ANY</mavlink_addr>

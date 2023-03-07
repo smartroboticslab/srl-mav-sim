@@ -53,99 +53,106 @@
         </geometry>
       </visual>
 
-      <!--IMU of realsense-->
-            <sensor name="imu_sensor" type="imu">
-                <!--<pose>0.0 0.0 0.0 1.5708 0 1.5708</pose>-->
-                <pose>0.0 0.0 0.0 0 0 0</pose>
-                <always_on>1</always_on>
-                <topic>imu</topic>
-                <update_rate>200</update_rate>
-                <imu>
-                    <!--              
-                    <orientation_reference_frame>
-                        <localization>WUN</localization>
-                        <custom_rpy parent_frame="rmf_owl">1.5708 0 1.5708</custom_rpy>
-                        <gravity_dir_x parent_frame="rmf_owl">1 0 0</gravity_dir_x>
-                    </orientation_reference_frame>
-                    -->                    
-                    <!--
-                        <mean> and <std> are parameters of Gaussian noise
-                        <bias_mean> and <bias_stddev> are parameters of Gaussian bias
-                        <dynamic_bias_stddev> and <dynamic_bias_correlation_time> are parameters of noise, which drives slow derivation of sensor bias
-                        <precision> is the precision of Gaussian quantized output signal
-                    -->
-                    <angular_velocity>
-                        <x>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.00</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </x>
-                        <y>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.00</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </y>
-                        <z>
-                            <noise type="gaussian">
-                                <mean>0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.00</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </z>
-                    </angular_velocity>
-                    <linear_acceleration>
-                        <x>
-                            <noise type="gaussian">
-                                <mean>0.0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.0</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </x>
-                        <y>
-                            <noise type="gaussian">
-                                <mean>0.0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.0</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </y>
-                        <z>
-                            <noise type="gaussian">
-                                <mean>0.0</mean>
-                                <stddev>0.00</stddev>
-                                <bias_mean>0.0</bias_mean>
-                                <bias_stddev>0.00</bias_stddev>
-                                <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
-                                <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
-                                <precision>0.00</precision>
-                            </noise>
-                        </z>
-                    </linear_acceleration>
-                </imu>
-            </sensor>
+      <!--IMU for PX4-->
+      <!--<sensor name="imu_sensor_px4" type="imu">
+        <pose>0.0 0.0 0.0 0 0 0</pose>
+        <always_on>1</always_on>
+        <topic>imu</topic>
+        <update_rate>200</update_rate>
+      </sensor>-->
+
+      <sensor name="imu_sensor" type="imu">
+          <!--<pose>0.0 0.0 0.0 1.5708 0 1.5708</pose>-->
+          <pose>0.0 0.0 0.0 0 0 0</pose>
+          <always_on>1</always_on>
+          <topic>imu</topic>
+          <update_rate>200</update_rate>
+          <imu>
+              <!--              
+              <orientation_reference_frame>
+                  <localization>WUN</localization>
+                  <custom_rpy parent_frame="rmf_owl">1.5708 0 1.5708</custom_rpy>
+                  <gravity_dir_x parent_frame="rmf_owl">1 0 0</gravity_dir_x>
+              </orientation_reference_frame>
+              -->                    
+              <!--
+                  <mean> and <std> are parameters of Gaussian noise
+                  <bias_mean> and <bias_stddev> are parameters of Gaussian bias
+                  <dynamic_bias_stddev> and <dynamic_bias_correlation_time> are parameters of noise, which drives slow derivation of sensor bias
+                  <precision> is the precision of Gaussian quantized output signal
+              -->
+              <angular_velocity>
+                  <x>
+                      <noise type="gaussian">
+                          <mean>0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.00</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </x>
+                  <y>
+                      <noise type="gaussian">
+                          <mean>0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.00</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </y>
+                  <z>
+                      <noise type="gaussian">
+                          <mean>0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.00</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>400.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </z>
+              </angular_velocity>
+              <linear_acceleration>
+                  <x>
+                      <noise type="gaussian">
+                          <mean>0.0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.0</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </x>
+                  <y>
+                      <noise type="gaussian">
+                          <mean>0.0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.0</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </y>
+                  <z>
+                      <noise type="gaussian">
+                          <mean>0.0</mean>
+                          <stddev>0.00</stddev>
+                          <bias_mean>0.0</bias_mean>
+                          <bias_stddev>0.00</bias_stddev>
+                          <dynamic_bias_stddev>0.00</dynamic_bias_stddev>
+                          <dynamic_bias_correlation_time>175.0</dynamic_bias_correlation_time>
+                          <precision>0.00</precision>
+                      </noise>
+                  </z>
+              </linear_acceleration>
+          </imu>
+      </sensor>
 
 
        <!--Left camera of realsense-->
@@ -157,7 +164,7 @@
                 <!--<pose>0.0 0.4 0.2 0 0 0</pose>-->
                 <!--<pose>0.0 0.5 0.0 -1.5708 0 -1.5708</pose>-->
                 <always_on>1</always_on>
-                <update_rate>15</update_rate>
+                <update_rate>10</update_rate>
                 <visualize>true</visualize>
                 <camera name="camera_left">
                     <!--
@@ -210,7 +217,7 @@
                 <!--<pose>0.0 -0.4 0.2 0 0 0</pose>-->
                 <!--<pose>0.0 -0.5 0.0 -1.5708 0 -1.5708</pose>-->
                 <always_on>1</always_on>
-                <update_rate>15</update_rate>
+                <update_rate>10</update_rate>
                 <visualize>true</visualize>
                 <camera name="camera_right">
                     <!--
@@ -286,7 +293,6 @@
                     </noise>
                 </ray>
           </sensor>
-
 
     </link>
     <link name='rmf_owl/rotor_0'>
@@ -557,6 +563,50 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
+
+     <!--<plugin filename="libignition-gazebo-pose-publisher-system.so" name="ignition::gazebo::systems::PosePublisher">
+            <publish_link_pose>true</publish_link_pose>
+            <publish_sensor_pose>true</publish_sensor_pose>
+            <publish_collision_pose>false</publish_collision_pose>
+            <publish_visual_pose>false</publish_visual_pose>
+            <publish_nested_model_pose>true</publish_nested_model_pose>
+            <use_pose_vector_msg>true</use_pose_vector_msg>
+            <static_publisher>true</static_publisher>
+            <static_update_frequency>60</static_update_frequency>
+        </plugin>-->
+
+        <!--<plugin filename="libignition-gazebo-pose-publisher-system.so" name="ignition::gazebo::systems::PosePublisher">
+            <publish_link_pose>false</publish_link_pose>
+            <publish_sensor_pose>false</publish_sensor_pose>
+            <publish_collision_pose>false</publish_collision_pose>
+            <publish_visual_pose>false</publish_visual_pose>
+            <publish_nested_model_pose>false</publish_nested_model_pose>
+            <use_pose_vector_msg>true</use_pose_vector_msg>
+            <static_publisher>false</static_publisher>
+        </plugin>
+
+        <plugin filename="libignition-gazebo-pose-publisher-system.so"
+          name="ignition::gazebo::systems::PosePublisher">
+          <publish_link_pose>false</publish_link_pose>
+          <publish_sensor_pose>true</publish_sensor_pose>
+          <publish_collision_pose>false</publish_collision_pose>
+          <publish_visual_pose>false</publish_visual_pose>
+          <publish_nested_model_pose>false</publish_nested_model_pose>
+          <use_pose_vector_msg>true</use_pose_vector_msg>
+          <static_publisher>true</static_publisher>
+          <static_update_frequency>200</static_update_frequency>
+        </plugin>-->
+        <plugin filename="libignition-gazebo-pose-publisher-system.so"
+          name="ignition::gazebo::systems::PosePublisher">
+          <publish_link_pose>true</publish_link_pose>
+          <publish_sensor_pose>false</publish_sensor_pose>
+          <publish_collision_pose>false</publish_collision_pose>
+          <publish_visual_pose>false</publish_visual_pose>
+          <publish_nested_model_pose>true</publish_nested_model_pose>
+          <use_pose_vector_msg>true</use_pose_vector_msg>
+          <static_publisher>false</static_publisher>
+        </plugin>
+
 
     
 
