@@ -68,13 +68,13 @@
           <topic>imu</topic>
           <update_rate>200</update_rate>
           <imu>
-              <!--              
+              <!--
               <orientation_reference_frame>
                   <localization>WUN</localization>
                   <custom_rpy parent_frame="rmf_owl">1.5708 0 1.5708</custom_rpy>
                   <gravity_dir_x parent_frame="rmf_owl">1 0 0</gravity_dir_x>
               </orientation_reference_frame>
-              -->                    
+              -->
               <!--
                   <mean> and <std> are parameters of Gaussian noise
                   <bias_mean> and <bias_stddev> are parameters of Gaussian bias
@@ -154,6 +154,28 @@
           </imu>
       </sensor>
 
+      <!--Depth of realsense-->
+      <sensor name="camera_depth" type="depth_camera">
+          <pose>0.180 0 -0.025 0 0 0</pose>
+          <update_rate>20</update_rate>
+          <camera name="camera_depth">
+              <horizontal_fov>2.09</horizontal_fov>
+              <image>
+                  <width>640</width>
+                  <height>240</height>
+                  <format>R_FLOAT32</format>
+              </image>
+              <clip>
+                  <near>0.2</near>
+                  <far>20.0</far>
+              </clip>
+              <noise>
+                  <type>gaussian</type>
+                  <mean>0</mean>
+                  <stddev>0.00000000000000000001</stddev>
+              </noise>
+          </camera>
+      </sensor>
 
        <!--Left camera of realsense-->
             <sensor name="camera_left" type="camera">
@@ -608,7 +630,7 @@
         </plugin>
 
 
-    
+
 
     <!--<plugin
           filename="libmavlink_sitl_ign_gazebo.so"
