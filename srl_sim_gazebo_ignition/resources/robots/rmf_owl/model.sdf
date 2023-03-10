@@ -2,7 +2,7 @@
 <sdf version="1.6">
   <model name="rmf_owl">
     <pose>0 0 0.053302 0 0 0</pose>
-    <link name="rmf_owl/base_link">
+    <link name="rmf_owl/body">
       <inertial>
         <mass>1.46</mass>
         <inertia>
@@ -292,7 +292,7 @@
     </link>
     <joint name="rmf_owl/rotor_0_joint" type="revolute">
       <child>rmf_owl/rotor_0</child>
-      <parent>rmf_owl/base_link</parent>
+      <parent>rmf_owl/body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -356,7 +356,7 @@
     </link>
     <joint name="rmf_owl/rotor_1_joint" type="revolute">
       <child>rmf_owl/rotor_1</child>
-      <parent>rmf_owl/base_link</parent>
+      <parent>rmf_owl/body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -420,7 +420,7 @@
     </link>
     <joint name="rmf_owl/rotor_2_joint" type="revolute">
       <child>rmf_owl/rotor_2</child>
-      <parent>rmf_owl/base_link</parent>
+      <parent>rmf_owl/body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -484,7 +484,7 @@
     </link>
     <joint name="rmf_owl/rotor_3_joint" type="revolute">
       <child>rmf_owl/rotor_3</child>
-      <parent>rmf_owl/base_link</parent>
+      <parent>rmf_owl/body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -510,13 +510,13 @@
     </plugin>
 
     <plugin filename="libgazebo_barometer_plugin.so" name="barometer_plugin::BarometerPlugin">
-      <link_name>rmf_owl/base_link</link_name>
+      <link_name>rmf_owl/body</link_name>
     </plugin>
     <plugin filename="libgazebo_gps_plugin.so" name="gps_plugin::GpsPlugin">
-      <link_name>rmf_owl/base_link</link_name>
+      <link_name>rmf_owl/body</link_name>
     </plugin>
     <plugin filename="libgazebo_magnetometer_plugin.so" name="magnetometer_plugin::MagnetometerPlugin">
-      <link_name>rmf_owl/base_link</link_name>
+      <link_name>rmf_owl/body</link_name>
     </plugin>
 
     <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
