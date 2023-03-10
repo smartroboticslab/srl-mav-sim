@@ -105,23 +105,6 @@
       </plugin>
 
     </gui>
-    
-    <!--
-    <light type="directional" name="sun">
-      <cast_shadows>true</cast_shadows>
-      <pose>0 0 10 0 0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
-        <range>1000</range>
-        <constant>0.9</constant>
-        <linear>0.01</linear>
-        <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0.5 0.1 -0.9</direction>
-    </light>-->
-
-
 
     <model name="ground_plane">
       <static>true</static>
@@ -504,27 +487,6 @@
 
 
   <include>
-    
-    <!--<uri>model://rmf_owl</uri>
-    <plugin
-      filename="libgazebo_barometer_plugin.so"
-      name="barometer_plugin::BarometerPlugin">
-      <link_name>base_link</link_name>
-    </plugin>
-    <plugin
-      filename="libgazebo_magnetometer_plugin.so"
-      name="magnetometer_plugin::MagnetometerPlugin">
-      <link_name>base_link</link_name>
-    </plugin>
-    <plugin
-      filename="libgazebo_gps_plugin.so"
-      name="gps_plugin::GpsPlugin">
-      <link_name>base_link</link_name>
-    </plugin>
-    <pose> 0 0 0.5 0 0 0</pose>-->
-  
-    <!--<uri>model://x3</uri>
-    <pose>0 0 0.5 0 0 0</pose>-->
     <uri>model://robots/rmf_owl</uri>
     <pose> 0 0 0 0 0 0</pose>
     <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
@@ -548,7 +510,7 @@
       name="gps_plugin::GpsPlugin">
       <link_name>rmf_owl/base_link</link_name>
     </plugin>
-    
+
     <plugin
         filename="ignition-gazebo-multicopter-motor-model-system"
         name="ignition::gazebo::systems::MulticopterMotorModel">
@@ -634,7 +596,6 @@
           name="mavlink_interface::GazeboMavlinkInterface">
                 <robotNamespace/>
         <imuSubTopic>/imu</imuSubTopic>
-        <!--<imuSubTopic>/world/depot/model/rmf_owl/link/rmf_owl/base_link/sensor/imu_sensor/imu</imuSubTopic>-->
         <magSubTopic>/mag</magSubTopic>
         <baroSubTopic>/baro</baroSubTopic>
         <mavlink_addr>INADDR_ANY</mavlink_addr>
