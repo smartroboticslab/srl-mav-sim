@@ -2,7 +2,7 @@
 <sdf version="1.6">
   <model name="rmf_owl">
     <pose>0 0 0.053302 0 0 0</pose>
-    <link name="rmf_owl/body">
+    <link name="body">
       <inertial>
         <mass>1.46</mass>
         <inertia>
@@ -243,7 +243,7 @@
 
     </link>
 
-    <link name="rmf_owl/rotor_0">
+    <link name="rotor_0">
       <pose frame="">0.09 -0.09 -0.005 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
@@ -290,9 +290,9 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name="rmf_owl/rotor_0_joint" type="revolute">
-      <child>rmf_owl/rotor_0</child>
-      <parent>rmf_owl/body</parent>
+    <joint name="rotor_0_joint" type="revolute">
+      <child>rotor_0</child>
+      <parent>body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -307,7 +307,7 @@
       </axis>
     </joint>
 
-    <link name="rmf_owl/rotor_1">
+    <link name="rotor_1">
       <pose frame="">-0.09 0.09 0.045 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
@@ -354,9 +354,9 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name="rmf_owl/rotor_1_joint" type="revolute">
-      <child>rmf_owl/rotor_1</child>
-      <parent>rmf_owl/body</parent>
+    <joint name="rotor_1_joint" type="revolute">
+      <child>rotor_1</child>
+      <parent>body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -371,7 +371,7 @@
       </axis>
     </joint>
 
-    <link name="rmf_owl/rotor_2">
+    <link name="rotor_2">
       <pose frame="">0.09 0.09 -0.005 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
@@ -418,9 +418,9 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name="rmf_owl/rotor_2_joint" type="revolute">
-      <child>rmf_owl/rotor_2</child>
-      <parent>rmf_owl/body</parent>
+    <joint name="rotor_2_joint" type="revolute">
+      <child>rotor_2</child>
+      <parent>body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -435,7 +435,7 @@
       </axis>
     </joint>
 
-    <link name="rmf_owl/rotor_3">
+    <link name="rotor_3">
       <pose frame="">-0.09 -0.09 0.045 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
@@ -482,9 +482,9 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name="rmf_owl/rotor_3_joint" type="revolute">
-      <child>rmf_owl/rotor_3</child>
-      <parent>rmf_owl/body</parent>
+    <joint name="rotor_3_joint" type="revolute">
+      <child>rotor_3</child>
+      <parent>body</parent>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
@@ -510,19 +510,19 @@
     </plugin>
 
     <plugin filename="libgazebo_barometer_plugin.so" name="barometer_plugin::BarometerPlugin">
-      <link_name>rmf_owl/body</link_name>
+      <link_name>body</link_name>
     </plugin>
     <plugin filename="libgazebo_gps_plugin.so" name="gps_plugin::GpsPlugin">
-      <link_name>rmf_owl/body</link_name>
+      <link_name>body</link_name>
     </plugin>
     <plugin filename="libgazebo_magnetometer_plugin.so" name="magnetometer_plugin::MagnetometerPlugin">
-      <link_name>rmf_owl/body</link_name>
+      <link_name>body</link_name>
     </plugin>
 
     <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
       <robotNamespace>rmf_owl</robotNamespace>
-      <jointName>rmf_owl/rotor_0_joint</jointName>
-      <linkName>rmf_owl/rotor_0</linkName>
+      <jointName>rotor_0_joint</jointName>
+      <linkName>rotor_0</linkName>
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
@@ -540,8 +540,8 @@
 
     <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
       <robotNamespace>rmf_owl</robotNamespace>
-      <jointName>rmf_owl/rotor_1_joint</jointName>
-      <linkName>rmf_owl/rotor_1</linkName>
+      <jointName>rotor_1_joint</jointName>
+      <linkName>rotor_1</linkName>
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
@@ -559,8 +559,8 @@
 
     <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
       <robotNamespace>rmf_owl</robotNamespace>
-      <jointName>rmf_owl/rotor_2_joint</jointName>
-      <linkName>rmf_owl/rotor_2</linkName>
+      <jointName>rotor_2_joint</jointName>
+      <linkName>rotor_2</linkName>
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
@@ -578,8 +578,8 @@
 
     <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
       <robotNamespace>rmf_owl</robotNamespace>
-      <jointName>rmf_owl/rotor_3_joint</jointName>
-      <linkName>rmf_owl/rotor_3</linkName>
+      <jointName>rotor_3_joint</jointName>
+      <linkName>rotor_3</linkName>
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
