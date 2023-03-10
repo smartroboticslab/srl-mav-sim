@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.6">
   <world name="depot">
     <physics name="10ms" type="ode">
@@ -18,35 +18,26 @@
         </constraints>
       </ode>
     </physics>
-    <plugin
-      filename="libignition-gazebo-physics-system.so"
-      name="ignition::gazebo::systems::Physics">
+
+    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics">
     </plugin>
-    <plugin
-      filename="libignition-gazebo-scene-broadcaster-system.so"
-      name="ignition::gazebo::systems::SceneBroadcaster">
+    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster">
     </plugin>
-    <plugin
-      filename="libignition-gazebo-user-commands-system.so"
-      name="ignition::gazebo::systems::UserCommands">
+    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands">
     </plugin>
-    <plugin
-      filename="libignition-gazebo-sensors-system.so"
-      name="ignition::gazebo::systems::Sensors">
+    <plugin filename="libignition-gazebo-sensors-system.so" name="ignition::gazebo::systems::Sensors">
       <render_engine>ogre2</render_engine>
     </plugin>
-    <plugin filename="libignition-gazebo-imu-system.so"
-            name="ignition::gazebo::systems::Imu">
+    <plugin filename="libignition-gazebo-imu-system.so" name="ignition::gazebo::systems::Imu">
     </plugin>
+
     <gui fullscreen="0">
-      <!-- 3D scene -->
       <plugin filename="GzScene3D" name="3D View">
         <ignition-gui>
           <title>3D View</title>
           <property type="bool" key="showTitleBar">false</property>
           <property type="string" key="state">docked</property>
         </ignition-gui>
-
         <engine>ogre2</engine>
         <scene>scene</scene>
         <ambient_light>0.4 0.4 0.4</ambient_light>
@@ -54,7 +45,6 @@
         <camera_pose>-6 0 6 0 0.5 0</camera_pose>
       </plugin>
 
-      <!-- World control -->
       <plugin filename="WorldControl" name="World control">
         <ignition-gui>
           <title>World control</title>
@@ -63,23 +53,19 @@
           <property type="double" key="height">72</property>
           <property type="double" key="width">121</property>
           <property type="double" key="z">1</property>
-
           <property type="string" key="state">floating</property>
           <anchors target="3D View">
             <line own="left" target="left"/>
             <line own="bottom" target="bottom"/>
           </anchors>
         </ignition-gui>
-
         <play_pause>true</play_pause>
         <step>true</step>
         <start_paused>true</start_paused>
         <service>/world/quadcopter/control</service>
         <stats_topic>/world/quadcopter/stats</stats_topic>
-
       </plugin>
 
-      <!-- World statistics -->
       <plugin filename="WorldStats" name="World stats">
         <ignition-gui>
           <title>World stats</title>
@@ -88,22 +74,18 @@
           <property type="double" key="height">110</property>
           <property type="double" key="width">290</property>
           <property type="double" key="z">1</property>
-
           <property type="string" key="state">floating</property>
           <anchors target="3D View">
             <line own="right" target="right"/>
             <line own="bottom" target="bottom"/>
           </anchors>
         </ignition-gui>
-
         <sim_time>true</sim_time>
         <real_time>true</real_time>
         <real_time_factor>true</real_time_factor>
         <iterations>true</iterations>
         <topic>/world/quadcopter/stats</topic>
-
       </plugin>
-
     </gui>
 
     <model name="ground_plane">
@@ -132,15 +114,13 @@
       </link>
     </model>
 
-  <include>
-      <uri>
-        https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Depot
-      </uri>
+    <include>
+      <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Depot</uri>
       <pose>7.19009 1.09982 0 0 0 0</pose>
-  </include>
+    </include>
 
-  <model name="depot_collision">
-      <static>1</static>
+    <model name="depot_collision">
+      <static>true</static>
       <pose>7.19009 1.09982 0 0 0 0</pose>
       <link name="collision_link">
         <pose>0 0 0 0 0 0</pose>
@@ -485,35 +465,26 @@
       </link>
     </model>
 
+    <include>
+      <uri>model://robots/rmf_owl</uri>
+      <pose> 0 0 0 0 0 0</pose>
+      <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+        <odom_frame>depot</odom_frame>
+        <robot_base_frame>rmf_owl/base_link</robot_base_frame>
+        <odom_publish_frequency>100</odom_publish_frequency>
+        <dimensions>3</dimensions>
+      </plugin>
+      <plugin filename="libgazebo_barometer_plugin.so" name="barometer_plugin::BarometerPlugin">
+        <link_name>rmf_owl/base_link</link_name>
+      </plugin>
+      <plugin filename="libgazebo_magnetometer_plugin.so" name="magnetometer_plugin::MagnetometerPlugin">
+        <link_name>rmf_owl/base_link</link_name>
+      </plugin>
+      <plugin filename="libgazebo_gps_plugin.so" name="gps_plugin::GpsPlugin">
+        <link_name>rmf_owl/base_link</link_name>
+      </plugin>
 
-  <include>
-    <uri>model://robots/rmf_owl</uri>
-    <pose> 0 0 0 0 0 0</pose>
-    <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
-      <odom_frame>depot</odom_frame>
-      <robot_base_frame>rmf_owl/base_link</robot_base_frame>
-      <odom_publish_frequency>100</odom_publish_frequency>
-      <dimensions>3</dimensions>
-    </plugin>
-    <plugin
-      filename="libgazebo_barometer_plugin.so"
-      name="barometer_plugin::BarometerPlugin">
-      <link_name>rmf_owl/base_link</link_name>
-    </plugin>
-    <plugin
-      filename="libgazebo_magnetometer_plugin.so"
-      name="magnetometer_plugin::MagnetometerPlugin">
-      <link_name>rmf_owl/base_link</link_name>
-    </plugin>
-    <plugin
-      filename="libgazebo_gps_plugin.so"
-      name="gps_plugin::GpsPlugin">
-      <link_name>rmf_owl/base_link</link_name>
-    </plugin>
-
-    <plugin
-        filename="ignition-gazebo-multicopter-motor-model-system"
-        name="ignition::gazebo::systems::MulticopterMotorModel">
+      <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
         <robotNamespace>rmf_owl</robotNamespace>
         <jointName>rmf_owl/rotor_0_joint</jointName>
         <linkName>rmf_owl/rotor_0</linkName>
@@ -531,9 +502,8 @@
         <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
-      <plugin
-        filename="ignition-gazebo-multicopter-motor-model-system"
-        name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
         <robotNamespace>rmf_owl</robotNamespace>
         <jointName>rmf_owl/rotor_1_joint</jointName>
         <linkName>rmf_owl/rotor_1</linkName>
@@ -551,9 +521,8 @@
         <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
-      <plugin
-        filename="ignition-gazebo-multicopter-motor-model-system"
-        name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
         <robotNamespace>rmf_owl</robotNamespace>
         <jointName>rmf_owl/rotor_2_joint</jointName>
         <linkName>rmf_owl/rotor_2</linkName>
@@ -571,9 +540,8 @@
         <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
-      <plugin
-        filename="ignition-gazebo-multicopter-motor-model-system"
-        name="ignition::gazebo::systems::MulticopterMotorModel">
+
+      <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="ignition::gazebo::systems::MulticopterMotorModel">
         <robotNamespace>rmf_owl</robotNamespace>
         <jointName>rmf_owl/rotor_3_joint</jointName>
         <linkName>rmf_owl/rotor_3</linkName>
@@ -591,9 +559,8 @@
         <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
-      <plugin
-          filename="libmavlink_sitl_ign_gazebo.so"
-          name="mavlink_interface::GazeboMavlinkInterface">
+
+      <plugin filename="libmavlink_sitl_ign_gazebo.so" name="mavlink_interface::GazeboMavlinkInterface">
         <robotNamespace>rmf_owl</robotNamespace>
         <imuSubTopic>/imu</imuSubTopic>
         <magSubTopic>/mag</magSubTopic>
