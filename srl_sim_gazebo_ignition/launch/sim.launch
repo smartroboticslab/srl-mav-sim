@@ -31,7 +31,7 @@
   </include>
 
   <!-- Enable bridges for communication -->
-  <include file="$(find digiforest_simulation)/launch/integrated_topics.launch">
+  <include file="$(find srl_sim_gazebo_ignition)/launch/rmf_owl_ros_ign_bridges.launch">
     <arg name="world_name" value="$(arg world_name)" />
     <arg name="robot_name" value="$(arg airframe)" />
   </include>

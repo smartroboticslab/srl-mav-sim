@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="world_name" default="depot"/>
+  <arg name="robot_name" default="rmf_owl"/>
+
+  <arg name="sensor_prefix" value="/world/$(arg world_name)/model/$(arg robot_name)/link/rmf_owl/base_link/sensor"/>
+
+  <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_clock"
+    args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock">
+  </node>
+
+  <group ns="$(arg robot_name)">
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_tf"
+      args="/model/$(arg robot_name)/pose@tf2_msgs/TFMessage[ignition.msgs.Pose_V">
+      <remap from="/model/$(arg robot_name)/pose" to="/tf"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_tf_static"
+      args="/model/$(arg robot_name)/pose_static@tf2_msgs/TFMessage[ignition.msgs.Pose_V">
+      <remap from="/model/$(arg robot_name)/pose_static" to="/tf_static"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_cmd_vel"
+      args="/model/$(arg robot_name)/cmd_vel@geometry_msgs/Twist@ignition.msgs.Twist">
+      <remap from="/model/$(arg robot_name)/cmd_vel" to="cmd_vel"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_odometry"
+      args="/model/$(arg robot_name)/odometry@nav_msgs/Odometry[ignition.msgs.Odometry">
+      <remap from="/model/$(arg robot_name)/odometry" to="odom"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_imu"
+      args="$(arg sensor_prefix)/imu_sensor/imu@sensor_msgs/Imu[ignition.msgs.IMU">
+      <remap from="$(arg sensor_prefix)/imu_sensor/imu" to="imu0"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_imuo"
+      args="/imu@sensor_msgs/Imu[ignition.msgs.IMU">
+      <remap from="/imu" to="imu0"/>
+    </node>
+
+    <node pkg="ros_ign_image" type="image_bridge" name="ros_ign_image_depth"
+      args="$(arg sensor_prefix)/camera_depth/depth_image">
+      <remap from="$(arg sensor_prefix)/camera_depth/depth_image" to="depth0/depth_image"/>
+    </node>
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_depth_info"
+      args="$(arg sensor_prefix)/camera_depth/camera_info@sensor_msgs/CameraInfo[ignition.msgs.CameraInfo">
+      <remap from="$(arg sensor_prefix)/camera_depth/camera_info" to="depth0/camera_info"/>
+    </node>
+
+    <node pkg="ros_ign_image" type="image_bridge" name="ros_ign_image_ir_left"
+      args="$(arg sensor_prefix)/camera_left/image">
+      <remap from="$(arg sensor_prefix)/camera_left/image" to="cam0/image_raw"/>
+    </node>
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_image_ir_left_info"
+      args="$(arg sensor_prefix)/camera_left/camera_info@sensor_msgs/CameraInfo[ignition.msgs.CameraInfo">
+      <remap from="$(arg sensor_prefix)/camera_left/camera_info" to="cam0/camera_info"/>
+    </node>
+
+    <node pkg="ros_ign_image" type="image_bridge" name="ros_ign_image_ir_right"
+      args="$(arg sensor_prefix)/camera_right/image">
+      <remap from="$(arg sensor_prefix)/camera_right/image" to="cam1/image_raw"/>
+    </node>
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_ir_right_info"
+      args="$(arg sensor_prefix)/camera_right/camera_info@sensor_msgs/CameraInfo[ignition.msgs.CameraInfo">
+      <remap from="$(arg sensor_prefix)/camera_right/camera_info" to="cam1/camera_info"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_lidary"
+        args="$(arg sensor_prefix)/front_laser/scan@sensor_msgs/LaserScan[ignition.msgs.LaserScan">
+      <remap from="$(arg sensor_prefix)/front_laser/scan" to="lidar"/>
+    </node>
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_lidar_points"
+      args="$(arg sensor_prefix)/front_laser/scan/points@sensor_msgs/PointCloud2[ignition.msgs.PointCloudPacked">
+      <remap from="$(arg sensor_prefix)/front_laser/scan/points" to="lidar/points"/>
+    </node>
+  </group>
+</launch>
