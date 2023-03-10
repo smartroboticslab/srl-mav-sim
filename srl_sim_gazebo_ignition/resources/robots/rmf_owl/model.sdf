@@ -1,10 +1,10 @@
-<sdf version='1.6'>
-  <model name='rmf_owl'>
+<sdf version="1.6">
+  <model name="rmf_owl">
     <pose>0 0 0.053302 0 0 0</pose>
-    <link name='rmf_owl/base_link'>
-      <pose frame=''>0 0 0 0 -0 0</pose>
+    <link name="rmf_owl/base_link">
+      <pose frame="">0 0 0 0 -0 0</pose>
       <inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame="">0 0 0 0 -0 0</pose>
         <mass>1.46</mass>
         <inertia>
           <ixx>0.017</ixx>
@@ -15,16 +15,16 @@
           <izz>0.028</izz>
         </inertia>
       </inertial>
-      <collision name='rmf_owl/base_link_inertia_collision'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <collision name="rmf_owl/base_link_inertia_collision">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <box>
             <size>0.47 0.47 0.11</size>
           </box>
         </geometry>
       </collision>
-      <visual name='rmf_owl/base_link_inertia_visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <visual name="rmf_owl/base_link_inertia_visual">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -179,8 +179,8 @@
 
        <!--Left camera of realsense-->
             <sensor name="camera_left" type="camera">
-                <!--<pose>0.18 0 0.0328 0 -0 0</pose>--> <!--realsense's postion on rmf_owl-->
-                <!--<pose>0.0074000000 -0.0302200001 0.0160200000 0 -0 0</pose>--> <!--realsense's pose from config file-->
+                <!--<pose>0.18 0 0.0328 0 -0 0</pose>--> <!--realsense"s postion on rmf_owl-->
+                <!--<pose>0.0074000000 -0.0302200001 0.0160200000 0 -0 0</pose>--> <!--realsense"s pose from config file-->
                 <!--<pose>0.1874000000 -0.0302200001 0.0488200000 0 -0 0</pose>--> <!--integration of both-->
                 <pose>0.2 0.0475 0.2 0 0 0</pose>
                 <!--<pose>0.0 0.4 0.2 0 0 0</pose>-->
@@ -232,8 +232,8 @@
 
             <!--Right camera of realsense-->
             <sensor name="camera_right" type="camera">
-                <!--<pose>0.18 0 0.0328 0 -0 0</pose>--> <!--realsense's postion on rmf_owl-->
-                <!--<pose>0.0074000000 0.0646901205 0.0160200000 0 -0 0</pose>--> <!--realsense's pose from config file-->
+                <!--<pose>0.18 0 0.0328 0 -0 0</pose>--> <!--realsense"s postion on rmf_owl-->
+                <!--<pose>0.0074000000 0.0646901205 0.0160200000 0 -0 0</pose>--> <!--realsense"s pose from config file-->
                 <!--<pose>0.1874000000 0.0646901205 0.0488200000 0 -0 0</pose>--> <!--integration of both-->
                 <pose>0.2 -0.0475 0.2 0 0 0</pose>
                 <!--<pose>0.0 -0.4 0.2 0 0 0</pose>-->
@@ -317,10 +317,10 @@
           </sensor>
 
     </link>
-    <link name='rmf_owl/rotor_0'>
-      <pose frame=''>0.09 -0.09 -0.005 0 0 0</pose>
+    <link name="rmf_owl/rotor_0">
+      <pose frame="">0.09 -0.09 -0.005 0 0 0</pose>
       <inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame="">0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
         <inertia>
           <ixx>9.75e-07</ixx>
@@ -331,8 +331,8 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name='rmf_owl/rotor_0_collision'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <collision name="rmf_owl/rotor_0_collision">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -348,8 +348,8 @@
           </friction>
         </surface>
       </collision>
-      <visual name='rmf_owl/rotor_0_visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <visual name="rmf_owl/rotor_0_visual">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -368,7 +368,7 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name='rmf_owl/rotor_0_joint' type='revolute'>
+    <joint name="rmf_owl/rotor_0_joint" type="revolute">
       <child>rmf_owl/rotor_0</child>
       <parent>rmf_owl/base_link</parent>
       <axis>
@@ -384,10 +384,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <link name='rmf_owl/rotor_1'>
-      <pose frame=''>-0.09 0.09 0.045 0 0 0</pose>
+    <link name="rmf_owl/rotor_1">
+      <pose frame="">-0.09 0.09 0.045 0 0 0</pose>
       <inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame="">0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
         <inertia>
           <ixx>9.75e-07</ixx>
@@ -398,8 +398,8 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name='rmf_owl/rotor_1_collision'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <collision name="rmf_owl/rotor_1_collision">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -415,8 +415,8 @@
           </friction>
         </surface>
       </collision>
-      <visual name='rmf_owl/rotor_1_visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <visual name="rmf_owl/rotor_1_visual">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -435,7 +435,7 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name='rmf_owl/rotor_1_joint' type='revolute'>
+    <joint name="rmf_owl/rotor_1_joint" type="revolute">
       <child>rmf_owl/rotor_1</child>
       <parent>rmf_owl/base_link</parent>
       <axis>
@@ -451,10 +451,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <link name='rmf_owl/rotor_2'>
-      <pose frame=''>0.09 0.09 -0.005 0 0 0</pose>
+    <link name="rmf_owl/rotor_2">
+      <pose frame="">0.09 0.09 -0.005 0 0 0</pose>
       <inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame="">0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
         <inertia>
           <ixx>9.75e-07</ixx>
@@ -465,8 +465,8 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name='rmf_owl/rotor_2_collision'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <collision name="rmf_owl/rotor_2_collision">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -482,8 +482,8 @@
           </friction>
         </surface>
       </collision>
-      <visual name='rmf_owl/rotor_2_visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <visual name="rmf_owl/rotor_2_visual">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -502,7 +502,7 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name='rmf_owl/rotor_2_joint' type='revolute'>
+    <joint name="rmf_owl/rotor_2_joint" type="revolute">
       <child>rmf_owl/rotor_2</child>
       <parent>rmf_owl/base_link</parent>
       <axis>
@@ -518,10 +518,10 @@
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
     </joint>
-    <link name='rmf_owl/rotor_3'>
-      <pose frame=''>-0.09 -0.09 0.045 0 0 0</pose>
+    <link name="rmf_owl/rotor_3">
+      <pose frame="">-0.09 -0.09 0.045 0 0 0</pose>
       <inertial>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame="">0 0 0 0 -0 0</pose>
         <mass>0.005</mass>
         <inertia>
           <ixx>9.75e-07</ixx>
@@ -532,8 +532,8 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name='rmf_owl/rotor_3_collision'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <collision name="rmf_owl/rotor_3_collision">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -549,8 +549,8 @@
           </friction>
         </surface>
       </collision>
-      <visual name='rmf_owl/rotor_3_visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+      <visual name="rmf_owl/rotor_3_visual">
+        <pose frame="">0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -569,7 +569,7 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name='rmf_owl/rotor_3_joint' type='revolute'>
+    <joint name="rmf_owl/rotor_3_joint" type="revolute">
       <child>rmf_owl/rotor_3</child>
       <parent>rmf_owl/base_link</parent>
       <axis>
@@ -658,7 +658,7 @@
         <use_tcp>1</use_tcp>
         <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
         <control_channels>
-          <channel name='rotor1'>
+          <channel name="rotor1">
             <input_index>0</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -666,7 +666,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor2'>
+          <channel name="rotor2">
             <input_index>1</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -674,7 +674,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor3'>
+          <channel name="rotor3">
             <input_index>2</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -682,7 +682,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor4'>
+          <channel name="rotor4">
             <input_index>3</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -690,7 +690,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor5'>
+          <channel name="rotor5">
             <input_index>4</input_index>
             <input_offset>1</input_offset>
             <input_scaling>324.6</input_scaling>
@@ -708,7 +708,7 @@
             </joint_control_pid>
             <joint_name>zephyr_delta_wing::propeller_joint</joint_name>
           </channel>
-          <channel name='rotor6'>
+          <channel name="rotor6">
             <input_index>5</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>
@@ -726,7 +726,7 @@
               <cmdMin>-20</cmdMin>
             </joint_control_pid>
           </channel>
-          <channel name='rotor7'>
+          <channel name="rotor7">
             <input_index>6</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>
@@ -744,7 +744,7 @@
               <cmdMin>-20</cmdMin>
             </joint_control_pid>
           </channel>
-          <channel name='rotor8'>
+          <channel name="rotor8">
             <input_index>7</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>

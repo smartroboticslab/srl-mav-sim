@@ -156,12 +156,12 @@
       <pose>7.19009 1.09982 0 0 0 0</pose>
   </include>
 
-  <model name='depot_collision'>
+  <model name="depot_collision">
       <static>1</static>
       <pose>7.19009 1.09982 0 0 0 0</pose>
-      <link name='collision_link'>
+      <link name="collision_link">
         <pose>0 0 0 0 0 0</pose>
-        <collision name='wall1'>
+        <collision name="wall1">
           <pose>0 -7.6129 4.5 0 0 0</pose>
           <geometry>
             <box>
@@ -169,7 +169,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='wall2'>
+        <collision name="wall2">
           <pose>0 7.2875 4.5 0 0 0</pose>
           <geometry>
             <box>
@@ -177,7 +177,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='wall3'>
+        <collision name="wall3">
           <pose>-15 0 4.5 0 0 0</pose>
           <geometry>
             <box>
@@ -185,7 +185,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='wall4'>
+        <collision name="wall4">
           <pose>15 0 4.5 0 0 0</pose>
           <geometry>
             <box>
@@ -193,7 +193,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes1'>
+        <collision name="boxes1">
           <pose>0.22268 -4.7268 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -201,7 +201,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes2'>
+        <collision name="boxes2">
           <pose>3.1727 -4.7268 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -209,7 +209,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes3'>
+        <collision name="boxes3">
           <pose>5.95268 -4.7268 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -217,7 +217,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes4'>
+        <collision name="boxes4">
           <pose>8.55887 -4.7268 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -225,7 +225,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes5'>
+        <collision name="boxes5">
           <pose>11.326 -4.7268 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -233,7 +233,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes6'>
+        <collision name="boxes6">
           <pose>0.22268 -2.37448 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -241,7 +241,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes7'>
+        <collision name="boxes7">
           <pose>3.1727 -2.37448 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -249,7 +249,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes8'>
+        <collision name="boxes8">
           <pose>5.95268 -2.37448 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -257,7 +257,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes9'>
+        <collision name="boxes9">
           <pose>8.55887 -2.37448 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -265,7 +265,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes10'>
+        <collision name="boxes10">
           <pose>11.326 -2.37448 0.68506 0 0 0</pose>
           <geometry>
             <box>
@@ -273,7 +273,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='boxes11'>
+        <collision name="boxes11">
           <pose>-1.2268 4.1557 0.68506 0 0 -1.02799893</pose>
           <geometry>
             <box>
@@ -281,7 +281,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pilar1'>
+        <collision name="pilar1">
           <pose>-7.5402 3.6151 1 0 0 0</pose>
           <geometry>
             <box>
@@ -289,7 +289,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pilar2'>
+        <collision name="pilar2">
           <pose>7.4575 3.6151 1 0 0 0</pose>
           <geometry>
             <box>
@@ -297,7 +297,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pilar3'>
+        <collision name="pilar3">
           <pose>-7.5402 -3.8857 1 0 0 0</pose>
           <geometry>
             <box>
@@ -305,7 +305,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pilar4'>
+        <collision name="pilar4">
           <pose>7.4575 -3.8857 1 0 0 0</pose>
           <geometry>
             <box>
@@ -313,7 +313,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pallet_mover1'>
+        <collision name="pallet_mover1">
           <pose>-0.6144 -2.389 0.41838 0 0 0</pose>
           <geometry>
             <box>
@@ -321,7 +321,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='pallet_mover2'>
+        <collision name="pallet_mover2">
           <pose>-1.6004 4.8225 0.41838 0 0 0</pose>
           <geometry>
             <box>
@@ -329,7 +329,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='stairs'>
+        <collision name="stairs">
           <pose>13.018 3.1652 0.25 0 0 0</pose>
           <geometry>
             <box>
@@ -337,7 +337,7 @@
             </box>
           </geometry>
         </collision>
-        <collision name='shelfs1'>
+        <collision name="shelfs1">
           <pose>1.4662 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -346,7 +346,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs2'>
+        <collision name="shelfs2">
           <pose>2.6483 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -355,7 +355,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs3'>
+        <collision name="shelfs3">
           <pose>5.3247 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -364,7 +364,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs4'>
+        <collision name="shelfs4">
           <pose>6.5063 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -373,7 +373,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs5'>
+        <collision name="shelfs5">
           <pose>9.0758 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -382,7 +382,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs6'>
+        <collision name="shelfs6">
           <pose>10.258 -0.017559 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -391,7 +391,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs7'>
+        <collision name="shelfs7">
           <pose>1.4662 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -400,7 +400,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs8'>
+        <collision name="shelfs8">
           <pose>2.6483 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -409,7 +409,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs9'>
+        <collision name="shelfs9">
           <pose>5.3247 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -418,7 +418,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs10'>
+        <collision name="shelfs10">
           <pose>6.5063 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -427,7 +427,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs11'>
+        <collision name="shelfs11">
           <pose>9.0758 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -436,7 +436,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs12'>
+        <collision name="shelfs12">
           <pose>10.258 2.5664 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -445,7 +445,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs13'>
+        <collision name="shelfs13">
           <pose>1.4662 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -454,7 +454,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs14'>
+        <collision name="shelfs14">
           <pose>2.6483 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -463,7 +463,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs15'>
+        <collision name="shelfs15">
           <pose>5.3247 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -472,7 +472,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs16'>
+        <collision name="shelfs16">
           <pose>6.5063 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -481,7 +481,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs17'>
+        <collision name="shelfs17">
           <pose>9.0758 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -490,7 +490,7 @@
             </cylinder>
           </geometry>
         </collision>
-        <collision name='shelfs18'>
+        <collision name="shelfs18">
           <pose>10.258 5.1497 0.5 0 0 0</pose>
           <geometry>
             <cylinder>
@@ -656,7 +656,7 @@
         <use_tcp>1</use_tcp>
         <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
         <control_channels>
-          <channel name='rotor1'>
+          <channel name="rotor1">
             <input_index>0</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -664,7 +664,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor2'>
+          <channel name="rotor2">
             <input_index>1</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -672,7 +672,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor3'>
+          <channel name="rotor3">
             <input_index>2</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -680,7 +680,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor4'>
+          <channel name="rotor4">
             <input_index>3</input_index>
             <input_offset>0</input_offset>
             <input_scaling>1000</input_scaling>
@@ -688,7 +688,7 @@
             <zero_position_armed>100</zero_position_armed>
             <joint_control_type>velocity</joint_control_type>
           </channel>
-          <channel name='rotor5'>
+          <channel name="rotor5">
             <input_index>4</input_index>
             <input_offset>1</input_offset>
             <input_scaling>324.6</input_scaling>
@@ -706,7 +706,7 @@
             </joint_control_pid>
             <joint_name>zephyr_delta_wing::propeller_joint</joint_name>
           </channel>
-          <channel name='rotor6'>
+          <channel name="rotor6">
             <input_index>5</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>
@@ -724,7 +724,7 @@
               <cmdMin>-20</cmdMin>
             </joint_control_pid>
           </channel>
-          <channel name='rotor7'>
+          <channel name="rotor7">
             <input_index>6</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>
@@ -742,7 +742,7 @@
               <cmdMin>-20</cmdMin>
             </joint_control_pid>
           </channel>
-          <channel name='rotor8'>
+          <channel name="rotor8">
             <input_index>7</input_index>
             <input_offset>0</input_offset>
             <input_scaling>0.524</input_scaling>
