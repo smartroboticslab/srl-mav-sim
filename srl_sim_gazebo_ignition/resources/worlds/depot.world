@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <world name="depot">
-    <physics name="10ms" type="ode">
+    <physics type="ode">
       <max_step_size>0.01</max_step_size>
       <real_time_factor>2.0</real_time_factor>
       <ode>
@@ -31,7 +31,7 @@
     <plugin filename="libignition-gazebo-imu-system.so" name="ignition::gazebo::systems::Imu">
     </plugin>
 
-    <gui fullscreen="0">
+    <gui>
       <plugin filename="GzScene3D" name="3D View">
         <ignition-gui>
           <title>3D View</title>
@@ -123,7 +123,6 @@
       <static>true</static>
       <pose>7.19009 1.09982 0 0 0 0</pose>
       <link name="collision_link">
-        <pose>0 0 0 0 0 0</pose>
         <collision name="wall1">
           <pose>0 -7.6129 4.5 0 0 0</pose>
           <geometry>
