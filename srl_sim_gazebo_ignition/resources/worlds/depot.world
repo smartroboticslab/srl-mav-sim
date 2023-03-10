@@ -91,14 +91,14 @@
     <model name="ground_plane">
       <static>true</static>
       <link name="link">
-        <collision name="collision">
+        <collision name="ground_collision">
           <geometry>
             <plane>
               <normal>0 0 1</normal>
             </plane>
           </geometry>
         </collision>
-        <visual name="visual">
+        <visual name="ground_visual">
           <geometry>
             <plane>
               <normal>0 0 1</normal>

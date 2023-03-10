@@ -14,14 +14,14 @@
           <izz>0.028</izz>
         </inertia>
       </inertial>
-      <collision name="rmf_owl/base_link_inertia_collision">
+      <collision name="body_collision">
         <geometry>
           <box>
             <size>0.47 0.47 0.11</size>
           </box>
         </geometry>
       </collision>
-      <visual name="rmf_owl/base_link_inertia_visual">
+      <visual name="body_visual">
         <geometry>
           <mesh>
             <uri>meshes/rmf_owl.dae</uri>
@@ -30,7 +30,7 @@
       </visual>
 
       <!--Outlook of realsense_d435i/d455-->
-      <collision name="realsense_visual">
+      <collision name="realsense_collision">
         <pose frame="">0.0285 0 0.0328 0 0 1.57</pose>
         <geometry>
             <mesh>
@@ -256,7 +256,7 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rmf_owl/rotor_0_collision">
+      <collision name="rotor_0_collision">
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -272,7 +272,7 @@
           </friction>
         </surface>
       </collision>
-      <visual name="rmf_owl/rotor_0_visual">
+      <visual name="rotor_0_visual">
         <geometry>
           <mesh>
             <uri>meshes/propeller_ccw.dae</uri>
@@ -320,7 +320,7 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rmf_owl/rotor_1_collision">
+      <collision name="rotor_1_collision">
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -336,7 +336,7 @@
           </friction>
         </surface>
       </collision>
-      <visual name="rmf_owl/rotor_1_visual">
+      <visual name="rotor_1_visual">
         <geometry>
           <mesh>
             <uri>meshes/propeller_ccw.dae</uri>
@@ -384,7 +384,7 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rmf_owl/rotor_2_collision">
+      <collision name="rotor_2_collision">
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -400,7 +400,7 @@
           </friction>
         </surface>
       </collision>
-      <visual name="rmf_owl/rotor_2_visual">
+      <visual name="rotor_2_visual">
         <geometry>
           <mesh>
             <uri>meshes/propeller_cw.dae</uri>
@@ -448,7 +448,7 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rmf_owl/rotor_3_collision">
+      <collision name="rotor_3_collision">
         <geometry>
           <cylinder>
             <length>0.005</length>
@@ -464,7 +464,7 @@
           </friction>
         </surface>
       </collision>
-      <visual name="rmf_owl/rotor_3_visual">
+      <visual name="rotor_3_visual">
         <geometry>
           <mesh>
             <uri>meshes/propeller_cw.dae</uri>
