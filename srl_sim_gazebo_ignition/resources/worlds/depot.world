@@ -594,7 +594,7 @@
       <plugin
           filename="libmavlink_sitl_ign_gazebo.so"
           name="mavlink_interface::GazeboMavlinkInterface">
-                <robotNamespace/>
+        <robotNamespace>rmf_owl</robotNamespace>
         <imuSubTopic>/imu</imuSubTopic>
         <magSubTopic>/mag</magSubTopic>
         <baroSubTopic>/baro</baroSubTopic>
