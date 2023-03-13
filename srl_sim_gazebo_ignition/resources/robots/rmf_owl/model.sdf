@@ -68,13 +68,13 @@
           <topic>imu</topic>
           <update_rate>200</update_rate>
           <imu>
-              <!--
+              <!--              
               <orientation_reference_frame>
                   <localization>WUN</localization>
                   <custom_rpy parent_frame="rmf_owl">1.5708 0 1.5708</custom_rpy>
                   <gravity_dir_x parent_frame="rmf_owl">1 0 0</gravity_dir_x>
               </orientation_reference_frame>
-              -->
+              -->                    
               <!--
                   <mean> and <std> are parameters of Gaussian noise
                   <bias_mean> and <bias_stddev> are parameters of Gaussian bias
@@ -159,7 +159,24 @@
           <pose>0.180 0 -0.025 0 0 0</pose>
           <update_rate>20</update_rate>
           <camera name="camera_depth">
-              <horizontal_fov>2.09</horizontal_fov>
+              <horizontal_fov>1.37274</horizontal_fov>
+              <lens>
+                <intrinsics>
+                    <fx>390.598938</fx>
+                    <fy>390.598938</fy>
+                    <cx>320.0</cx>
+                    <cy>120.0</cy>
+                    <s>0</s>
+                </intrinsics>
+              </lens>
+              <distortion>
+                  <k1>0.0</k1>
+                  <k2>0.0</k2>
+                  <k3>0.0</k3>
+                  <p1>0.0</p1>
+                  <p2>0.0</p2>
+                  <center>0.5 0.5</center>
+              </distortion>
               <image>
                   <width>640</width>
                   <height>240</height>
@@ -630,7 +647,7 @@
         </plugin>
 
 
-
+    
 
     <!--<plugin
           filename="libmavlink_sitl_ign_gazebo.so"
