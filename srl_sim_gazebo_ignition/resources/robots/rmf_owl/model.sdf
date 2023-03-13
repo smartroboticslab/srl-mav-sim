@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <model name="rmf_owl">
-    <pose>0 0 0.053302 0 0 0</pose>
     <link name="body">
+      <pose>0 0 0.0165 0 0 0</pose>
       <inertial>
         <mass>1.46</mass>
         <inertia>
@@ -17,7 +17,7 @@
       <collision name="body_collision">
         <geometry>
           <box>
-            <size>0.47 0.47 0.11</size>
+            <size>0.3390 0.3800 0.2250</size>
           </box>
         </geometry>
       </collision>
