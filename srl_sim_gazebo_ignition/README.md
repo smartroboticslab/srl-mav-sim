@@ -12,7 +12,7 @@ using [these](https://gazebosim.org/docs/fortress/install) instructions. Then
 build the `srl_sim_gazebo_ignition` ROS package.
 
 ``` sh
-catkin build -DCMAKE_BUILD_TYPE=Release srl_sim_gazebo_ignition
+env IGNITION_VERSION=fortress catkin build -DCMAKE_BUILD_TYPE=Release srl_sim_gazebo_ignition ros_ign digiforest_simulation
 ```
 
 
