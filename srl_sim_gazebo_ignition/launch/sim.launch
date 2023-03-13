@@ -9,14 +9,7 @@
   <!-- TODO what should the default be? -->
   <arg name="airframe" default="iris"/>
 
-  <!--
-  The MAV model to load in Gazebo. It should be based on the airframe used for
-  the PX4 for control to work well.
-  -->
-  <!-- TODO what should the default be? -->
-  <arg name="model" default=""/>
-
-  <!-- The world to load in Gazebo. -->
+  <!-- The world to load in Gazebo. It must contain the MAV model. -->
   <arg name="world" default="$(find px4)/Tools/simulation-ignition/worlds/$(arg airframe).world"/>
 
   <!-- The world name given by the world file-->
@@ -25,14 +18,6 @@
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
-  <!--Arguments to position the robot in the world reference frame-->
-  <arg name="x" default="0.0" />
-  <arg name="y" default="0.0" />
-  <arg name="z" default="0.6" />
-  <arg name="R" default="0.0" />
-  <arg name="P" default="0.0" />
-  <arg name="Y" default="0.0" />
-
   <!-- PX4 with Ignition Gazebo -->
   <node pkg="srl_sim_gazebo_ignition" type="px4_sitl_ignition.bash"
         name="px4_sitl_ignition" args="$(find px4) $(arg world) $(arg airframe)"
@@ -40,31 +25,14 @@
     <env unless="$(arg gui)" name="HEADLESS" value="1"/>
   </node>
 
-  <!-- Load the MAV model into Ignition Gazebo -->
-  <!-- TODO -->
-  
-  <!--<node pkg="ros_ign_gazebo" type="create" name="spawn_model" if="$(eval arg('model') != '')" args="
-          -world $(arg world_name)
-          -name $(arg airframe)
-          -file $(arg model)
-          -x $(arg x) -y $(arg y) -z $(arg z)
-          -R $(arg R) -P $(arg P) -Y $(arg Y)
-          ">
-  </node>-->
-
-  
-  
-
   <!-- MAVROS -->
   <include file="$(find mavros)/launch/px4.launch">
     <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>
   </include>
 
   <!-- Enable bridges for communication -->
-  <include file="$(find digiforest_simulation)/launch/integrated_topics.launch">
-        <arg name="robot_name" value="$(arg airframe)" />
-        <arg name="robot_type" value="$(arg airframe)" />
-        <arg name="world_name" value="$(arg world_name)" />
-    </include>
-
+  <include file="$(find srl_sim_gazebo_ignition)/launch/rmf_owl_ros_ign_bridges.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="robot_name" value="$(arg airframe)" />
+  </include>
 </launch>

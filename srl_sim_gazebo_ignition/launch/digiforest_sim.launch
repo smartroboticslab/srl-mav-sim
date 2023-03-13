@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Whether to use odometry from OKVIS or ground-truth. -->
-  <arg name="use_okvis" default="false"/>
+  <arg name="use_okvis" default="true"/>
 
   <!-- Ensure everything uses simulated time. -->
   <param name="/use_sim_time" value="true"/>
