@@ -3,7 +3,7 @@
   <arg name="world_name" default="depot"/>
   <arg name="robot_name" default="rmf_owl"/>
 
-  <arg name="sensor_prefix" value="/world/$(arg world_name)/model/$(arg robot_name)/link/rmf_owl/body/sensor"/>
+  <arg name="sensor_prefix" value="/world/$(arg world_name)/model/$(arg robot_name)/link/body/sensor"/>
 
   <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_clock"
     args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock">
