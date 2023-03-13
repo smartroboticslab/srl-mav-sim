@@ -30,14 +30,6 @@
       </visual>
 
       <!--Outlook of realsense_d435i/d455-->
-      <collision name="realsense_collision">
-        <pose frame="">0.0285 0 0.0328 0 0 1.57</pose>
-        <geometry>
-            <mesh>
-                <uri>meshes/realsense.dae</uri>
-            </mesh>
-        </geometry>
-      </collision>
       <visual name="realsense_visual">
         <pose frame="">0.04 0 0.036 0 0 1.57</pose>
         <geometry>
