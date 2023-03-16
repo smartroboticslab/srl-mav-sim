@@ -126,129 +126,124 @@
 
       <!--Depth of realsense-->
       <sensor name="camera_depth" type="depth_camera">
-          <pose>0.180 0 -0.025 0 0 0</pose>
-          <update_rate>20</update_rate>
-          <camera name="camera_depth">
-              <horizontal_fov>1.37274</horizontal_fov>
-              <lens>
+        <pose>0.180 0 -0.025 0 0 0</pose>
+        <update_rate>15</update_rate>
+        <camera name="camera_depth">
+            <horizontal_fov>1.37274</horizontal_fov>
+            <lens> <!--
+                calculation of horizontal_fov:
+                h_fov = 2*tan-1(width/(2*fx))
+                -->
                 <intrinsics>
                     <fx>390.598938</fx>
                     <fy>390.598938</fy>
                     <cx>320.0</cx>
-                    <cy>120.0</cy>
+                    <cy>240.0</cy>
                     <s>0</s>
                 </intrinsics>
-              </lens>
-              <distortion>
-                  <k1>0.0</k1>
-                  <k2>0.0</k2>
-                  <k3>0.0</k3>
-                  <p1>0.0</p1>
-                  <p2>0.0</p2>
-                  <center>0.5 0.5</center>
-              </distortion>
-              <image>
-                  <width>640</width>
-                  <height>240</height>
-                  <format>R_FLOAT32</format>
-              </image>
-              <clip>
-                  <near>0.2</near>
-                  <far>20.0</far>
-              </clip>
-          </camera>
+            </lens>
+            <image> <!--Acceptable image resolutions and frequency of the D455 can be found in page 71 here https://www.intelrealsense.com/wp-content/uploads/2022/03/Intel-RealSense-D400-Series-Datasheet-March-2022.pdf-->
+                <width>640</width>
+                <height>480</height>
+                <format>R_FLOAT32</format>
+            </image>
+            <clip>
+                <near>0.4</near>
+                <far>20.0</far>
+            </clip>
+        </camera>
       </sensor>
 
        <!--Left camera of realsense-->
-            <sensor name="camera_left" type="camera">
-                <pose>0.2 0.0475 0.2 0 0 0</pose>
-                <always_on>true</always_on>
-                <update_rate>10</update_rate>
-                <visualize>true</visualize>
-                <camera name="camera_left">
-                    <!--
-                        calculation of horizontal_fov:
-                        h_fov = 2*tan-1(width/(2*fx))
-                    -->
-                    <horizontal_fov>1.37274</horizontal_fov>
-                    <lens>
-                        <intrinsics>
-                            <fx>390.598938</fx>
-                            <fy>390.598938</fy>
-                            <cx>320.581665</cx>
-                            <cy>237.712845</cy>
-                            <s>0</s>
-                        </intrinsics>
-                    </lens>
-                    <image>
-                        <width>640</width>
-                        <height>480</height>
-                        <format>L8</format>
-                    </image>
-                </camera>
-            </sensor>
+      <sensor name="camera_left" type="camera">
+          <pose>0.2 0.0475 0.2 0 0 0</pose>
+          <always_on>true</always_on>
+          <update_rate>10</update_rate>
+          <visualize>true</visualize>
+          <camera name="camera_left">
+              <!--
+                  calculation of horizontal_fov:
+                  h_fov = 2*tan-1(width/(2*fx))
+              -->
+              <horizontal_fov>1.37274</horizontal_fov> 
+              <lens>
+                  <intrinsics>
+                      <fx>390.598938</fx>
+                      <fy>390.598938</fy>
+                      <cx>320.581665</cx>
+                      <cy>237.712845</cy>
+                      <s>0</s>
+                  </intrinsics>
+              </lens>
+              <image>
+                  <width>640</width>
+                  <height>480</height>
+                  <format>L8</format>
+              </image>
+          </camera>
+      </sensor>
 
-            <!--Right camera of realsense-->
-            <sensor name="camera_right" type="camera">
-                <pose>0.2 -0.0475 0.2 0 0 0</pose>
-                <always_on>true</always_on>
-                <update_rate>10</update_rate>
-                <visualize>true</visualize>
-                <camera name="camera_right">
-                    <!--
-                        calculation of horizontal_fov:
-                        h_fov = 2*tan-1(width/(2*fx))
-                    -->
-                    <horizontal_fov>1.37274</horizontal_fov>
-                    <lens>
-                        <intrinsics>
-                            <fx>390.598938</fx>
-                            <fy>390.598938</fy>
-                            <cx>320.581665</cx>
-                            <cy>237.712845</cy>
-                            <s>0</s>
-                        </intrinsics>
-                    </lens>
-                    <image>
-                        <width>640</width>
-                        <height>480</height>
-                        <format>L8</format>
-                    </image>
-                </camera>
-            </sensor>
+      <!--Right camera of realsense-->
+      <sensor name="camera_right" type="camera">
+          <pose>0.2 -0.0475 0.2 0 0 0</pose>
+          <always_on>true</always_on>
+          <update_rate>10</update_rate>
+          <visualize>true</visualize>
+          <camera name="camera_right">
+              <!--
+                  calculation of horizontal_fov:
+                  h_fov = 2*tan-1(width/(2*fx))
+              -->
+              <horizontal_fov>1.37274</horizontal_fov>
+              <lens>
+                  <intrinsics>
+                      <fx>390.598938</fx>
+                      <fy>390.598938</fy>
+                      <cx>320.581665</cx>
+                      <cy>237.712845</cy>
+                      <s>0</s>
+                  </intrinsics>
+              </lens>
+              <image>
+                  <width>640</width>
+                  <height>480</height>
+                  <format>L8</format>
+              </image>
+          </camera>
+      </sensor>
 
-          <sensor name="front_laser" type="gpu_ray">
-                <pose>0 0 0.05 0 0 0</pose>
-                <update_rate>3</update_rate>
-                <visualize>true</visualize>
-                <always_on>true</always_on>
-                <ray>
-                    <scan>
-                        <horizontal>
-                            <samples>1469</samples>
-                            <resolution>1</resolution>
-                            <min_angle>0</min_angle>
-                            <max_angle>3.1459</max_angle>
-                        </horizontal>
-                        <vertical>
-                            <samples>34</samples>
-                            <resolution>1</resolution>
-                            <min_angle>0</min_angle>
-                            <max_angle>3.1459</max_angle>
-                        </vertical>
-                    </scan>
-                    <range>
-                        <min>0.8</min>
-                        <max>30</max><!--Extracted from Simon dataset-->
-                        <resolution>0.01</resolution>
-                    </range>
-                    <noise>
-                        <type>gaussian</type>
-                        <mean>0</mean>
-                        <stddev>0.03</stddev>
-                    </noise>
-                </ray>
-          </sensor>
+    <sensor name="front_laser" type="gpu_ray">
+          <pose>0 0 0.05 0 0 0</pose>
+          <update_rate>3</update_rate>
+          <visualize>true</visualize>
+          <always_on>true</always_on>
+          <ray>
+              <scan>
+                  <horizontal>
+                      <samples>1469</samples>
+                      <resolution>1</resolution>
+                      <min_angle>0</min_angle>
+                      <max_angle>3.1459</max_angle>
+                  </horizontal>
+                  <vertical>
+                      <samples>34</samples>
+                      <resolution>1</resolution>
+                      <min_angle>0</min_angle>
+                      <max_angle>3.1459</max_angle>
+                  </vertical>
+              </scan>
+              <range>
+                  <min>0.8</min>
+                  <max>30</max><!--Extracted from Simon dataset-->
+                  <resolution>0.01</resolution>
+              </range>
+              <noise>
+                  <type>gaussian</type>
+                  <mean>0</mean>
+                  <stddev>0.03</stddev>
+              </noise>
+          </ray>
+    </sensor>
 
     </link>
 
