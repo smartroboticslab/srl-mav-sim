@@ -41,6 +41,16 @@ Install the PX4 dependencies.
 ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx
 ```
 
+Once done that, you will need to make the px4_sitl modules. To do this run the following code:
+
+```sh
+cd PX4-Autopilot
+DONT_RUN=1 make px4_sitl_default ignition
+DONT_RUN=1 make px4_sitl_default gazebo
+```
+
+After running these commands, you can run catkin build to build the rest of the repo. 
+
 ### MAVROS
 
 MAVROS allows communicating with the PX4 through ROS. It is the interface used
@@ -59,7 +69,6 @@ See the individual package READMEs for details on usage:
   linear MPC.
 
 **IMPORTANT** when running the simulator, you must have QGroundControl in the background to disable some Failsafe modes. It will be a WIP to deactivate this failsafe mode. To download QGroundControl please follow the instructions from [here](http://qgroundcontrol.com/). To set up the virtual joysticks you have to go to: QGroundControl symbol (top left corner of QGroundControl) >> ApplicationSettings >> General >> tick the virtual joystick condiguration. 
-
 
 ## TODO
 
