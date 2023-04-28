@@ -135,7 +135,7 @@
                     <fx>390.598938</fx>
                     <fy>390.598938</fy>
                     <cx>320.0</cx>
-                    <cy>120.0</cy>
+                    <cy>240.0</cy>
                     <s>0</s>
                 </intrinsics>
               </lens>
@@ -149,13 +149,18 @@
               </distortion>
               <image>
                   <width>640</width>
-                  <height>240</height>
+                  <height>480</height>
                   <format>R_FLOAT32</format>
               </image>
               <clip>
                   <near>0.2</near>
                   <far>20.0</far>
               </clip>
+              <noise>
+						    <type>gaussian</type>
+						    <mean>0.0</mean>
+						    <stddev>0.0</stddev>
+					    </noise>
           </camera>
       </sensor>
 
