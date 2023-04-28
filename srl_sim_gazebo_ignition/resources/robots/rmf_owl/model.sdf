@@ -178,8 +178,17 @@
               <image>
                   <width>640</width>
                   <height>480</height>
-                  <format>L8</format>
+                  <format>R_FLOAT32</format>
               </image>
+              <clip>
+                  <near>0.2</near>
+                  <far>20.0</far>
+              </clip>
+              <noise>
+						    <type>gaussian</type>
+						    <mean>0.0</mean>
+						    <stddev>0.0</stddev>
+					    </noise>
           </camera>
       </sensor>
 

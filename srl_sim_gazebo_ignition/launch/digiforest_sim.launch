@@ -17,7 +17,22 @@
   <param name="config_file_autopilot" value="$(find mpc_ros)/config/config_rmf_owl.yaml"/>
   <node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">
     <remap from="/mavros/odometry/data" to="/okvis_node_subscriber_submaps/okvis_odometry" if="$(arg use_okvis)"/>
+    <!--<remap from="/mavros/odometry/data" to="/okvis_node/okvis_odometry" if="$(arg use_okvis)"/>-->
     <remap from="/mavros/odometry/data" to="/rmf_owl/odom"                                 unless="$(arg use_okvis)"/>
+  </node>
+
+  <arg name="input_depth_topic"       default="/rmf_owl/depth0/depth_image"/>
+  <arg name="input_camera_info_topic" default="/rmf_owl/depth0/camera_info"/>
+  <arg name="output_pointcloud_topic" default="/rmf_owl/depth0/depth_points"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_depth" args="0.18 0 -0.025 0.5 -0.5 0.5 -0.5 rmf_owl/body rmf_owl/body/camera_depth"/>
+
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="depth_to_pointcloud"
+        args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+    <remap from="camera_info" to="$(arg input_camera_info_topic)"/>
+    <remap from="image_rect"  to="$(arg input_depth_topic)"/>
+    <remap from="points"      to="$(arg output_pointcloud_topic)"/>
   </node>
 
   <!-- OKVIS when needed -->
