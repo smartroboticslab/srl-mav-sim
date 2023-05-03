@@ -30,14 +30,14 @@
       <remap from="/model/$(arg robot_name)/odometry" to="odom"/>
     </node>
 
-    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_imu"
-      args="$(arg sensor_prefix)/imu_sensor/imu@sensor_msgs/Imu[ignition.msgs.IMU">
-      <remap from="$(arg sensor_prefix)/imu_sensor/imu" to="imu0"/>
-    </node>
-
     <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_imuo"
       args="/imu@sensor_msgs/Imu[ignition.msgs.IMU">
       <remap from="/imu" to="imu0"/>
+    </node>
+
+    <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_okvis_imuo"
+      args="/okvis_imu@sensor_msgs/Imu[ignition.msgs.IMU">
+      <remap from="/okvis_imu" to="okvis_imu0"/>
     </node>
 
     <node pkg="ros_ign_image" type="image_bridge" name="ros_ign_image_depth"

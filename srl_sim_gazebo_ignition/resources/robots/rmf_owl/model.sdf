@@ -39,10 +39,18 @@
         </geometry>
       </visual>
 
-      <sensor name="imu_sensor" type="imu">
-          <pose>0.0 0.0 0.0 0 0 0</pose>
+      <sensor name="px4_imu" type="imu">
+          <pose> 0 0 0 0 0 0 </pose>
           <always_on>true</always_on>
           <topic>imu</topic>
+          <update_rate>200</update_rate>
+      </sensor>
+
+      <sensor name="imu_sensor" type="imu">
+          <pose>0.2 0.0475 0.2 -1.5707963 0 -1.5707963</pose>
+          <!--<pose> 0 0 0 0 0 0 </pose>-->
+          <always_on>true</always_on>
+          <topic>okvis_imu</topic>
           <update_rate>200</update_rate>
           <imu>
               <!--
@@ -126,7 +134,7 @@
 
       <!--Depth of realsense-->
       <sensor name="camera_depth" type="depth_camera">
-        <pose>0.180 0 -0.025 0 0 0</pose>
+        <pose>0.2 0.0475 0.2 0 0 0</pose>
         <update_rate>15</update_rate>
         <camera name="camera_depth">
             <horizontal_fov>1.37274</horizontal_fov>
@@ -510,7 +518,7 @@
 
     <plugin filename="libignition-gazebo-pose-publisher-system.so" name="ignition::gazebo::systems::PosePublisher">
       <publish_link_pose>true</publish_link_pose>
-      <publish_sensor_pose>false</publish_sensor_pose>
+      <publish_sensor_pose>true</publish_sensor_pose>
       <publish_collision_pose>false</publish_collision_pose>
       <publish_visual_pose>false</publish_visual_pose>
       <publish_nested_model_pose>true</publish_nested_model_pose>
@@ -606,7 +614,7 @@
 
     <plugin filename="libmavlink_sitl_ign_gazebo.so" name="mavlink_interface::GazeboMavlinkInterface">
       <robotNamespace>rmf_owl</robotNamespace>
-      <imuSubTopic>/imu</imuSubTopic>
+      <imuSubTopic>/px4_imu</imuSubTopic>
       <magSubTopic>/mag</magSubTopic>
       <baroSubTopic>/baro</baroSubTopic>
       <mavlink_addr>INADDR_ANY</mavlink_addr>
