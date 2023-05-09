@@ -2,7 +2,7 @@
 <sdf version="1.6">
   <model name="rmf_owl">
     <link name="body">
-      <pose>0 0 0.0165 0 0 0</pose>
+      <pose>0 0 0.1125 0 0 0</pose>
       <inertial>
         <mass>1.46</mass>
         <inertia>
@@ -47,7 +47,7 @@
       </sensor>
 
       <sensor name="imu_sensor" type="imu">
-          <pose>0.2 0.0475 0.2 -1.5707963 0 -1.5707963</pose>
+          <pose>0.1005 0.0178 -0.0299 -1.5707963 0 -1.5707963</pose>
           <!--<pose> 0 0 0 0 0 0 </pose>-->
           <always_on>true</always_on>
           <topic>okvis_imu</topic>
@@ -134,7 +134,7 @@
 
       <!--Depth of realsense-->
       <sensor name="camera_depth" type="depth_camera">
-        <pose>0.2 0.0475 0.2 0 0 0</pose>
+        <pose>0.1165 0.04802 -0.0373 0 0 0</pose>
         <update_rate>15</update_rate>
         <camera name="camera_depth">
             <horizontal_fov>1.37274</horizontal_fov>
@@ -164,7 +164,7 @@
 
        <!--Left camera of realsense-->
       <sensor name="camera_left" type="camera">
-          <pose>0.2 0.0475 0.2 0 0 0</pose>
+          <pose>0.1165 0.04802 -0.0373 0 0 0</pose>
           <always_on>true</always_on>
           <update_rate>10</update_rate>
           <visualize>true</visualize>
@@ -198,7 +198,7 @@
 
       <!--Right camera of realsense-->
       <sensor name="camera_right" type="camera">
-          <pose>0.2 -0.0475 0.2 0 0 0</pose>
+          <pose>0.1165 -0.04689012 -0.0373 0 0 0</pose>
           <always_on>true</always_on>
           <update_rate>10</update_rate>
           <visualize>true</visualize>
@@ -261,7 +261,7 @@
     </link>
 
     <link name="rotor_0">
-      <pose frame="">0.09 -0.09 -0.005 0 0 0</pose>
+      <pose frame="">0.09 -0.09 0.112 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -325,7 +325,7 @@
     </joint>
 
     <link name="rotor_1">
-      <pose frame="">-0.09 0.09 0.045 0 0 0</pose>
+      <pose frame="">-0.09 0.09 0.117 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -389,7 +389,7 @@
     </joint>
 
     <link name="rotor_2">
-      <pose frame="">0.09 0.09 -0.005 0 0 0</pose>
+      <pose frame="">0.09 0.09 0.112 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -453,7 +453,7 @@
     </joint>
 
     <link name="rotor_3">
-      <pose frame="">-0.09 -0.09 0.045 0 0 0</pose>
+      <pose frame="">-0.09 -0.09 0.117 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -614,7 +614,7 @@
 
     <plugin filename="libmavlink_sitl_ign_gazebo.so" name="mavlink_interface::GazeboMavlinkInterface">
       <robotNamespace>rmf_owl</robotNamespace>
-      <imuSubTopic>/px4_imu</imuSubTopic>
+      <imuSubTopic>/imu</imuSubTopic>
       <magSubTopic>/mag</magSubTopic>
       <baroSubTopic>/baro</baroSubTopic>
       <mavlink_addr>INADDR_ANY</mavlink_addr>

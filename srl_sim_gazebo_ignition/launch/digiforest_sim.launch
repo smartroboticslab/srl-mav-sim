@@ -16,8 +16,7 @@
   <!-- Linear MPC -->
   <param name="config_file_autopilot" value="$(find mpc_ros)/config/config_rmf_owl.yaml"/>
   <node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">
-    <remap from="/mavros/odometry/data" to="/okvis_node_subscriber_submaps/okvis_odometry" if="$(arg use_okvis)"/>
-    <!--<remap from="/mavros/odometry/data" to="/okvis_node/okvis_odometry" if="$(arg use_okvis)"/>-->
+    <remap from="/mavros/odometry/data" to="/okvis_node/okvis_odometry" if="$(arg use_okvis)"/>
     <remap from="/mavros/odometry/data" to="/rmf_owl/odom"                                 unless="$(arg use_okvis)"/>
   </node>
 
