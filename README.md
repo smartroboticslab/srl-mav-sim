@@ -11,7 +11,7 @@ common dependencies.
 
 ``` sh
 # MAVROS and catkin
-sudo apt install ros-noetic-mavlink ros-noetic-mavros ros-noetic-mavros-msgs python3-catkin-tools
+sudo apt install ros-noetic-depth-image-proc ros-noetic-mavlink ros-noetic-mavros ros-noetic-mavros-msgs python3-catkin-tools
 # Other dependencies
 sudo apt install libgflags-dev
 ```
