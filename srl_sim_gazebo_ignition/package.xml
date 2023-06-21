@@ -15,4 +15,6 @@
   <exec_depend>px4</exec_depend>
   <exec_depend>ros_ign_bridge</exec_depend>
   <exec_depend>ros_ign_gazebo</exec_depend>
+  <exec_depend>ros_ign_image</exec_depend>
+  <exec_depend>ros_ign_point_cloud</exec_depend>
 </package>
