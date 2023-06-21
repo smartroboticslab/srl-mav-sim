@@ -46,7 +46,6 @@ Once done that, you will need to make the px4_sitl modules. To do this run the f
 ```sh
 cd PX4-Autopilot
 DONT_RUN=1 make px4_sitl_default ignition
-DONT_RUN=1 make px4_sitl_default gazebo
 ```
 
 After running these commands, you can run catkin build to build the rest of the repo. 
@@ -61,8 +60,6 @@ by SRL controllers.
 
 See the individual package READMEs for details on usage:
 
-* [`srl_sim_gazebo_classic`](srl_sim_gazebo_classic/README.md): MAV simulator
-  based on Gazebo Classic.
 * [`srl_sim_gazebo_ignition`](srl_sim_gazebo_ignition/README.md): MAV simulator
   based on Ignition Gazebo.
 * [`srl_mpc_examples`](srl_mpc_examples/README.md): usage examples for the SRL
