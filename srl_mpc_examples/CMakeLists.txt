@@ -21,6 +21,9 @@ catkin_package(
 )
 
 catkin_install_python(
-	PROGRAMS gt_adapter_gazebo_classic.py example_mpc_path.py
+	PROGRAMS
+		example_mpc_path.py
+		gt_adapter_gazebo_classic.py
+		scripts/publish_trajectory.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
