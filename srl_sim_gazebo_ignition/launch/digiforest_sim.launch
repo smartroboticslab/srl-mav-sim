@@ -3,6 +3,9 @@
   <!-- Whether to use odometry from OKVIS or ground-truth. -->
   <arg name="use_okvis" default="true"/>
 
+  <!-- Whether to show the Gazebo GUI. -->
+  <arg name="gui" default="true"/>
+
   <!-- Ensure everything uses simulated time. -->
   <param name="/use_sim_time" value="true"/>
 
@@ -11,6 +14,7 @@
     <arg name="airframe"   value="rmf_owl"/>
     <arg name="world"      value="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
     <arg name="world_name" value="depot"/>
+    <arg name="gui"        value="$(arg gui)"/>
   </include>
 
   <!-- Linear MPC -->
