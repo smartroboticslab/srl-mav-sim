@@ -264,22 +264,6 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rotor_0_collision">
-        <geometry>
-          <cylinder>
-            <length>0.005</length>
-            <radius>0.06</radius>
-          </cylinder>
-        </geometry>
-        <surface>
-          <contact>
-            <ode/>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
-        </surface>
-      </collision>
       <visual name="rotor_0_visual">
         <geometry>
           <mesh>
@@ -328,22 +312,6 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rotor_1_collision">
-        <geometry>
-          <cylinder>
-            <length>0.005</length>
-            <radius>0.1</radius>
-          </cylinder>
-        </geometry>
-        <surface>
-          <contact>
-            <ode/>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
-        </surface>
-      </collision>
       <visual name="rotor_1_visual">
         <geometry>
           <mesh>
@@ -392,22 +360,6 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rotor_2_collision">
-        <geometry>
-          <cylinder>
-            <length>0.005</length>
-            <radius>0.06</radius>
-          </cylinder>
-        </geometry>
-        <surface>
-          <contact>
-            <ode/>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
-        </surface>
-      </collision>
       <visual name="rotor_2_visual">
         <geometry>
           <mesh>
@@ -456,22 +408,6 @@
           <izz>8.22545e-05</izz>
         </inertia>
       </inertial>
-      <collision name="rotor_3_collision">
-        <geometry>
-          <cylinder>
-            <length>0.005</length>
-            <radius>0.06</radius>
-          </cylinder>
-        </geometry>
-        <surface>
-          <contact>
-            <ode/>
-          </contact>
-          <friction>
-            <ode/>
-          </friction>
-        </surface>
-      </collision>
       <visual name="rotor_3_visual">
         <geometry>
           <mesh>
