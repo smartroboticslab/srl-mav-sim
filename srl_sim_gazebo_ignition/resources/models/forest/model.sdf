@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+               <sdf version="1.6">
+                    <model name="sluice">
+
+                        <static>true</static>
+
+                        <link name="hLight">
+                            <light type="directional" name="sun">
+                                <cast_shadows>true</cast_shadows>
+                                <pose>-129 -129 30 0 0 0</pose>
+                                <diffuse>0.8 0.8 0.8 1</diffuse>
+                                <specular>0.1 0.1 0.1 1</specular>
+                                <intensity>1.0</intensity>
+                                <attenuation>
+                                    <range>1000</range>
+                                    <constant>0.9</constant>
+                                    <linear>0.01</linear>
+                                    <quadratic>0.001</quadratic>
+                                </attenuation>
+                                <direction>1.0 1.0 -1.0</direction>
+                            </light>
+                        </link>
+                        
+                        <link name="world_elevation_map">
+                            <collision name="collision">
+                                <geometry>
+                                <heightmap>
+                                    <uri>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/heightmap.png</uri>
+                                    <size>128 128 10</size>
+                                    <pos>0 0 0</pos>
+                                </heightmap>
+                                </geometry>
+                            </collision>
+                            <visual name="visual">
+                                <geometry>
+                                <heightmap>
+                                    <use_terrain_paging>false</use_terrain_paging>
+                                    <texture>
+                                    <diffuse>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/dirt_diffusespecular.png</diffuse>
+                                    <normal>materials/textures/flat_normal.png</normal>
+                                    <size>1</size>
+                                    </texture>
+                                    <texture>
+                                    <diffuse>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/grass_diffusespecular.png</diffuse>
+                                    <normal>materials/textures/flat_normal.png</normal>
+                                    <size>1</size>
+                                    </texture>
+                                    <texture>
+                                    <diffuse>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/fungus_diffusespecular.png</diffuse>
+                                    <normal>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/flat_normal.png</normal>
+                                    <size>1</size>
+                                    </texture>
+                                    <blend>
+                                    <min_height>2</min_height>
+                                    <fade_dist>5</fade_dist>
+                                    </blend>
+                                    <blend>
+                                    <min_height>4</min_height>
+                                    <fade_dist>5</fade_dist>
+                                    </blend>
+                                    <uri>/home/barbas/srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest/materials/textures/heightmap.png</uri>
+                                    <size>128 128 10</size>
+                                    <pos>0 0 0</pos>
+                                </heightmap>
+                                </geometry>
+                            </visual>
+                        </link>
+                    </model>
+</sdf>
+             
