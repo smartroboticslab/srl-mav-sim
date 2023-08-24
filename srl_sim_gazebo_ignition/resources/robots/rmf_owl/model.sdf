@@ -30,16 +30,6 @@
         </geometry>
       </visual>
 
-      <!--Outlook of realsense_d435i/d455-->
-      <visual name="realsense_visual">
-        <pose frame="">0.04 0 0.036 0 0 1.57</pose>
-        <geometry>
-            <mesh>
-                <uri>meshes/realsense.dae</uri>
-            </mesh>
-        </geometry>
-      </visual>
-
       <sensor name="px4_imu" type="imu">
           <pose> 0 0 0 0 0 0 </pose>
           <always_on>true</always_on>
