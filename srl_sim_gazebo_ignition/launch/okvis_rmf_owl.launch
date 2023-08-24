@@ -1,9 +1,0 @@
-<launch>
-  <param name="/use_sim_time" value="true" />
-  <node pkg="okvis_ros" type="okvis_node_subscriber" name="okvis_node" output="screen">
-    <param name="config_filename" value="$(find srl_sim_gazebo_ignition)/config/okvis_rmf_owl.yaml" />
-    <remap from="/cam0/image_raw" to="/rmf_owl/cam0/image_raw" />
-    <remap from="/cam1/image_raw" to="/rmf_owl/cam1/image_raw"/>
-    <remap from="/imu0" to="/rmf_owl/imu0"/>
-  </node>
-</launch>
