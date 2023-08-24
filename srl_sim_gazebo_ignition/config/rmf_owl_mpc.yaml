@@ -1,0 +1,53 @@
+autopilot_parameters:
+  Ts: 0.025                       # Sampling time in seconds.
+  take_off_height: 2.5            # Fixed height in [m] for the take off setpoint
+  take_off_velocity: 0.25         # Velocity in [m/s] used in the take off trajectory
+  landing_height: -0.5            # Fixed height in [m] for the landing setpoint.
+  landing_velocity: 0.5           # Velocity in [m/s] used in the landing trajectory.
+  home_position: [0.0, 0.0, -0.5] # Home position in [m].
+  return_home_height: 2.0         # Fixed Height in [m] used for the return to home maneuver.
+  return_home_velocity: 0.5       # Velocity in [m/s] used in the return to home maneuver.
+
+mav_model:
+  theta_dc_gain: 1.0 # DC gain of the closed loop pitch transfer function
+  theta_tau: 0.15    # Time constant in [s] of the closed loop pitch transfer function
+  phi_dc_gain: 1.0   # DC gain of the closed loop roll transfer function
+  phi_tau: 0.15      # Time constant in [s] of the closed loop roll transfer function
+
+  x_drag_coeff: 0.01 # Linear drag coeff. along the x axis.
+  y_drag_coeff: 0.01 # Linear drag coeff. along the y axis.
+  z_drag_coeff: 0.01 # Linear drag coeff. along the z axis.
+
+px4thrust_model:
+  total_mass: 1.5             # Total MAV mass in kg
+  mass_normalised_coeff: 0.45 # (mass_normalised_coeff * total_mass) should result in collective thrust equal to 1 g.
+  adaptive_thrust: False      # Whether to adapt the thrust sent to PX4 based on the battery voltage
+  cells: 4                    # Number of battery cells
+  battery_model_coeffs: [-0.01584, 0.464]
+  filter_cutoff_freq: 10.0
+
+control_gains:
+  x_gain: 6.0
+  y_gain: 6.0
+  z_gain: 8.0
+
+  x_dot_gain: 1.3
+  y_dot_gain: 1.3
+  z_dot_gain: 1.5
+
+  theta_gain: 0.25
+  phi_gain: 0.25
+
+  theta_ref_gain: 3.5
+  phi_ref_gain: 3.5
+  thrust_ref_gain: 2.5
+
+box_constraints:
+  theta_min: -25.0  # Pitch min in [deg]
+  theta_max: 25.0   # Pitch max in [deg]
+
+  phi_min: -25.0    # Roll min in [deg]
+  phi_max: 25.0     # Roll max in [deg]
+
+  thrust_min: -0.8  # Thrust min in [g]
+  thrust_max: 0.8   # Thrust max in [g]
