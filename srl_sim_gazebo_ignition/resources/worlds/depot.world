@@ -466,7 +466,7 @@
 
     <include>
       <uri>model://robots/rmf_owl</uri>
-      <pose> 0 0 0 0 0 0</pose>
+      <pose>0 0 0.1 0 0 0</pose>
       <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
         <odom_frame>depot</odom_frame>
         <robot_base_frame>gt_body</robot_base_frame>
