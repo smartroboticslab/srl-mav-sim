@@ -4,7 +4,8 @@
     <link name="body">
       <pose>0 0 0.1125 0 0 0</pose>
       <inertial>
-        <mass>1.46</mass>
+        <!-- The total mass is 1.5 kg due to the rotor mass. -->
+        <mass>1.48</mass>
         <inertia>
           <ixx>0.017</ixx>
           <ixy>0</ixy>
