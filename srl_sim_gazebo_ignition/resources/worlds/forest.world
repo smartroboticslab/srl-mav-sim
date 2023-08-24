@@ -1,0 +1,166 @@
+<sdf version="1.6">
+  <world name="forest">
+    
+    <scene>
+      <ambient>.4 .4 .4</ambient>
+      <sky></sky>
+    </scene>
+
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>2</iters>
+          <sor>1.4</sor>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>1</erp>
+          <contact_max_correcting_vel>0</contact_max_correcting_vel>
+          <contact_surface_layer>0</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin filename="libignition-gazebo-sensors-system.so" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="libignition-gazebo-imu-system.so" name="ignition::gazebo::systems::Imu">
+    </plugin>
+
+    <include>
+      <name>Rubicon</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Rubicon</uri>
+    </include>
+
+    <include>
+      <uri>model://robots/rmf_owl</uri>
+      <pose> -3 -3.5 3.8 0 0 0</pose>
+      <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+        <odom_frame>depot</odom_frame>
+        <robot_base_frame>gt_body</robot_base_frame>
+        <odom_publish_frequency>100</odom_publish_frequency>
+        <dimensions>3</dimensions>
+      </plugin>
+    </include>
+
+    <include>
+      <name>PineTree1</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -5 -5 4 0 0 0</pose>
+    </include>  
+
+    <include>
+      <name>PineTree2</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> 2 5 2.8 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>PineTree3</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -8 -12 4 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>PineTree4</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -6 9 3.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree5</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> 10 -3 2.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree6</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -4 1 3.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree7</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -10 0.73 4.0 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree8</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -6.4 2 3.2 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree9</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -9.74 -6.1 4.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree10</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -9.74 -6.1 4.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree11</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -11.5 -3 4.0 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree12</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -7.0 -0.2 3.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree13</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -14.0 -0.2 3.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree14</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -7.5 -9.7 3.5 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>PineTree15</name>
+      <uri>model://models/pine_tree</uri>
+      <pose> -8 -2.7 2.8 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+    <include>
+      <name>OakTree1</name>
+      <uri>model://models/oak_tree</uri>
+      <pose> 4 0 1.2 0 0 0</pose>
+      <scale> 1 1 0.5</scale>
+    </include> 
+
+
+  </world>
+</sdf>

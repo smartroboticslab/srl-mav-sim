@@ -12,9 +12,14 @@
   <!-- MAV simulator -->
   <include file="$(find srl_sim_gazebo_ignition)/launch/sim.launch">
     <arg name="airframe"   value="rmf_owl"/>
-    <arg name="world"      value="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
-    <arg name="world_name" value="depot"/>
     <arg name="gui"        value="$(arg gui)"/>
+    <!-- <arg name="world"      value="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
+    <arg name="world_name" value="depot"/> -->
+    <!-- <arg name="world"   value="$(find srl_sim_gazebo_ignition)/resources/worlds/rubicon.world" />
+    <arg name="world_name" value="challenge"/> -->
+    
+    <arg name="world"   value="$(find srl_sim_gazebo_ignition)/resources/worlds/forest.world" />
+    <arg name="world_name" value="forest"/>
   </include>
 
   <!-- Linear MPC -->
@@ -39,5 +44,8 @@
   </node>
 
   <!-- OKVIS when needed -->
-  <include file="$(find okvis_ros)/launch/digiforest_simulation.launch" if="$(arg use_okvis)"/>
+  <include file="$(find okvis_ros)/launch/digiforest_simulation.launch" if="$(arg use_okvis)">
+    <arg name="use_bagfile" value="false" />
+  </include>
+
 </launch>
