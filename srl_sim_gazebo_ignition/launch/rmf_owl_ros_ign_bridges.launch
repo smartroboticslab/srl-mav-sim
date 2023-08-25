@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="world_name" default="depot"/>
+  <arg name="world"      default="$(find srl_sim_gazebo_ignition)/resources/worlds/forest.world"/>
   <arg name="robot_name" default="rmf_owl"/>
+
+  <!-- Use the filename without the extension for the world name and hope for the best. -->
+  <arg name="world_name" value="$(eval world.rsplit('/', 1)[-1].rsplit('.', 1)[0])"/>
 
   <arg name="sensor_prefix" value="/world/$(arg world_name)/model/$(arg robot_name)/link/body/sensor"/>
 

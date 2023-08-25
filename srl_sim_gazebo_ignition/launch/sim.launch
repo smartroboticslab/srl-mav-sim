@@ -12,9 +12,6 @@
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
   <arg name="world" default="$(find px4)/Tools/simulation-ignition/worlds/$(arg airframe).world"/>
 
-  <!-- The world name given by the world file-->
-  <arg name="world_name" default="depot"/>
-
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
@@ -32,7 +29,7 @@
 
   <!-- Enable bridges for communication -->
   <include file="$(find srl_sim_gazebo_ignition)/launch/rmf_owl_ros_ign_bridges.launch">
-    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="world"      value="$(arg world)"/>
     <arg name="robot_name" value="$(arg airframe)" />
   </include>
 </launch>
