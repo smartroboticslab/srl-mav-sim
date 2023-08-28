@@ -10,9 +10,9 @@ autopilot_parameters:
 
 mav_model:
   theta_dc_gain: 1.0 # DC gain of the closed loop pitch transfer function
-  theta_tau: 0.15    # Time constant in [s] of the closed loop pitch transfer function
+  theta_tau: 0.10    # Time constant in [s] of the closed loop pitch transfer function
   phi_dc_gain: 1.0   # DC gain of the closed loop roll transfer function
-  phi_tau: 0.15      # Time constant in [s] of the closed loop roll transfer function
+  phi_tau: 0.10      # Time constant in [s] of the closed loop roll transfer function
 
   x_drag_coeff: 0.01 # Linear drag coeff. along the x axis.
   y_drag_coeff: 0.01 # Linear drag coeff. along the y axis.
@@ -20,27 +20,27 @@ mav_model:
 
 px4thrust_model:
   total_mass: 1.5             # Total MAV mass in kg
-  mass_normalised_coeff: 0.45 # (mass_normalised_coeff * total_mass) should result in collective thrust equal to 1 g.
+  mass_normalised_coeff: 0.436667 # (mass_normalised_coeff * total_mass) should result in collective thrust equal to 1 g.
   adaptive_thrust: False      # Whether to adapt the thrust sent to PX4 based on the battery voltage
   cells: 4                    # Number of battery cells
   battery_model_coeffs: [-0.01584, 0.464]
   filter_cutoff_freq: 10.0
 
 control_gains:
-  x_gain: 6.0
-  y_gain: 6.0
-  z_gain: 8.0
+  x_gain: 0.6
+  y_gain: 0.6
+  z_gain: 0.8
 
-  x_dot_gain: 1.3
-  y_dot_gain: 1.3
-  z_dot_gain: 1.5
+  x_dot_gain: 0.15
+  y_dot_gain: 0.15
+  z_dot_gain: 0.15
 
-  theta_gain: 0.25
-  phi_gain: 0.25
+  theta_gain: 0.025
+  phi_gain: 0.025
 
-  theta_ref_gain: 3.5
-  phi_ref_gain: 3.5
-  thrust_ref_gain: 2.5
+  theta_ref_gain: 0.35
+  phi_ref_gain: 0.35
+  thrust_ref_gain: 0.35
 
 box_constraints:
   theta_min: -25.0  # Pitch min in [deg]
@@ -49,5 +49,5 @@ box_constraints:
   phi_min: -25.0    # Roll min in [deg]
   phi_max: 25.0     # Roll max in [deg]
 
-  thrust_min: -0.8  # Thrust min in [g]
-  thrust_max: 0.8   # Thrust max in [g]
+  thrust_min: -0.4  # Thrust min in [g]
+  thrust_max: 0.2   # Thrust max in [g]
