@@ -51,3 +51,12 @@ box_constraints:
 
   thrust_min: -0.4  # Thrust min in [g]
   thrust_max: 0.2   # Thrust max in [g]
+
+integrators:
+  enable_integrators:      true
+  pitch_integrator_gain:   0.055
+  pitch_integrator_limit:  0.05
+  roll_integrator_gain:    0.055
+  roll_integrator_limit:   0.05
+  thrust_integrator_gain:  0.0
+  thrust_integrator_limit: 0.0
