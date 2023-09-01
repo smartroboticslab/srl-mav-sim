@@ -13,7 +13,7 @@
   <arg name="world" default="$(find px4)/Tools/simulation-ignition/worlds/$(arg airframe).world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
-  <arg name="gui" default="true"/>
+  <arg name="gui" default="false"/>
 
   <!-- PX4 with Ignition Gazebo -->
   <node pkg="srl_sim_gazebo_ignition" type="px4_sitl_ignition.bash"
