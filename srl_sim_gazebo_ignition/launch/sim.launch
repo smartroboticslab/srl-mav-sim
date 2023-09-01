@@ -12,7 +12,7 @@
   <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
-  <arg name="gui" default="true"/>
+  <arg name="gui" default="false"/>
 
   <include file="$(find srl_sim_gazebo_ignition)/launch/px4_sitl.launch">
     <arg name="airframe" value="$(arg airframe)"/>
