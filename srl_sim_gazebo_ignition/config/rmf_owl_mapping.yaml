@@ -13,7 +13,7 @@ general:
   depth_image_resolution_downsampling: 2
 
 map:
-  dim:            [25.6, 25.6, 25.6]
+  dim:            [51.2, 51.2, 51.2]
   res:            0.1
   free_space_res: 0.1
 
