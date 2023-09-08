@@ -184,16 +184,12 @@ def obtain_header(path_to_world: str)->str:
                           <size>2</size>
                         </texture>
                         <blend>
-                          <min_height>0.5</min_height>
+                          <min_height>0.0</min_height>
                           <fade_dist>1.6</fade_dist>
                         </blend>
                         <blend>
-                          <min_height>1.0</min_height>
+                          <min_height>0.0</min_height>
                           <fade_dist>3</fade_dist>
-                        </blend>
-                        <blend>
-                          <min_height>2.9</min_height>
-                          <fade_dist>10</fade_dist>
                         </blend>
                         <uri>{path_to_world}/materials/textures/heightmap.png</uri>
                         <size>128 128 10</size>
@@ -291,16 +287,16 @@ def next_position(probability_map, var = 3):
 
 
 parser = argparse.ArgumentParser(description='Digiforest Simulator command line arguments')
-parser.add_argument('--num_trees', type=int, default=100, help='Number of trees to load into our terrain')
-parser.add_argument('--save_sdf_path', type=str, default=os.path.join(os.environ["HOME"], "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/worlds"), 
+parser.add_argument('--num_trees', type=int, default=600, help='Number of trees to load into our terrain')
+parser.add_argument('--save_sdf_path', type=str, default=os.path.join(os.environ["HOME"], "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/worlds"), 
                                                     help="Argument that specifies the path were the final .sdf file of the world will be saved")
 parser.add_argument("--resources_path", type=str, default=os.path.join(os.environ["HOME"],
-                                            "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models"
+                                            "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models"
                                             ), help="Argument to allow the user specify where the tree models are located in his computer")
 
 parser.add_argument('--terrain_model_path', type=str,
                                     default=os.path.join(os.environ["HOME"],
-                                            "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest"
+                                            "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest"
                                             ),
                                     help="Where to store the terrain's model heightmap image")
 parser.add_argument("--seed", type=int, default=15,
@@ -312,7 +308,7 @@ map_shape = [128, 128, 10]
 random.seed(args.seed)
 
 #If there is no heightmap we really want to use, we generate one
-terrain_map_image = generate_heightmap(map_shape[-1])
+#terrain_map_image = generate_heightmap(map_shape[-1])
 terrain_map_image = np.zeros([128, 128])
 #terrain_map_image = (terrain_map_image / terrain_map_image.max()) / 2
 terrain_map_image[terrain_map_image.shape[0] - 9 : 
@@ -322,7 +318,7 @@ cv.imwrite(os.path.join(args.terrain_model_path, "materials/textures/heightmap.p
 
 
 final_xml = obtain_header("model://models/forest")
-final_xml += include_rmf_owl_model([-62, -62, terrain_map_image[terrain_map_image.shape[0] - 3, 2] * 10 + 0.1, 0, 0, 0])
+final_xml += include_rmf_owl_model([-62, -62, terrain_map_image[terrain_map_image.shape[0] - 3, 2] * 10 + 0.2, 0, 0, 0])
 print("Terrain max is " + str(terrain_map_image.max()))
 
 oak_tree_base = open(os.path.join(args.resources_path, "oak_tree/model.txt"), "r").read()
