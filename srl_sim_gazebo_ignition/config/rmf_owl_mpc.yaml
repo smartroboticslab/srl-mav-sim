@@ -26,6 +26,16 @@ px4thrust_model:
   battery_model_coeffs: [-0.01584, 0.464]
   filter_cutoff_freq: 10.0
 
+pid_gains:
+  tau_xy:   1.0
+  zeta_xy:  0.707
+  tau_z:    1.5
+  zeta_z:   0.707
+  ki_xy:    0.05
+  i_max_xy: 5.0
+  ki_z:     0.02
+  i_max_z:  0.4
+
 control_gains:
   x_gain: 0.6
   y_gain: 0.6
