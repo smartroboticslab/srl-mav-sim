@@ -83,7 +83,7 @@ estimator_parameters:
 
 # some options for how and what to output
 output_parameters:
-    display_matches: false  # displays debug video and matches. May be slow.
+    display_matches: true  # displays debug video and matches. May be slow.
     display_overhead: false # debug overhead image. Is slow.
     publish_imu_propagated_state: true # Should the state that is propagated with IMU messages be published or just the optimised ones?
     imu_propagated_state_publishing_rate: 60.0 # Limit propagated state publishing rate

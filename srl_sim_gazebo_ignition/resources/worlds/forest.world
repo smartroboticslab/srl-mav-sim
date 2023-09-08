@@ -38,7 +38,8 @@
 
     <include>
       <name>Rubicon</name>
-      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Rubicon</uri>
+      <!--<uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Rubicon</uri>-->
+      <uri>model://models/rubicon</uri>
     </include>
 
     <include>
