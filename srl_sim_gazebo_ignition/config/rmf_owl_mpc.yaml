@@ -1,6 +1,6 @@
 autopilot_parameters:
   Ts: 0.025                       # Sampling time in seconds.
-  take_off_height: 2.5            # Fixed height in [m] for the take off setpoint
+  take_off_height: 2.0            # Fixed height in [m] for the take off setpoint
   take_off_velocity: 0.25         # Velocity in [m/s] used in the take off trajectory
   landing_height: -0.5            # Fixed height in [m] for the landing setpoint.
   landing_velocity: 0.5           # Velocity in [m/s] used in the landing trajectory.
@@ -19,21 +19,21 @@ mav_model:
   z_drag_coeff: 0.01 # Linear drag coeff. along the z axis.
 
 px4thrust_model:
-  total_mass: 1.5             # Total MAV mass in kg
-  mass_normalised_coeff: 0.436667 # (mass_normalised_coeff * total_mass) should result in collective thrust equal to 1 g.
+  total_mass: 1.0             # Total MAV mass in kg
+  mass_normalised_coeff: 0.65601 # (mass_normalised_coeff * total_mass) should result in collective thrust equal to 1 g.
   adaptive_thrust: False      # Whether to adapt the thrust sent to PX4 based on the battery voltage
   cells: 4                    # Number of battery cells
   battery_model_coeffs: [-0.01584, 0.464]
-  filter_cutoff_freq: 10.0
+  filter_cutoff_freq: 10.0 #PixHawk has a noisy measurement of voltage use the filter to low_pass it. 
 
 control_gains:
-  x_gain: 0.6
-  y_gain: 0.6
-  z_gain: 0.8
+  x_gain: 0.625
+  y_gain: 0.625
+  z_gain: 0.6
 
-  x_dot_gain: 0.15
-  y_dot_gain: 0.15
-  z_dot_gain: 0.15
+  x_dot_gain: 0.17
+  y_dot_gain: 0.17
+  z_dot_gain: 0.17
 
   theta_gain: 0.025
   phi_gain: 0.025
@@ -43,20 +43,20 @@ control_gains:
   thrust_ref_gain: 0.35
 
 box_constraints:
-  theta_min: -25.0  # Pitch min in [deg]
-  theta_max: 25.0   # Pitch max in [deg]
+  theta_min: -30.0  # Pitch min in [deg]
+  theta_max: 30.0   # Pitch max in [deg]
 
-  phi_min: -25.0    # Roll min in [deg]
-  phi_max: 25.0     # Roll max in [deg]
+  phi_min: -30.0    # Roll min in [deg]
+  phi_max: 30.0     # Roll max in [deg]
 
-  thrust_min: -0.4  # Thrust min in [g]
-  thrust_max: 0.2   # Thrust max in [g]
+  thrust_min: -0.7  # Thrust min in [g] It can not be less than -1g
+  thrust_max: 0.5   # Thrust max in [g] Whatever my drone can achieve
 
 integrators:
   enable_integrators:      true
   pitch_integrator_gain:   0.055
-  pitch_integrator_limit:  0.05
+  pitch_integrator_limit:  0.05 #0.05 radians Ki * e_i [rad]
   roll_integrator_gain:    0.055
   roll_integrator_limit:   0.05
-  thrust_integrator_gain:  0.0
-  thrust_integrator_limit: 0.0
+  thrust_integrator_gain:  0.0 #Ki
+  thrust_integrator_limit: 0.0 #Limit of integrated error * gain in [g] Ki * e_i 

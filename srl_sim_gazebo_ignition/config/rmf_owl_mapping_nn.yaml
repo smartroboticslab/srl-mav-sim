@@ -8,7 +8,7 @@ general:
   integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
   submap_time_threshold:      15.0
   submap_state_buffer:        1 # Buffer, if in 10 states we have not created a submap we start integrating it into supereight
-  submap_kf_threshold:        12
+  submap_kf_threshold:        10
   sensor_measurement_downsampling: 1
   depth_image_resolution_downsampling: 1
 
@@ -26,13 +26,13 @@ data:
   log_odd_max:              5.015
   fs_integr_scale:         1
   const_surface_thickness: false
-  uncertainty_model:       linear
+  uncertainty_model:       quadratic
   tau_min_factor:          3
   tau_max_factor:          12
-  k_tau:                   0.05
+  k_tau:                   0.01
   sigma_min_factor:        1      # minimum/maximum uncertainty := 3 x sigma_min_factor/sigma_max_factor * voxel_dim
   sigma_max_factor:        3      # minimum/maximum uncertainty := 3 x sigma_min_factor/sigma_max_factor * voxel_dim
-  k_sigma:                 0.05
+  k_sigma:                 0.017
 
   # lidar ray integration
   k_scale: 6e-03
@@ -45,7 +45,7 @@ sensor:
   fy:         390.598938
   cx:         320.0
   cy:         240.0
-  near_plane: 0.2
+  near_plane: 0.1
   far_plane:  8.0
   scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
   T_BS:       [1.0, 0.0, 0.0, -0.0302200001,

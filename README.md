@@ -41,6 +41,11 @@ Install the PX4 dependencies.
 ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
 ```
 
+To build PX4, go to the base directory and run
+```sh
+DONT_RUN=1 make px4_sitl ignition
+```
+
 See [`srl_sim_gazebo_ignition`](srl_sim_gazebo_ignition/README.md) on how to
 build and use the MAV simulator based on Ignition Gazebo. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
