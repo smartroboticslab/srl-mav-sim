@@ -285,18 +285,18 @@ def next_position(probability_map, var = 3):
 
     return ptx, pty, probability_map
 
-
+#Forest density value extracted from https://ourworldindata.org/grapher/number-of-trees-per-km
 parser = argparse.ArgumentParser(description='Digiforest Simulator command line arguments')
-parser.add_argument('--num_trees', type=int, default=600, help='Number of trees to load into our terrain')
-parser.add_argument('--save_sdf_path', type=str, default=os.path.join(os.environ["HOME"], "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/worlds"), 
+parser.add_argument('--num_trees', type=int, default=780, help='Number of trees to load into our terrain')
+parser.add_argument('--save_sdf_path', type=str, default=os.path.join(os.environ["HOME"], "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/worlds"), 
                                                     help="Argument that specifies the path were the final .sdf file of the world will be saved")
 parser.add_argument("--resources_path", type=str, default=os.path.join(os.environ["HOME"],
-                                            "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models"
+                                            "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models"
                                             ), help="Argument to allow the user specify where the tree models are located in his computer")
 
 parser.add_argument('--terrain_model_path', type=str,
                                     default=os.path.join(os.environ["HOME"],
-                                            "Documents/srl_navigation_ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest"
+                                            "srl-mav-sim-ws/src/srl-mav-sim/srl_sim_gazebo_ignition/resources/models/forest"
                                             ),
                                     help="Where to store the terrain's model heightmap image")
 parser.add_argument("--seed", type=int, default=15,
@@ -318,7 +318,7 @@ cv.imwrite(os.path.join(args.terrain_model_path, "materials/textures/heightmap.p
 
 
 final_xml = obtain_header("model://models/forest")
-final_xml += include_rmf_owl_model([-62, -62, terrain_map_image[terrain_map_image.shape[0] - 3, 2] * 10 + 0.2, 0, 0, 0])
+final_xml += include_rmf_owl_model([-62, -62, terrain_map_image[terrain_map_image.shape[0] - 3, 2] * 10 + 0.11, 0, 0, 0])
 print("Terrain max is " + str(terrain_map_image.max()))
 
 oak_tree_base = open(os.path.join(args.resources_path, "oak_tree/model.txt"), "r").read()
@@ -326,12 +326,12 @@ pine_tree_base = open(os.path.join(args.resources_path, "pine_tree/model.txt"), 
 
 trees = {"oak": {"object": Tree(oak_tree_base,
                                 [st.norm(0, np.pi / 18), st.norm(0, np.pi / 18), st.uniform(-np.pi, 2 * np.pi)],
-                                [st.norm(0.7, 0.1), st.norm(0.7, 0.1), st.norm(1, 0.2)]), 
+                                [st.norm(0.7, 0.1), st.norm(0.7, 0.1), st.norm(2, 0.2)]), 
                 "probability": 0.6,
                 "z-offset": 1.0},
         "pine": {"object": Tree(pine_tree_base,
                                 [st.norm(0, np.pi / 18), st.norm(0, np.pi / 18), st.uniform(-np.pi, 2 * np.pi)],
-                                [st.norm(1, 0.1), st.norm(1, 0.1), st.norm(1.5, 0.2)]),
+                                [st.norm(1, 0.1), st.norm(1, 0.1), st.norm(2.5, 0.2)]),
                 "probability": 0.4,
                 "z-offset": 3.0}}
 
