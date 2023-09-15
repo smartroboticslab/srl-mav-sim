@@ -43,6 +43,13 @@
     </include>
 
     <include>
+      <!-- Second cave to create a loop with the first one. -->
+      <name>Cave2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cave</uri>
+      <pose>4 -10.3 0 0 0 1.5707963267948966</pose>
+    </include>
+
+    <include>
       <uri>model://robots/rmf_owl</uri>
       <pose>0 0 0.1 0 0 0</pose>
       <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
