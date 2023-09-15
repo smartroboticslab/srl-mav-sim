@@ -14,7 +14,7 @@ general:
 
 map:
   dim:            [51.2, 51.2, 51.2]
-  res:            0.1
+  res:            0.05
   free_space_res: 0.1
 
 data:
