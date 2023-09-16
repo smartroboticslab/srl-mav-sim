@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="cave">
+    <scene>
+      <ambient>.4 .4 .4</ambient>
+      <sky></sky>
+    </scene>
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>2</iters>
+          <sor>1.4</sor>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>1</erp>
+          <contact_max_correcting_vel>0</contact_max_correcting_vel>
+          <contact_surface_layer>0</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin filename="libignition-gazebo-sensors-system.so" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="libignition-gazebo-imu-system.so" name="ignition::gazebo::systems::Imu">
+    </plugin>
+
+    <include>
+      <name>Cave</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cave</uri>
+      <!-- Move the origin near the cave entrance looking inside. -->
+      <pose>4 -0.3 0 0 0 -1.5707963267948966</pose>
+    </include>
+
+    <include>
+      <!-- Second cave to create a loop with the first one. -->
+      <name>Cave2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cave</uri>
+      <pose>4 -10.3 0 0 0 1.5707963267948966</pose>
+    </include>
+
+    <include>
+      <uri>model://robots/rmf_owl</uri>
+      <pose>14 -9.5 0.2 0 0 1.5707963267948966</pose>
+      <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+        <odom_frame>depot</odom_frame>
+        <robot_base_frame>gt_body</robot_base_frame>
+        <odom_publish_frequency>100</odom_publish_frequency>
+        <dimensions>3</dimensions>
+      </plugin>
+    </include>
+  </world>
+</sdf>
