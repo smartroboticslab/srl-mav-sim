@@ -51,7 +51,7 @@
 
     <include>
       <uri>model://robots/rmf_owl</uri>
-      <pose>14 -9.5 0.2 0 0 1.5707963267948966</pose>
+      <pose>13 -11 0.1 0 0 1.5707963267948966</pose>
       <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
         <odom_frame>depot</odom_frame>
         <robot_base_frame>gt_body</robot_base_frame>
