@@ -252,6 +252,7 @@
       </sensor>
 
     <!--<sensor name="front_laser" type="gpu_ray">
+    
           <pose>0 0 0.05 0 0 0</pose>
           <update_rate>3</update_rate>
           <visualize>true</visualize>

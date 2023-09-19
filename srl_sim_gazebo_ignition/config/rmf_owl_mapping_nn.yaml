@@ -45,13 +45,10 @@ sensor:
   fy:         390.598938
   cx:         320.0
   cy:         240.0
-<<<<<<< HEAD
-  near_plane: 0.1
+
+  near_plane: 0.2
   far_plane:  8.0
-=======
-  near_plane: 0.6
-  far_plane:  4.5
->>>>>>> 4336fc4... New configuration and meshes for the simulated forest
+
   scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
   T_BS:       [1.0, 0.0, 0.0, -0.0302200001,
                0.0, 1.0, 0.0,  0.0074000000,
