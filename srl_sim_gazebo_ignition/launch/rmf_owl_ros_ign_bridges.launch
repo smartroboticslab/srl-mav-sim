@@ -81,7 +81,7 @@
 
     <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_lidary"
         args="$(arg sensor_prefix)/front_laser/scan@sensor_msgs/LaserScan[ignition.msgs.LaserScan">
-      <remap from="$(arg sensor_prefix)/front_laser/scan" to="lidar"/>
+      <remap from="$(arg sensor_prefix)/front_laser/scan" to="/lidar_scan"/>
     </node>
     <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_lidar_points"
       args="$(arg sensor_prefix)/front_laser/scan/points@sensor_msgs/PointCloud2[ignition.msgs.PointCloudPacked">

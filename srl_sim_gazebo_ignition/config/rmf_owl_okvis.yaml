@@ -10,7 +10,9 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole}
+        cam_model: pinhole,
+        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
+        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -22,11 +24,14 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole}
+        cam_model: pinhole,
+        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
+        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
 
 # additional camera parameters
 camera_parameters:
     timestamp_tolerance: 0.005 # [s] stereo frame out-of-sync tolerance
+    sync_cameras: [0, 1] # the cameras that will be synchronised
     image_delay: 0.0 # [s] timestamp_camera_correct = timestamp_camera - image_delay -0.00780146
     sync_cameras: [0, 1]
     online_calibration: # some parameters to set the online
