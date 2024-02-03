@@ -28,6 +28,7 @@ cameras:
 camera_parameters:
     timestamp_tolerance: 0.005 # [s] stereo frame out-of-sync tolerance
     image_delay: 0.0 # [s] timestamp_camera_correct = timestamp_camera - image_delay -0.00780146
+    sync_cameras: [0, 1]
     online_calibration: # some parameters to set the online
         do_extrinsics: false # Do we online-calibrate extrinsics?
         sigma_r: 0.001 # T_SCi position prior stdev [m]
