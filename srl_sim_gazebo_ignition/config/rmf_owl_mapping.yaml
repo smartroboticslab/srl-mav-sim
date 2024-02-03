@@ -13,11 +13,11 @@ general:
   depth_image_resolution_downsampling: 2
   lidar_overlap_ratio: 0.4
   lidar_camera_rate_ratio: 20
-  use_alignment:              false
-  use_map_to_map_factors:     false
+  use_alignment:              true
+  use_map_to_map_factors:     true
   # Should alignment factors be used and tightly coupled with OKVIS
   n_factors_per_state:        100  # number of points per downsampled point cloud
-  sensor_error:               0.01
+  sensor_error:               0.03
   write_dbg_output:           false
 
 map:
