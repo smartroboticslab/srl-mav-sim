@@ -104,3 +104,15 @@ gps_parameters:
     r_SA: [ 0.029307032419248 , 0.003977549717244 , 0.042319142820052 ] # antenna position relative to (IMU) sensor frame
     yaw_error_threshold: 0.1 # threshold for initialization (in degrees)
     gps_fusion_mode: 4 # 1: do svd initialization only once | 2: do SVD initialisation in every step | 3: do position alignment only | 4: do position + full alignment
+    
+# some options for lidar fusion
+lidar_parameters:
+  use_lidar: false # is lidar available
+  sensor_error: 0.03 # range error of the lidar sensor
+  number_of_live_factors: 100 # number of live factors being added to the graph
+  voxel_grid_resolution: 0.1 # resolution of the voxel grid used for downsampling input point clouds
+  # Extrinsics IMU {S} <-> LiDAR {L}
+  T_SL: [ 0.0, -1.0,  0.0, 0.0178,
+          0.0,  0.0, -1.0,-0.0799,
+          1.0,  0.0,  0.0,-0.1005,
+          0.0,  0.0,  0.0, 1.0000 ]
