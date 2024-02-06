@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
-  <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/forest.world"/>
+  <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
 
   <!-- Whether to use odometry from OKVIS or ground-truth. -->
   <arg name="use_okvis" default="true"/>
