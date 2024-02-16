@@ -17,4 +17,5 @@
   <exec_depend>ros_ign_gazebo</exec_depend>
   <exec_depend>ros_ign_image</exec_depend>
   <exec_depend>ros_ign_point_cloud</exec_depend>
+  <exec_depend>srl_sim_util</exec_depend>
 </package>
