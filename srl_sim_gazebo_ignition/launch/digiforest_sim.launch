@@ -21,10 +21,13 @@
 
   <!-- Linear MPC -->
   <param name="config_file_autopilot" value="$(find srl_sim_gazebo_ignition)/config/rmf_owl_mpc.yaml"/>
-  <node pkg="mpc_ros" type= "mpc_sitl_node" name="mpc_sitl_node" required="true" output="screen">
+  <node pkg="mpc_ros" type= "mpc_node" name="mpc_node" required="true" output="screen">
     <remap from="/mavros/odometry/data" to="/okvis_node/okvis_odometry" if="$(arg use_okvis)"/>
     <remap from="/mavros/odometry/data" to="/rmf_owl/odom"              unless="$(arg use_okvis)"/>
   </node>
+
+  <!-- Take-off automatically -->
+  <include file="$(find srl_sim_util)/launch/px4_arm_offboard.launch"/>
 
   <arg name="input_depth_topic"       default="/rmf_owl/depth0/depth_image"/>
   <arg name="input_camera_info_topic" default="/rmf_owl/depth0/camera_info"/>
