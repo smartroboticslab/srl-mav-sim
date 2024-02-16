@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="srl_sim_util"
+        type="px4_arm_offboard.py"
+        name="px4_arm_offboard"
+        output="screen"/>
+</launch>

@@ -16,3 +16,8 @@ catkin_install_python(
 	PROGRAMS src/odometry_to_transformstamped.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+catkin_install_python(
+	PROGRAMS src/px4_arm_offboard.py
+	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
