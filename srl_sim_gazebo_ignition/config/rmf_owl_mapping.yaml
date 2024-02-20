@@ -4,7 +4,7 @@
 
 general:
   sensor_type:                "depth" # depth | ouster [not yet supported] | leica
-  results_directory:          "/tmp"
+  results_directory:          "/storage/local/barba/ICRA_24/meshes"
   integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
   submap_time_threshold:      15.0
   submap_state_buffer:        1 # Buffer, if in 10 states we have not created a submap we start integrating it into supereight
