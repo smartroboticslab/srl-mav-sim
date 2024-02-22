@@ -22,8 +22,8 @@ general:
 
 map:
   dim:            [12.8, 12.8, 12.8]
-  res:            0.05
-  free_space_res: 0.1
+  res:            0.2
+  free_space_res: 0.4
 
 data:
   # occupancy data
@@ -63,7 +63,7 @@ data:
                
 sensor:
   # Simulated LiDAR
-  near_plane: 0.2
+  near_plane: 1.0
   far_plane:  10.0
   T_BS:       [0.0, -1.0,  0.0, 0.0178,
                0.0,  0.0, -1.0,-0.0799,

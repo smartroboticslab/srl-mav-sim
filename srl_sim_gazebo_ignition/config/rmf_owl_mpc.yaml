@@ -1,6 +1,6 @@
 autopilot_parameters:
   Ts: 0.025                       # Sampling time in seconds.
-  take_off_height: 2.5            # Fixed height in [m] for the take off setpoint
+  take_off_height: 1.0            # Fixed height in [m] for the take off setpoint
   take_off_velocity: 0.25         # Velocity in [m/s] used in the take off trajectory
   landing_height: -0.5            # Fixed height in [m] for the landing setpoint.
   landing_velocity: 0.5           # Velocity in [m/s] used in the landing trajectory.
