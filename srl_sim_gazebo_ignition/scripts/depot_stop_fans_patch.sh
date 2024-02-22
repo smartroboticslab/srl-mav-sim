@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: CC0-1.0
 set -eu
 
-sdf="$HOME/.ignition/fuel/fuel.ignitionrobotics.org/openrobotics/models/depot/5/model.sdf"
 sdf_original_sha256='11ad26026c49db0b73be882d3f61c3ab5fc637ca736a657d20b516b14b951afe'
 
 usage() {
@@ -13,6 +12,11 @@ usage() {
 	printf 'to stop the fans from rotating.\n'
 	printf -- '  -R  Revert the patch to re-enable the fans.\n'
 	printf -- '  -h  Show this help message.\n'
+}
+
+find_depot_sdf() {
+	find ~/.ignition/fuel/fuel.ignitionrobotics.org/openrobotics/models/depot/ \
+		-type f -name 'model.sdf' | sort | tail -n 1
 }
 
 depot_patch() {
@@ -71,6 +75,7 @@ do
 done
 shift "$((OPTIND - 1))"
 
+sdf=$(find_depot_sdf)
 sdf_sha256=$(sha256sum "$sdf" | awk '{ print $1 }')
 if [ -z "$sdf_sha256" ]
 then
