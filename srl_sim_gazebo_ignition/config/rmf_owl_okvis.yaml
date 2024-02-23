@@ -78,7 +78,7 @@ estimator_parameters:
     num_loop_closure_frames: 3 # number of loop closure frames in optimisation window
     num_imu_frames: 3 # number of frames linked by most recent nonlinear IMU error terms
     do_loop_closures: true # whether to do VI-SLAM or VIO
-    do_final_ba: false # Whether to run a full final BA
+    do_final_ba: true # Whether to run a full final BA
     enforce_realtime: true # whether to limit the time budget for optimisation
     realtime_min_iterations: 2 # minimum number of iterations always performed
     realtime_max_iterations: 4 # never do more than these, even if not converged

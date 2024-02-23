@@ -1,0 +1,73 @@
+%YAML:1.2
+# SPDX-FileCopyrightText: 2021-2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
+# SPDX-License-Identifier: CC0-1.0
+
+general:
+  sensor_type:                "leica" # depth | leica
+  results_directory:          "/tmp"
+  integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
+  submap_time_threshold:      15.0
+  submap_state_buffer:        1
+  submap_kf_threshold:        1 # 3, use 1 for lidar!
+  sensor_measurement_downsampling: 1
+  depth_image_resolution_downsampling: 2
+  lidar_overlap_ratio: 0.4
+  lidar_camera_rate_ratio: 20
+  use_alignment:              true
+  use_map_to_map_factors:     true
+  # Should alignment factors be used and tightly coupled with OKVIS
+  n_factors_per_state:        100  # number of points per downsampled point cloud
+  sensor_error:               0.03
+  write_dbg_output:           false
+
+map:
+  dim:            [51.2, 51.2, 51.2]
+  res:            0.05
+  free_space_res: 0.1
+
+data:
+  # occupancy data
+  surface_boundary:        0
+  min_occupancy:           -100
+  max_occupancy:            100
+  log_odd_min:             -5.015
+  log_odd_max:              5.015
+  fs_integr_scale:         1
+  const_surface_thickness: false
+  uncertainty_model:       linear
+  tau_min_factor:          3
+  tau_max_factor:          12
+  k_tau:                   0.05
+  sigma_min_factor:        1      # minimum/maximum uncertainty := 3 x sigma_min_factor/sigma_max_factor * voxel_dim
+  sigma_max_factor:        3      # minimum/maximum uncertainty := 3 x sigma_min_factor/sigma_max_factor * voxel_dim
+  k_sigma:                 0.05
+
+  # lidar ray integration
+  k_scale: 6e-03
+
+#sensor:
+#  # Simulated Intel RealSense depth camera
+#  width:      640
+#  height:     480
+#  fx:         390.598938
+#  fy:         390.598938
+#  cx:         320.0
+#  cy:         240.0
+#  near_plane: 0.2
+#  far_plane:  20.0
+#  scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
+#  T_BS:       [1.0, 0.0, 0.0, -0.0302200001,
+#               0.0, 1.0, 0.0,  0.0074000000,
+#               0.0, 0.0, 1.0,  0.0160200000,
+#               0.0, 0.0, 0.0,  1.0000000000]
+               
+sensor:
+  # Simulated LiDAR
+  near_plane: 1.0
+  far_plane:  10.0
+  T_BS:       [0.0, -1.0,  0.0, 0.0178,
+               0.0,  0.0, -1.0,-0.0799,
+               1.0,  0.0,  0.0,-0.1005,
+               0.0,  0.0,  0.0, 1.0000 ] # For OKVIS: {B}-> IMU sensor (as submap frame); {S} -> Lidar / Depth Sensor
+  elevation_resolution_angle: 1.0
+  azimuth_resolution_angle:   1.0
