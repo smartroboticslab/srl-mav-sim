@@ -22,8 +22,8 @@ general:
 
 map:
   dim:            [12.8, 12.8, 12.8]
-  res:            0.2
-  free_space_res: 0.4
+  res:            0.1
+  free_space_res: 0.2
 
 data:
   # occupancy data
@@ -69,5 +69,5 @@ sensor:
                0.0,  0.0, -1.0,-0.0799,
                1.0,  0.0,  0.0,-0.1005,
                0.0,  0.0,  0.0, 1.0000 ] # For OKVIS: {B}-> IMU sensor (as submap frame); {S} -> Lidar / Depth Sensor
-  elevation_resolution_angle: 0.1
-  azimuth_resolution_angle:   0.1
+  elevation_resolution_angle: 1.0
+  azimuth_resolution_angle:   1.0
