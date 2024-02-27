@@ -69,5 +69,5 @@ sensor:
                0.0,  0.0, -1.0,-0.0799,
                1.0,  0.0,  0.0,-0.1005,
                0.0,  0.0,  0.0, 1.0000 ] # For OKVIS: {B}-> IMU sensor (as submap frame); {S} -> Lidar / Depth Sensor
-  elevation_resolution_angle: 1.0
-  azimuth_resolution_angle:   1.0
+  elevation_resolution_angle: 0.5
+  azimuth_resolution_angle:   0.5
