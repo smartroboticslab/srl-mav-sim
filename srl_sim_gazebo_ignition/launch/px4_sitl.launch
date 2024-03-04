@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!--
+  The PX4 airframe to use. For available airframes see
+  PX4-Autopilot/ROMFS/px4fmu_common/init.d-posix/airframes
+  Make sure to remove the leading number and underscode, e.g. 10016_iris should
+  be written as iris in the argument.
+  -->
+  <arg name="airframe" default="rmf_owl"/>
+
+  <node pkg="srl_sim_gazebo_ignition"
+        type="px4_sitl.sh"
+        name="px4_sitl"
+        args="$(find px4) $(arg airframe)"
+        required="true"
+        output="screen"/>
+
+  <include file="$(find mavros)/launch/px4.launch">
+    <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>
+  </include>
+</launch>

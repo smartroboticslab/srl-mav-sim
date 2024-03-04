@@ -14,13 +14,19 @@
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
-  <include file="$(find srl_sim_gazebo_ignition)/launch/px4_sitl.launch">
-    <arg name="airframe" value="$(arg airframe)"/>
-  </include>
+  <!-- Gazebo -->
+  <node pkg="srl_sim_gazebo_ignition"
+        type="gazebo.bash"
+        name="gazebo"
+        args="$(find px4) $(arg world)"
+        required="true"
+        output="screen">
+    <env unless="$(arg gui)" name="HEADLESS" value="1"/>
+  </node>
 
-  <include file="$(find srl_sim_gazebo_ignition)/launch/gazebo.launch">
-    <arg name="airframe" value="$(arg airframe)"/>
-    <arg name="world" value="$(arg world)"/>
-    <arg name="gui" value="$(arg gui)"/>
+  <!-- Bridges between Gazebo and ROS. -->
+  <include file="$(find srl_sim_gazebo_ignition)/launch/rmf_owl_ros_ign_bridges.launch">
+    <arg name="world"      value="$(arg world)"/>
+    <arg name="robot_name" value="$(arg airframe)"/>
   </include>
 </launch>
