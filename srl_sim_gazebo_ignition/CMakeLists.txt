@@ -16,6 +16,6 @@ find_package(catkin REQUIRED)
 catkin_package()
 
 install(
-	PROGRAMS scripts/px4_sitl_ignition.bash
+	PROGRAMS src/px4_sitl.sh src/gazebo.bash
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
