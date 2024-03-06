@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-docker build -t mav_exp --build-arg SSH_PRIV_KEY="$(cat ~/.ssh/id_rsa)" .
+docker build -t srl_mav_sim --build-arg SSH_PRIV_KEY="$(cat ~/.ssh/id_rsa)" .
