@@ -87,9 +87,11 @@ RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 RUN ssh-keyscan bitbucket.org >> $HOME/.ssh/known_hosts
 WORKDIR $HOME/catkin_ws/src
 RUN git clone --recurse-submodules git@github.com:smartroboticslab/srl-mav-sim.git
+RUN git clone --recurse-submodules git@github.com:smartroboticslab/mpc_ros.git
+RUN git clone git@github.com:smartroboticslab/mav_ekf.git
 RUN rm -rf $HOME/.ssh/id_rsa
 
-# Install PX4 deps
+# Install srl-mav-sim
 WORKDIR $HOME/catkin_ws/src
 RUN pip3 install kconfiglib
 USER root
@@ -110,6 +112,7 @@ WORKDIR $HOME/catkin_ws
 USER root
 RUN apt-get install \
   libgflags-dev \
+  libgoogle-glog-dev \
   ros-${ROS_DISTRO}-gazebo-msgs \
   libignition-gazebo3-* \
   libignition-transport8-* \
