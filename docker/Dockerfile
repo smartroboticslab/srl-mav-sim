@@ -119,11 +119,16 @@ RUN env IGNITION_VERSION=fortress catkin build -DCMAKE_BUILD_TYPE=Release
 
 # Tools
 USER root
+WORKDIR $HOME
+# -- Install Neovim
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz \
   && sudo rm -rf /opt/nvim \
   && sudo tar -C /opt -xzf nvim-linux64.tar.gz \
+  && rm nvim-linux64.tar.gz \
   && echo 'export PATH=$PATH:/opt/nvim-linux64/bin' > $HOME/.bashrc
+# -- Install vim and vifm
 RUN apt-get install -qy vim vifm
+# -- Add sane tmux configs
 RUN echo "set -g default-command /bin/bash" >> $HOME/.tmux.conf
 RUN echo "set -g mouse on" >> $HOME/.tmux.conf
 RUN echo "bind-key h select-pane -L" >> $HOME/.tmux.conf
