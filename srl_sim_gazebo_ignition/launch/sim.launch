@@ -6,10 +6,10 @@
   Make sure to remove the leading number and underscode, e.g. 10016_iris should
   be written as iris in the argument.
   -->
-  <arg name="airframe" default="iris"/>
+  <arg name="airframe" default="rmf_owl"/>
 
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
-  <arg name="world" default="$(find px4)/Tools/simulation-ignition/worlds/$(arg airframe).world"/>
+  <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
