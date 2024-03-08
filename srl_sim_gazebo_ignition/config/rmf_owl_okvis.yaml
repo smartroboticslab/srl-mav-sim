@@ -107,7 +107,7 @@ gps_parameters:
     
 # some options for lidar fusion
 lidar_parameters:
-  use_lidar: true # is lidar available
+  use_lidar: false # is lidar available
   sensor_error: 0.03 # range error of the lidar sensor
   number_of_live_factors: 100 # number of live factors being added to the graph
   voxel_grid_resolution: 0.1 # resolution of the voxel grid used for downsampling input point clouds
