@@ -94,6 +94,7 @@ RUN rm -rf $HOME/.ssh/id_rsa
 # Install srl-mav-sim
 WORKDIR $HOME/catkin_ws/src
 RUN pip3 install kconfiglib
+RUN apt install -qy ant openjdk-11-jdk
 USER root
 RUN ./srl-mav-sim/PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
 USER ${USER}
@@ -139,6 +140,7 @@ RUN echo "bind-key j select-pane -D" >> $HOME/.tmux.conf
 RUN echo "bind-key k select-pane -U" >> $HOME/.tmux.conf
 RUN echo "bind-key l select-pane -R" >> $HOME/.tmux.conf
 USER ${USER}
+
 
 # Entry point script
 WORKDIR $HOME
