@@ -1,0 +1,65 @@
+<model name="Pine Tree">
+    <static>true</static>
+    <pose>1 1 1 1 1 1</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://models/pine_tree/meshes/pine_tree_collision.dae</uri>
+            <scale>1 1 1<scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="branch">
+        <geometry>
+          <mesh>
+            <uri>model://models/pine_tree/meshes/pine_tree.dae</uri>
+            <submesh>
+              <name>Branch</name>
+            </submesh>
+            <scale>1 1 1<scale>
+          </mesh>
+        </geometry>
+        <material>
+          <double_sided>true</double_sided>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <script>
+            <uri>model://models/pine_tree/materials/scripts/</uri>
+            <uri>model://models/pine_tree/materials/textures/</uri>
+            <name>PineTree/Branch</name>
+          </script>
+          
+          <pbr>
+            <metal>
+              <albedo_map>model://models/pine_tree/materials/textures/branch_2_diffuse_pine_.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="bark">
+        <geometry>
+          <mesh>
+            <uri>model://models/pine_tree/meshes/pine_tree.dae</uri>
+            <submesh>
+              <name>Bark</name>
+            </submesh>
+            <scale>1 1 1<scale>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <script>
+            <uri>model://models/pine_tree/materials/scripts/</uri>
+            <uri>model://models/pine_tree/materials/textures/</uri>
+            <name>PineTree/Bark</name>
+          </script>
+          
+          <pbr>
+            <metal>
+              <albedo_map>model://models/pine_tree/materials/textures/bark_diffuse_pine_.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+  </model>
