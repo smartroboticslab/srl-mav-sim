@@ -46,7 +46,17 @@ build and use the MAV simulator based on Ignition Gazebo. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
 linear MPC.
 
-**Important note**:
+Alternatively, if you lazy like me you can run the entire simulator in docker
+mode via three make targets:
+
+```
+make install_docker # Install docker
+make build_docker   # Build docker container
+make run_docker     # Run docker container
+# Once you're running the container, both the username and password is `docker`
+```
+
+## Important Note
 
 If the drone does not seem to be taking off in Gazebo, you will probably need
 to set the following PX4 parameters
