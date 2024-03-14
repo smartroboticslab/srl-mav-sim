@@ -58,6 +58,12 @@ rosrun mavros mavparam set NAV_DLL_ACT 0     # GCS loss failsafe mode -> 0 (Disa
 rosrun mavros mavparam set NAV_RCL_ACT 0     # RC loss failsafe modea -> 0 (Not documented)
 ```
 
+You can test out whether you can take off by running:
+
+```
+python3 scripts/test_offboard_mode.py
+```
+
 ## MAVROS
 
 [MAVROS](http://wiki.ros.org/mavros) allows communicating with the PX4 through
