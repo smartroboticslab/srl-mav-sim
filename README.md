@@ -46,6 +46,17 @@ build and use the MAV simulator based on Ignition Gazebo. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
 linear MPC.
 
+**Important note**:
+
+If the drone does not seem to be taking off in Gazebo, you will probably need
+to set the following PX4 parameters
+([source](https://github.com/PX4/PX4-Autopilot/issues/19919#issuecomment-1188864384)):
+
+```
+rosrun mavros mavparam set COM_RCL_EXCEPT 4  # RC LOSS EXCEPTION -> 4 (Not documented)
+rosrun mavros mavparam set NAV_DLL_ACT 0     # GCS loss failsafe mode -> 0 (Disabled)
+rosrun mavros mavparam set NAV_RCL_ACT 0     # RC loss failsafe modea -> 0 (Not documented)
+```
 
 ## MAVROS
 
