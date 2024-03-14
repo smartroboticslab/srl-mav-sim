@@ -58,10 +58,11 @@ rosrun mavros mavparam set NAV_DLL_ACT 0     # GCS loss failsafe mode -> 0 (Disa
 rosrun mavros mavparam set NAV_RCL_ACT 0     # RC loss failsafe modea -> 0 (Not documented)
 ```
 
-You can test out whether you can take off by running:
+Or simply type `make fix_px4` in the terminal. Then you can test out whether
+the drone can take off by running:
 
 ```
-python3 scripts/test_offboard_mode.py
+python3 scripts/test_offboard_mode.py  # Sends offboard + arm + position setpoint command
 ```
 
 ## MAVROS

@@ -25,3 +25,8 @@ run_docker: ## Run srl_mav_sim docker
 		--pid=host \
 		--network="host" \
 		-it --rm srl_mav_sim /bin/bash
+
+fix_px4: ## Fix PX4 in gazebo mode
+	rosrun mavros mavparam set COM_RCL_EXCEPT 4  # RC LOSS EXCEPTION -> 4 (Not documented)
+	rosrun mavros mavparam set NAV_DLL_ACT 0     # GCS loss failsafe mode -> 0 (Disabled)
+	rosrun mavros mavparam set NAV_RCL_ACT 0     # RC loss failsafe modea -> 0 (Not documented)
