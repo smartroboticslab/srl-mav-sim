@@ -94,8 +94,8 @@ RUN rm -rf $HOME/.ssh/id_rsa
 # Install srl-mav-sim
 WORKDIR $HOME/catkin_ws/src
 RUN pip3 install kconfiglib
-RUN apt install -qy ant openjdk-11-jdk
 USER root
+RUN apt-get install ant openjdk-11-jdk -qy
 RUN ./srl-mav-sim/PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
 USER ${USER}
 
