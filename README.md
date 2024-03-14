@@ -5,6 +5,20 @@ The simulators have been tested on Ubuntu 20.04 using ROS Noetic.
 
 ## Setup
 
+If you're lazy like me you can run the entire simulator in docker
+mode via three make targets:
+
+```
+make install_docker # Install docker
+make build_docker   # Build docker container
+make run_docker     # Run docker container
+# Once you're running the container, both the username and password is `docker`
+```
+
+---
+
+Alternatively ...
+
 Install the `ros-noetic-desktop-full` package by following the instructions
 from [here](http://wiki.ros.org/noetic/Installation) and then install the
 common dependencies.
@@ -46,15 +60,6 @@ build and use the MAV simulator based on Ignition Gazebo. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
 linear MPC.
 
-Alternatively, if you lazy like me you can run the entire simulator in docker
-mode via three make targets:
-
-```
-make install_docker # Install docker
-make build_docker   # Build docker container
-make run_docker     # Run docker container
-# Once you're running the container, both the username and password is `docker`
-```
 
 ## Important Note
 
