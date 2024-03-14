@@ -121,6 +121,18 @@ RUN apt-get install \
 USER ${USER}
 RUN env IGNITION_VERSION=fortress catkin build -DCMAKE_BUILD_TYPE=Release
 
+# Install QGroundControl
+USER root
+RUN usermod -a -G dialout $USER
+RUN apt-get remove modemmanager -y
+RUN apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
+RUN apt install fuse libfuse2 -y
+RUN apt install libxcb-xinerama0 libxkbcommon-x11-0 libxcb-cursor0 -y
+USER ${USER}
+WORKDIR $HOME
+RUN wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
+RUN chmod +x QGroundControl.AppImage
+
 # Tools
 USER root
 WORKDIR $HOME
