@@ -12,7 +12,7 @@
           <ixz>0</ixz>
           <iyy>0.017</iyy>
           <iyz>0</iyz>
-          <izz>0.028</izz><!--0.028-->
+          <izz>0.028</izz>
         </inertia>
       </inertial>
       <collision name="body_collision">

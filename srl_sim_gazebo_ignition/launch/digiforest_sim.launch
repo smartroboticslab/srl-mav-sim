@@ -21,7 +21,7 @@
     <!-- <arg name="world"   value="$(find srl_sim_gazebo_ignition)/resources/worlds/rubicon.world" />
     <arg name="world_name" value="challenge"/> -->
     
-    <arg name="world"   value="$(find srl_sim_gazebo_ignition)/resources/worlds/forest.world" />
+    <arg name="world"   value="$(arg world)" />
     <arg name="world_name" value="forest"/>
   </include>
 
