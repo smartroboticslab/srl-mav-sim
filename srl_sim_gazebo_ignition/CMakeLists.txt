@@ -15,7 +15,7 @@ add_custom_target(px4 ALL COMMAND cmake -E chdir "${PX4_DIR}" env DONT_RUN=1 mak
 
 install(
 	PROGRAMS src/px4_sitl.sh src/gazebo.bash
-	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+	DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()
