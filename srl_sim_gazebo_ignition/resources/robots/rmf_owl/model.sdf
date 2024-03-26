@@ -212,7 +212,7 @@
               <image>
                   <width>640</width>
                   <height>480</height>
-                  <format>R8G8B8</format>
+                  <format>B8G8R8</format>
               </image>
               <noise>
 						    <type>gaussian</type>
@@ -246,7 +246,7 @@
               <image>
                   <width>640</width>
                   <height>480</height>
-                  <format>R8G8B8</format>
+                  <format>B8G8R8</format>
               </image>
           </camera>
       </sensor>
