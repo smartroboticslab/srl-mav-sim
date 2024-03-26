@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
 <!-- SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich -->
 <!-- SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou -->
+<!-- SPDX-FileCopyrightText: 2024 Sebastián Barbas Laina -->
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 <package format="2">
   <name>srl_sim_gazebo_ignition</name>
   <version>0.1.0</version>
   <description>Simulator for SRL MAVs using PX4 and Ignition Gazebo</description>
   <author email="s.papatheodorou18@imperial.ac.uk">Sotiris Papatheodorou</author>
-  <maintainer email="s.papatheodorou18@imperial.ac.uk">Sotiris Papatheodorou</maintainer>
+  <maintainer email="sebastian.barbas@tum.de">Sebastián Barbas Laina</maintainer>
   <license>BSD-3-Clause</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <exec_depend>ros_ign_bridge</exec_depend>
-  <exec_depend>ros_ign_gazebo</exec_depend>
-  <exec_depend>ros_ign_image</exec_depend>
-  <exec_depend>ros_ign_point_cloud</exec_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
   <exec_depend>srl_sim_util</exec_depend>
 </package>
