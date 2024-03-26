@@ -10,7 +10,7 @@
           <ixx>0.017</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.018</iyy>
+          <iyy>0.017</iyy>
           <iyz>0</iyz>
           <izz>0.028</izz>
         </inertia>
@@ -287,7 +287,7 @@
     </link>
 
     <link name="rotor_0">
-      <pose frame="">0.09 -0.09 -0.005 0 0 0</pose>
+      <pose frame="">0.125 -0.125 0.05 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -335,7 +335,7 @@
     </joint>
 
     <link name="rotor_1">
-      <pose frame="">-0.09 0.09 0.05 0 0 0</pose>
+      <pose frame="">-0.125 0.125 0.05 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -383,7 +383,7 @@
     </joint>
 
     <link name="rotor_2">
-      <pose frame="">0.09 0.09 -0.005 0 0 0</pose>
+      <pose frame="">0.125 0.125 0.05 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -431,7 +431,7 @@
     </joint>
 
     <link name="rotor_3">
-      <pose frame="">-0.09 -0.09 0.05 0 0 0</pose>
+      <pose frame="">-0.125 -0.125 0.05 0 0 0</pose>
       <inertial>
         <mass>0.005</mass>
         <inertia>
@@ -504,7 +504,7 @@
       <linkName>rotor_0</linkName>
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
-      <timeConstantDown>0.025</timeConstantDown>
+      <timeConstantDown>0.0125</timeConstantDown>
       <maxRotVelocity>800.0</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.016</momentConstant>
@@ -523,7 +523,7 @@
       <linkName>rotor_1</linkName>
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
-      <timeConstantDown>0.025</timeConstantDown>
+      <timeConstantDown>0.0125</timeConstantDown>
       <maxRotVelocity>800.0</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.016</momentConstant>
@@ -542,7 +542,7 @@
       <linkName>rotor_2</linkName>
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
-      <timeConstantDown>0.025</timeConstantDown>
+      <timeConstantDown>0.0125</timeConstantDown>
       <maxRotVelocity>800.0</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.016</momentConstant>
@@ -561,7 +561,7 @@
       <linkName>rotor_3</linkName>
       <turningDirection>cw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
-      <timeConstantDown>0.025</timeConstantDown>
+      <timeConstantDown>0.0125</timeConstantDown>
       <maxRotVelocity>800.0</maxRotVelocity>
       <motorConstant>8.54858e-06</motorConstant>
       <momentConstant>0.016</momentConstant>
