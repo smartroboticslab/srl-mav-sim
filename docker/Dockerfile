@@ -27,6 +27,8 @@ RUN touch $HOME/.ssh/known_hosts
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 RUN ssh-keyscan bitbucket.org >> $HOME/.ssh/known_hosts
 
+RUN ls
+
 # BUILD THE DDS AGENT
 WORKDIR $HOME
 RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
@@ -41,7 +43,7 @@ RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
 # BUILD COLCON WORKSPACE
 WORKDIR $HOME
 RUN mkdir -p $HOME/colcon_ws/src
-RUN ls -a 
+RUN ls 
 WORKDIR $HOME/colcon_ws/src
 RUN git clone https://github.com/PX4/px4_msgs.git
 RUN git clone https://github.com/PX4/px4_ros_com.git
@@ -58,7 +60,7 @@ RUN cd $HOME/colcon_ws/src/srl-mav-sim/PX4-Autopilot \
     && make px4_sitl
 
 WORKDIR $HOME/colcon_ws
-RUN source /opt/ros/humble/setup.bash && colcon build
+RUN source /opt/ros/humble/setup.bash && colcon build --packages-select srl_sim_gazebo_ignition
 
 # Install nvim
 RUN wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
