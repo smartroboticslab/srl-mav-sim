@@ -27,6 +27,17 @@ RUN touch $HOME/.ssh/known_hosts
 RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
 RUN ssh-keyscan bitbucket.org >> $HOME/.ssh/known_hosts
 
+# BUILD THE DDS AGENT
+WORKDIR $HOME
+RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
+  && cd Micro-XRCE-DDS-Agent \
+  && mkdir build \
+  && cd build \
+  && cmake .. \
+  && make \
+  && sudo make install \
+  && sudo ldconfig /usr/local/lib/
+
 # BUILD COLCON WORKSPACE
 WORKDIR $HOME
 RUN mkdir -p $HOME/colcon_ws/src
@@ -42,18 +53,6 @@ RUN rm -rf $HOME/.ssh/id_rsa
 COPY requirements.txt .
 RUN apt-get install python3-pip -qy
 RUN pip3 install -r requirements.txt
-RUN cd $HOME/colcon_ws/src/srl-mav-sim/PX4-Autopilot \
-    && bash ./Tools/setup/ubuntu.sh \
-    && make px4_sitl
-
-RUN cd $HOME/colcon_ws/src/srl-mav-sim/Micro-XRCE-DDS-Agent \
-    && mkdir build \
-    && cd build \
-    && cmake .. \
-    && make \
-    && sudo make install \
-    && sudo ldconfig /usr/local/lib/
-
 RUN cd $HOME/colcon_ws/src/srl-mav-sim/PX4-Autopilot \
     && bash ./Tools/setup/ubuntu.sh \
     && make px4_sitl
