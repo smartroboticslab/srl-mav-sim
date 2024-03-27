@@ -5,6 +5,20 @@ The simulators have been tested on Ubuntu 20.04 using ROS Noetic.
 
 ## Setup
 
+If you're lazy like me you can run the entire simulator in docker
+mode via three make targets:
+
+```
+make install_docker # Install docker
+make build_docker   # Build docker container
+make run_docker     # Run docker container
+# Once you're running the container, both the username and password is `docker`
+```
+
+---
+
+Alternatively ...
+
 Install the `ros-noetic-desktop-full` package by following the instructions
 from [here](http://wiki.ros.org/noetic/Installation) and then install the
 common dependencies.
@@ -51,6 +65,25 @@ build and use the MAV simulator based on Ignition Gazebo. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
 linear MPC.
 
+
+## Important Note
+
+If the drone does not seem to be taking off in Gazebo, you will probably need
+to set the following PX4 parameters
+([source](https://github.com/PX4/PX4-Autopilot/issues/19919#issuecomment-1188864384)):
+
+```
+rosrun mavros mavparam set COM_RCL_EXCEPT 4  # RC LOSS EXCEPTION -> 4 (Not documented)
+rosrun mavros mavparam set NAV_DLL_ACT 0     # GCS loss failsafe mode -> 0 (Disabled)
+rosrun mavros mavparam set NAV_RCL_ACT 0     # RC loss failsafe modea -> 0 (Not documented)
+```
+
+Or simply type `make fix_px4` in the terminal. Then you can test out whether
+the drone can take off by running:
+
+```
+python3 scripts/test_offboard_mode.py  # Sends offboard + arm + position setpoint command
+```
 
 ## MAVROS
 
