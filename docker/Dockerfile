@@ -55,12 +55,10 @@ RUN rm -rf $HOME/.ssh/id_rsa
 COPY requirements.txt .
 RUN apt-get install python3-pip -qy
 RUN pip3 install -r requirements.txt
-RUN cd $HOME/colcon_ws/src/srl-mav-sim/PX4-Autopilot \
-    && bash ./Tools/setup/ubuntu.sh \
-    && make px4_sitl
 
 WORKDIR $HOME/colcon_ws
-RUN source /opt/ros/humble/setup.bash && colcon build --packages-select srl_sim_gazebo_ignition
+RUN source /opt/ros/humble/setup.bash && colcon build
+#--packages-select srl_sim_gazebo_ignition
 
 # Install nvim
 RUN wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \

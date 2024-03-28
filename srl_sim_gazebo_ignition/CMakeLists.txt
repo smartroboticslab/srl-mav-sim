@@ -11,7 +11,7 @@ set(PX4_DIR "${CMAKE_SOURCE_DIR}/../PX4-Autopilot")
 # Use a custom target to build PX4 since building it through catkin won't work
 # as intended. This will probably not work for PX4-Autopilot versions later
 # than v1.13.2.
-#add_custom_target(px4 ALL COMMAND cmake -E chdir "${PX4_DIR}" env DONT_RUN=1 make px4_sitl gz_x500)
+add_custom_target(px4 ALL COMMAND cmake -E chdir "${PX4_DIR}" make px4_sitl_default)
 
 
 install(
