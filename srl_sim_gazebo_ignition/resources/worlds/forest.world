@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <sdf version="1.6">
-        <world name="forest2">
+        <world name="forest">
         <scene>
             <ambient>.4 .4 .4</ambient>
             <sky></sky>
