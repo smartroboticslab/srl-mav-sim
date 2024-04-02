@@ -3,22 +3,18 @@
 # SPDX-License-Identifier: CC0-1.0
 
 general:
-  sensor_type:                "leica" # depth | leica
+  sensor_type:                "depth"  # depth | leica
   results_directory:          "/tmp"
-  integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
-  submap_time_threshold:      15.0
-  submap_state_buffer:        1
-  submap_kf_threshold:        1 # 3, use 1 for lidar!
+  write_dbg_output: false
   sensor_measurement_downsampling: 1
   depth_image_resolution_downsampling: 2
-  lidar_overlap_ratio: 0.4
-  lidar_camera_rate_ratio: 20
-  use_alignment:              true
-  use_map_to_map_factors:     true
-  # Should alignment factors be used and tightly coupled with OKVIS
-  n_factors_per_state:        100  # number of points per downsampled point cloud
-  sensor_error:               0.03
-  write_dbg_output:           false
+  submap_kf_threshold: 3 # 3, use 1 for lidar!
+  submap_overlap_ratio: 0.3
+  submap_min_frames: 4
+  use_map_to_map_factors: true
+  use_map_to_live_factors: true
+  n_factors_per_state: 200 # number of points per depth images
+  sensor_error: 0.4 # 1-sigma for obsv. noise [m]
 
 map:
   dim:            [12.8, 12.8, 12.8]
@@ -45,29 +41,29 @@ data:
   # lidar ray integration
   k_scale: 6e-03
 
-#sensor:
-#  # Simulated Intel RealSense depth camera
-#  width:      640
-#  height:     480
-#  fx:         390.598938
-#  fy:         390.598938
-#  cx:         320.0
-#  cy:         240.0
-#  near_plane: 0.2
-#  far_plane:  20.0
-#  scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
-#  T_BS:       [1.0, 0.0, 0.0, -0.0302200001,
-#               0.0, 1.0, 0.0,  0.0074000000,
-#               0.0, 0.0, 1.0,  0.0160200000,
-#               0.0, 0.0, 0.0,  1.0000000000]
-               
 sensor:
-  # Simulated LiDAR
-  near_plane: 1.0
+# Simulated Intel RealSense depth camera
+  width:      640
+  height:     480
+  fx:         390.598938
+  fy:         390.598938
+  cx:         320.0
+  cy:         240.0
+  near_plane: 0.2
   far_plane:  10.0
-  T_BS:       [0.0, -1.0,  0.0, 0.0178,
-               0.0,  0.0, -1.0,-0.0799,
-               1.0,  0.0,  0.0,-0.1005,
-               0.0,  0.0,  0.0, 1.0000 ] # For OKVIS: {B}-> IMU sensor (as submap frame); {S} -> Lidar / Depth Sensor
-  elevation_resolution_angle: 0.5
-  azimuth_resolution_angle:   0.5
+  scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
+  T_BS:       [1.0, 0.0, 0.0, -0.0302200001,
+               0.0, 1.0, 0.0,  0.0074000000,
+               0.0, 0.0, 1.0,  0.0160200000,
+               0.0, 0.0, 0.0,  1.0000000000]
+               
+#sensor:
+#  # Simulated LiDAR
+#  near_plane: 1.0
+#  far_plane:  10.0
+#  T_BS:       [0.0, -1.0,  0.0, 0.0178,
+#               0.0,  0.0, -1.0,-0.0799,
+#               1.0,  0.0,  0.0,-0.1005,
+#               0.0,  0.0,  0.0, 1.0000 ] # For OKVIS: {B}-> IMU sensor (as submap frame); {S} -> Lidar / Depth Sensor
+#  elevation_resolution_angle: 0.5
+#  azimuth_resolution_angle:   0.5
