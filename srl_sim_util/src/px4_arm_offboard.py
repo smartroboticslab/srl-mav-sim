@@ -3,6 +3,7 @@
 # SPDX-FileCopyrightText: 2024 Sotiris Papatheodorou
 # SPDX-License-Identifier: BSD-3-Clause
 import mavros_msgs.srv
+from nav_msgs.msg import Odometry
 import rospy
 
 
@@ -18,8 +19,8 @@ if __name__ == '__main__':
     arm_srv = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
     rospy.wait_for_service('/mavros/set_mode')
     mode_srv = rospy.ServiceProxy('/mavros/set_mode', mavros_msgs.srv.SetMode)
-
-    rate = rospy.Rate(10);
+    msg = rospy.wait_for_message('/okvis_node/okvis_odometry', Odometry)
+    rate = rospy.Rate(10)
 
     while not arm_srv(True).success:
         rate.sleep()
