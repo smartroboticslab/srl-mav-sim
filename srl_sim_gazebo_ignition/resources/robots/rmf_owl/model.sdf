@@ -158,7 +158,7 @@
       <sensor name="rgb_camera" type="camera">
           <pose>0.1165 0.04802 -0.0373 0 0 0</pose>
           <always_on>true</always_on>
-          <update_rate>10</update_rate>
+          <update_rate>15</update_rate>
           <visualize>true</visualize>
           <camera name="rgb_camera">
               <!--
@@ -192,7 +192,7 @@
       <sensor name="camera_left" type="camera">
           <pose>0.1165 0.04802 -0.0373 0 0 0</pose>
           <always_on>true</always_on>
-          <update_rate>10</update_rate>
+          <update_rate>15</update_rate>
           <visualize>true</visualize>
           <camera name="camera_left">
               <!--
@@ -226,7 +226,7 @@
       <sensor name="camera_right" type="camera">
           <pose>0.1165 -0.04689012 -0.0373 0 0 0</pose>
           <always_on>true</always_on>
-          <update_rate>10</update_rate>
+          <update_rate>15</update_rate>
           <visualize>true</visualize>
           <camera name="camera_right">
               <!--
