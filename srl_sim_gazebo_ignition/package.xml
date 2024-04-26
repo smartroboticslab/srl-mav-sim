@@ -11,4 +11,5 @@
     <build_type>ament_cmake</build_type>
   </export>
   <exec_depend>srl_sim_util</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
 </package>

@@ -13,7 +13,10 @@ set(PX4_DIR "${CMAKE_SOURCE_DIR}/../PX4-Autopilot")
 # than v1.13.2.
 add_custom_target(px4 ALL COMMAND cmake -E chdir "${PX4_DIR}" make px4_sitl_default)
 
-
+install(
+	DIRECTORY launch
+	DESTINATION share/${PROJECT_NAME}
+)
 install(
 	PROGRAMS src/px4_sitl.sh src/gazebo.bash
 	DESTINATION lib/${PROJECT_NAME}
