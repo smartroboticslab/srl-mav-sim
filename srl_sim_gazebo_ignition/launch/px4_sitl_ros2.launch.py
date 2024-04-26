@@ -37,7 +37,7 @@ def generate_launch_description():
     [
     airframe_launch_arg,
     ddsport_launch_arg,
+    dds_cmd,
     px4_node,
-    dds_cmd
     ]
   )    
