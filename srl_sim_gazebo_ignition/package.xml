@@ -1,8 +1,4 @@
 <?xml version="1.0"?>
-<!-- SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich -->
-<!-- SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou -->
-<!-- SPDX-FileCopyrightText: 2024 Sebastián Barbas Laina -->
-<!-- SPDX-License-Identifier: CC0-1.0 -->
 <package format="2">
   <name>srl_sim_gazebo_ignition</name>
   <version>0.1.0</version>
@@ -10,7 +6,9 @@
   <author email="s.papatheodorou18@imperial.ac.uk">Sotiris Papatheodorou</author>
   <maintainer email="sebastian.barbas@tum.de">Sebastián Barbas Laina</maintainer>
   <license>BSD-3-Clause</license>
-
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
   <exec_depend>srl_sim_util</exec_depend>
 </package>
