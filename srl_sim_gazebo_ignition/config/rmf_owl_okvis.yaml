@@ -10,7 +10,8 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole}
+        cam_model: pinhole,
+        mapping: true}
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -23,6 +24,13 @@ cameras:
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
         cam_model: pinhole}
+
+lidar:
+    width:                      360
+    height:                     180
+    T_SL:                       [-0.002743670442922, 0.033882171813216, -0.999422068350365, -0.071040687907283, 0.406537340771986, -0.913071112330848, -0.032070771505380, -0.000203108523633, -0.913630047026992, -0.406390381603856, -0.011269201805336, 0.031507965196080, 0.0000, 0.0000, 0.0000, 1.0000]
+    elevation_resolution_angle: 0.086 # only used for ray-based integration [degree]
+    azimuth_resolution_angle:   0.002 # only used for ray-based integration [degree]
 
 # additional camera parameters
 camera_parameters:
