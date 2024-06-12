@@ -11,8 +11,7 @@ cameras:
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
         cam_model: pinhole,
-        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
-        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
+        mapping: true}
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -24,19 +23,24 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole,
-        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
-        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
+        cam_model: pinhole}
+
+lidar:
+    width:                      360
+    height:                     180
+    T_SL:                       [-0.002743670442922, 0.033882171813216, -0.999422068350365, -0.071040687907283, 0.406537340771986, -0.913071112330848, -0.032070771505380, -0.000203108523633, -0.913630047026992, -0.406390381603856, -0.011269201805336, 0.031507965196080, 0.0000, 0.0000, 0.0000, 1.0000]
+    elevation_resolution_angle: 0.086 # only used for ray-based integration [degree]
+    azimuth_resolution_angle:   0.002 # only used for ray-based integration [degree]
 
 # additional camera parameters
 camera_parameters:
     timestamp_tolerance: 0.005 # [s] stereo frame out-of-sync tolerance
-    sync_cameras: [0, 1] # the cameras that will be synchronised
     image_delay: 0.0 # [s] timestamp_camera_correct = timestamp_camera - image_delay -0.00780146
     sync_cameras: [0, 1]
     online_calibration: # some parameters to set the online
-        do_extrinsics: false # Do we online-calibrate extrinsics?
         do_extrinsics_final_ba: false
+        do_extrinsics: false # Do we online-calibrate extrinsics?
+        do_extrinsics_final_ba: true
         sigma_r: 0.001 # T_SCi position prior stdev [m]
         sigma_alpha: 0.01 # T_SCi orientation prior stdev [rad]
 
@@ -75,14 +79,14 @@ frontend_parameters:
 
 # estimator parameters
 estimator_parameters:
-    num_keyframes: 3 # number of keyframes in optimisation window
+    num_keyframes: 4 # number of keyframes in optimisation window
     num_loop_closure_frames: 3 # number of loop closure frames in optimisation window
     num_imu_frames: 3 # number of frames linked by most recent nonlinear IMU error terms
     do_loop_closures: true # whether to do VI-SLAM or VIO
     do_final_ba: false # Whether to run a full final BA
     enforce_realtime: true # whether to limit the time budget for optimisation
     realtime_min_iterations: 2 # minimum number of iterations always performed
-    realtime_max_iterations: 4 # never do more than these, even if not converged
+    realtime_max_iterations: 6 # never do more than these, even if not converged
     realtime_time_limit: 0.03 # time budget for realtime optimisation [s]
     realtime_num_threads: 5 # number of threads for the realtime optimisation
     full_graph_iterations: 15 # don't do more than these for the full (background) optimisation
@@ -105,16 +109,3 @@ gps_parameters:
     r_SA: [ 0.029307032419248 , 0.003977549717244 , 0.042319142820052 ] # antenna position relative to (IMU) sensor frame
     yaw_error_threshold: 0.1 # threshold for initialization (in degrees)
     gps_fusion_mode: 4 # 1: do svd initialization only once | 2: do SVD initialisation in every step | 3: do position alignment only | 4: do position + full alignment
-    
-# some options for lidar fusion
-lidar_parameters:
-  use_lidar: false # is lidar available
-  sensor_error: 0.03 # range error of the lidar sensor
-  number_of_live_factors: 100 # number of live factors being added to the graph
-  voxel_grid_resolution: 0.1 # resolution of the voxel grid used for downsampling input point clouds
-  # Extrinsics IMU {S} <-> LiDAR {L}
-  T_SL: [ 0.0, -1.0,  0.0, 0.0178,
-          0.0,  0.0, -1.0,-0.0799,
-          1.0,  0.0,  0.0,-0.1005,
-          0.0,  0.0,  0.0, 1.0000 ]
-

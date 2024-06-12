@@ -110,7 +110,7 @@
 
     <include>
       <uri>model://robots/rmf_owl</uri>
-      <pose> 0 0 0.10 0 0 0</pose>
+      <pose> -62 -62 0.10 0 0 0</pose><!---62 -62 0.10 0 0 0</pose>-->
       <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
         <odom_frame>forest2</odom_frame>
         <robot_base_frame>gt_body</robot_base_frame>

@@ -251,7 +251,7 @@
           </camera>
       </sensor>
 
-    <sensor name="front_laser" type="gpu_ray">
+    <!--<sensor name="front_laser" type="gpu_ray">
           <pose>0 0 0.05 0 0 0</pose>
           <update_rate>3</update_rate>
           <visualize>true</visualize>
@@ -273,8 +273,8 @@
               </scan>
               <range>
                   <min>0.8</min>
-                  <max>30</max><!--Extracted from Simon dataset -->
-                  <resolution>0.01</resolution>
+                  <max>30</max>--><!--<Extracted from Simon dataset >-->
+                  <!--<resolution>0.01</resolution>
               </range>
               <noise>
                   <type>gaussian</type>
@@ -282,7 +282,7 @@
                   <stddev>0.03</stddev>
               </noise>
           </ray>
-    </sensor>
+    </sensor>-->
 
     </link>
 

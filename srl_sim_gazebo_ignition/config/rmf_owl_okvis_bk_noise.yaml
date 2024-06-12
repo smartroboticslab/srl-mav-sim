@@ -10,9 +10,7 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole,
-        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
-        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
+        cam_model: pinhole}
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -24,19 +22,14 @@ cameras:
         distortion_type: radialtangential,
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
-        cam_model: pinhole,
-        camera_type: gray, #gray, rgb, gray+depth, rgb+depth
-        slam_use: okvis} #none, okvis, okvis-depth, okvis-virtual
+        cam_model: pinhole}
 
 # additional camera parameters
 camera_parameters:
     timestamp_tolerance: 0.005 # [s] stereo frame out-of-sync tolerance
-    sync_cameras: [0, 1] # the cameras that will be synchronised
     image_delay: 0.0 # [s] timestamp_camera_correct = timestamp_camera - image_delay -0.00780146
-    sync_cameras: [0, 1]
     online_calibration: # some parameters to set the online
         do_extrinsics: false # Do we online-calibrate extrinsics?
-        do_extrinsics_final_ba: false
         sigma_r: 0.001 # T_SCi position prior stdev [m]
         sigma_alpha: 0.01 # T_SCi orientation prior stdev [rad]
 
@@ -45,16 +38,16 @@ imu_parameters:
     used: true # enable IMU
     a_max: 160.0 # acceleration saturation [m/s^2]
     g_max: 10.0 # gyro saturation [rad/s]
-    sigma_g_c: 0.001 # gyro noise density [rad/s/sqrt(Hz)]
-    sigma_bg: 0.001 # gyro bias prior [rad/s]
-    sigma_a_c: 0.001 # accelerometer noise density [m/s^2/sqrt(Hz)]
-    sigma_ba: 0.001 # accelerometer bias prior [m/s^2]
-    sigma_gw_c: 0.0001 # gyro drift noise density [rad/s^s/sqrt(Hz)]
-    sigma_aw_c: 0.001 # accelerometer drift noise density [m/s^2/sqrt(Hz)]
-    a0: [0.0, 0.0, 0.0] # Initial accelerometer bias [m/s^2]
-    g0: [0.0, 0.0, 0.0] # Initial gyro bias [rad/s]
-    g: 9.8 # Earth's acceleration due to gravity [m/s^2]
-    s_a: [1.0, 1.0, 1.0] # scale factor for accelerometer measurements: a_true = s_a * a_meas + b_a
+    sigma_g_c: 0.00278 # gyro noise density [rad/s/sqrt(Hz)]
+    sigma_bg: 0.03 # gyro bias prior [rad/s]
+    sigma_a_c: 0.0252 # accelerometer noise density [m/s^2/sqrt(Hz)]
+    sigma_ba: 0.01 # accelerometer bias prior [m/s^2]
+    sigma_gw_c: 0.0008 # gyro drift noise density [rad/s^s/sqrt(Hz)]
+    sigma_aw_c: 0.04 # 0.04 accelerometer drift noise density [m/s^2/sqrt(Hz)]
+    a0: [-0.02,  0.08,  0.08] # Initial accelerometer bias [m/s^2]
+    g0: [-0.02, -0.005, 0.005] # Initial gyro bias [rad/s]
+    g: 9.81007 # Earth's acceleration due to gravity [m/s^2]
+    s_a: [ 1.0,  1.0, 1.0 ] # scale factor for accelerometer measurements: a_true = s_a * a_meas + b_a
     T_BS:
         [ 0.0,  0.0,  1.0,  0.1005,
          -1.0,  0.0,  0.0,  0.0178,
@@ -105,16 +98,3 @@ gps_parameters:
     r_SA: [ 0.029307032419248 , 0.003977549717244 , 0.042319142820052 ] # antenna position relative to (IMU) sensor frame
     yaw_error_threshold: 0.1 # threshold for initialization (in degrees)
     gps_fusion_mode: 4 # 1: do svd initialization only once | 2: do SVD initialisation in every step | 3: do position alignment only | 4: do position + full alignment
-    
-# some options for lidar fusion
-lidar_parameters:
-  use_lidar: false # is lidar available
-  sensor_error: 0.03 # range error of the lidar sensor
-  number_of_live_factors: 100 # number of live factors being added to the graph
-  voxel_grid_resolution: 0.1 # resolution of the voxel grid used for downsampling input point clouds
-  # Extrinsics IMU {S} <-> LiDAR {L}
-  T_SL: [ 0.0, -1.0,  0.0, 0.0178,
-          0.0,  0.0, -1.0,-0.0799,
-          1.0,  0.0,  0.0,-0.1005,
-          0.0,  0.0,  0.0, 1.0000 ]
-

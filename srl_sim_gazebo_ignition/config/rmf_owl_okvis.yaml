@@ -36,6 +36,7 @@ camera_parameters:
     sync_cameras: [0, 1]
     online_calibration: # some parameters to set the online
         do_extrinsics: false # Do we online-calibrate extrinsics?
+        do_extrinsics_final_ba: false
         sigma_r: 0.001 # T_SCi position prior stdev [m]
         sigma_alpha: 0.01 # T_SCi orientation prior stdev [rad]
 
