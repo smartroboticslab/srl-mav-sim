@@ -9,7 +9,8 @@
   <arg name="sensor_prefix" value="/world/$(arg world_name)/model/$(arg robot_name)/link/body/sensor"/>
 
   <node pkg="ros_ign_bridge" type="parameter_bridge" name="ros_ign_bridge_clock"
-    args="/clock@rosgraph_msgs/Clock[ignition.msgs.Clock">
+    args="/world/depot/clock@rosgraph_msgs/Clock[ignition.msgs.Clock">
+    <remap from="/world/depot/clock" to="/clock"/>
   </node>
 
   <group ns="$(arg robot_name)">

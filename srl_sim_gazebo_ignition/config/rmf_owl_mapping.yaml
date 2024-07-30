@@ -3,22 +3,31 @@
 # SPDX-License-Identifier: CC0-1.0
 
 general:
-  sensor_type:                "leica" # depth | leica
-  results_directory:          "/tmp"
+  sensor_type:                "depth" # depth | ouster [not yet supported] | leica
+  results_directory:          "/storage/local/barba/ICRA_24"
   integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
   submap_time_threshold:      15.0
-  submap_state_buffer:        1
-  submap_kf_threshold:        1 # 3, use 1 for lidar!
+
+
+  # Submapping
+  submap_kf_threshold: 10 # not really used at the moment
+  submap_overlap_ratio: 0.2
+  submap_min_frames: 20
+ 
+   # Alignment settings
+  use_map_to_map_factors: false
+  use_map_to_live_factors: false
+  n_factors_per_state: 100 # number of points per depth images
+  voxel_grid_resolution: 0.001
+  sensor_error: 0.01 # 1-sigma for obsv. noise [m]
+
   sensor_measurement_downsampling: 1
-  depth_image_resolution_downsampling: 2
-  lidar_overlap_ratio: 0.4
-  lidar_camera_rate_ratio: 20
-  use_alignment:              true
-  use_map_to_map_factors:     true
-  # Should alignment factors be used and tightly coupled with OKVIS
-  n_factors_per_state:        100  # number of points per downsampled point cloud
-  sensor_error:               0.03
-  write_dbg_output:           false
+  depth_image_resolution_downsampling: 1
+  near_plane: 1.0
+  far_plane:  10.0
+  
+  enable_exploration: true
+
 
 map:
   dim:            [12.8, 12.8, 12.8]

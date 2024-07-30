@@ -7,15 +7,32 @@ general:
   results_directory:          "/storage/local/barba/ICRA_24"
   integration_type:           "ray"  # ray | rangeImage; option not yet supported, not used if sensor_type depth
   submap_time_threshold:      15.0
-  submap_state_buffer:        1 # Buffer, if in 10 states we have not created a submap we start integrating it into supereight
-  submap_kf_threshold:        10
+
+
+  # Submapping
+  submap_kf_threshold: 10 # not really used at the moment
+  submap_overlap_ratio: 0.2
+  submap_min_frames: 20
+ 
+   # Alignment settings
+  use_map_to_map_factors: false
+  use_map_to_live_factors: false
+  n_factors_per_state: 100 # number of points per depth images
+  voxel_grid_resolution: 0.001
+  sensor_error: 0.01 # 1-sigma for obsv. noise [m]
+  near_plane: 1.0
+  far_plane:  10.0
+
   sensor_measurement_downsampling: 1
   depth_image_resolution_downsampling: 1
+  
+  enable_exploration: true
+
 
 map:
   dim:            [25.6, 25.6, 25.6]
-  res:            0.2
-  free_space_res: 0.2
+  res:            0.1
+  free_space_res: 0.1
 
 data:
   # occupancy data
@@ -45,9 +62,9 @@ sensor:
   fy:         390.598938
   cx:         320.0
   cy:         240.0
-  near_plane: 0.1
+  near_plane: 0.01
   far_plane:  6.5
-  scale:      1.0 # Scale factor to apply to the depth images received from the camera to convert them to meters
+  scale:      0.001 # Scale factor to apply to the depth images received from the camera to convert them to meters
   T_BS:       [1.0, 0.0, 0.0, -0.0302200001,
                0.0, 1.0, 0.0,  0.0074000000,
                0.0, 0.0, 1.0,  0.0160200000,
