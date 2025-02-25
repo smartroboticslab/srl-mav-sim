@@ -1,0 +1,39 @@
+<sdf version="1.7">
+  <model name='h3d_house_848'>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>meshes/ziup5kvtCCR.dae</uri>
+              <scale>1.0 1.0 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>meshes/ziup5kvtCCR.dae</uri>
+              <scale>1.0 1.0 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 2e-06 -2e-06 2e-06</pose>
+      <static>true</static>
+      <self_collide>false</self_collide>
+  </model>
+</sdf>
