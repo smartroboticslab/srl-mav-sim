@@ -27,20 +27,20 @@ px4thrust_model:
   filter_cutoff_freq: 10.0 #PixHawk has a noisy measurement of voltage use the filter to low_pass it. 
 
 control_gains:
-  x_gain: 0.6
-  y_gain: 0.6
+  x_gain: 0.75
+  y_gain: 0.75
   z_gain: 0.8
 
-  x_dot_gain: 0.15
-  y_dot_gain: 0.15
-  z_dot_gain: 0.15
+  x_dot_gain: 0.2
+  y_dot_gain: 0.2
+  z_dot_gain: 0.2
 
   theta_gain: 0.025
   phi_gain: 0.025
 
-  theta_ref_gain: 0.35
-  phi_ref_gain: 0.35
-  thrust_ref_gain: 0.35
+  theta_ref_gain: 0.5
+  phi_ref_gain: 0.5
+  thrust_ref_gain: 0.45
 
 box_constraints:
   theta_min: -30.0  # Pitch min in [deg]
