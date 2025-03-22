@@ -11,11 +11,16 @@ set(PX4_DIR "${CMAKE_SOURCE_DIR}/../PX4-Autopilot")
 # than v1.13.2.
 add_custom_target(px4 ALL COMMAND cmake -E chdir "${PX4_DIR}" env DONT_RUN=1 make px4_sitl_default ignition)
 
-find_package(catkin REQUIRED)
 
-catkin_package()
-
+find_package(ament_cmake REQUIRED)
 install(
 	PROGRAMS src/px4_sitl.sh src/gazebo.bash
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+# INSTALL LAUNCH FILES
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY resources DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY config DESTINATION share/${PROJECT_NAME}/)
+ament_package()
+

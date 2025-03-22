@@ -9,16 +9,16 @@
   <arg name="airframe" default="rmf_owl"/>
 
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
-  <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
+  <arg name="world" default="$(find srl_sim_gz)/resources/worlds/depot.world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
-  <include file="$(find srl_sim_gazebo_ignition)/launch/px4_sitl.launch">
+  <include file="$(find srl_sim_gz)/launch/px4_sitl.launch">
     <arg name="airframe" value="$(arg airframe)"/>
   </include>
 
-  <include file="$(find srl_sim_gazebo_ignition)/launch/gazebo.launch">
+  <include file="$(find srl_sim_gz)/launch/gazebo.launch">
     <arg name="airframe" value="$(arg airframe)"/>
     <arg name="world" value="$(arg world)"/>
     <arg name="gui" value="$(arg gui)"/>
