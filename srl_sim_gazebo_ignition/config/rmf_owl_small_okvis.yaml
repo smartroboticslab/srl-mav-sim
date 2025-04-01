@@ -60,6 +60,10 @@ camera_parameters:
         do_extrinsics_final_ba: true
         sigma_r: 0.001 # T_SCi position prior stdev [m]
         sigma_alpha: 0.01 # T_SCi orientation prior stdev [rad]
+        sigma_r_final_ba: 0.003 # T_SCi position prior stdev in final BA [m]
+        sigma_alpha_final_ba: 0.016 # T_SCi orientation prior stdev in final BA [rad]
+    deep_stereo_indices: [1,0]
+    fov_scale: 1.0
 
 # the IMU sensor model
 imu_parameters:
@@ -108,6 +112,8 @@ estimator_parameters:
     realtime_num_threads: 5 # number of threads for the realtime optimisation
     full_graph_iterations: 15 # don't do more than these for the full (background) optimisation
     full_graph_num_threads: 1 # number of threads for the full (background) optimisation
+    p_dbow: 0.4 # Match threshold for dBoW -- unfortunately this varies with setups.
+    drift_percentage_heuristic: 1.35 # % allowed drift in loop closures rel. to dist. travelled.
 
 # some options for how and what to output
 output_parameters:
