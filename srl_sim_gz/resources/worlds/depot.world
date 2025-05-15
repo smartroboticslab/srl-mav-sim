@@ -19,17 +19,27 @@
       </ode>
     </physics>
 
-    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics">
-    </plugin>
-    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster">
-    </plugin>
-    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands">
-    </plugin>
-    <plugin filename="libignition-gazebo-sensors-system.so" name="ignition::gazebo::systems::Sensors">
+    <plugin filename="gz-sim-physics-system" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="ignition::gazebo::systems::UserCommands"/>
+    <plugin filename="gz-sim-sensors-system" name="ignition::gazebo::systems::Sensors">
       <render_engine>ogre2</render_engine>
     </plugin>
-    <plugin filename="libignition-gazebo-imu-system.so" name="ignition::gazebo::systems::Imu">
-    </plugin>
+    <plugin filename="gz-sim-imu-system" name="ignition::gazebo::systems::Imu"/>
+    <plugin filename="gz-sim-air-pressure-system" name="gz::sim::systems::AirPressure"/>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+    <plugin filename="gz-sim-magnetometer-system" name="gz::sim::systems::Magnetometer"/>
+    <plugin filename="gz-sim-navsat-system" name="gz::sim::systems::NavSat"/>
+
+    <!-- Set the coordinates for the world origin -->
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>-22.986687</latitude_deg>
+      <longitude_deg>-43.202501</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
 
     <gui>
       <plugin filename="GzScene3D" name="3D View">
@@ -467,7 +477,7 @@
     <include>
       <uri>model://robots/rmf_owl</uri>
       <pose>0 0 0.1 0 0 0</pose>
-      <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+      <plugin filename="libignition-gazebo-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
         <odom_frame>depot</odom_frame>
         <robot_base_frame>gt_body</robot_base_frame>
         <odom_publish_frequency>100</odom_publish_frequency>
