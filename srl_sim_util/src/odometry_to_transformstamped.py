@@ -2,22 +2,29 @@
 # SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
 # SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou
 # SPDX-License-Identifier: BSD-3-Clause
-import rospy
+import rclpy
+from rclpy.node import Node
 
 from geometry_msgs.msg import TransformStamped
 from nav_msgs.msg import Odometry
 
 
-class OdometryToTransformStamped:
+class OdometryToTransformStamped(Node):
     """
     Publish a nav_msgs/Odometry message as a geometry_msgs/TransformStamped
     message.
     """
     def __init__(self):
-        rospy.init_node("odometry_to_transformstamped")
-        rospy.Subscriber("~odometry", Odometry, self.callback, queue_size=20)
-        self._pub = rospy.Publisher("~transform", TransformStamped, queue_size=20)
-        rospy.spin()
+        super().__init__("odometry_to_transformstamped")
+        self.create_subscription(
+            Odometry,
+            "odometry",
+            self.callback,
+            queue_size=20)
+        self._pub = self.create_publisher(
+            TransformStamped,
+            "transform",
+            queue_size=20)
 
     def callback(self, msg: Odometry):
         msg_out = TransformStamped()
@@ -30,8 +37,17 @@ class OdometryToTransformStamped:
         self._pub.publish(msg_out)
 
 
-if __name__ == "__main__":
+def main(args=None):
+    rclpy.init(args=args)
+    node = OdometryToTransformStamped()
     try:
-        node = OdometryToTransformStamped()
-    except (rospy.ROSInterruptException, KeyboardInterrupt):
+        rclpy.spin(node)
+    except KeyboardInterrupt:
         pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()
