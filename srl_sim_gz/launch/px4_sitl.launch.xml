@@ -8,14 +8,12 @@
   -->
   <arg name="airframe" default="rmf_owl"/>
 
-  <node pkg="srl_sim_gazebo_ignition"
-        type="px4_sitl.sh"
+  <node pkg="srl_sim_gz"
+        exec="px4_sitl.sh"
         name="px4_sitl"
-        args="$(find px4) $(arg airframe)"
-        required="true"
+        args="$(find-pkg-prefix srl_sim_gz) gz_$(var airframe)"
         output="screen"/>
 
-  <include file="$(find mavros)/launch/px4.launch">
-    <arg name="fcu_url" value="udp://:14540@127.0.0.1:14557"/>
-  </include>
+  <!-- Launching this via the executable tag instead of include is the only way to controll the output in ros2 -->
+  <executable cmd="ros2 launch mavros px4.launch fcu_url:=udp://:14540@127.0.0.1:14557" output="log"/>
 </launch>
