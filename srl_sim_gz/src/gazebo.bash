@@ -12,8 +12,8 @@ then
 fi
 
 px4_dir="$1"
-build_dir="$px4_dir/build/px4_sitl_default"
+world="$2"
 
-export IGN_GAZEBO_RESOURCE_PATH=$px4_dir/../srl_sim_gazebo_ignition/resources:$IGN_GAZEBO_RESOURCE_PATH
-source "$px4_dir/Tools/setup_ignition.bash" "$px4_dir" "$build_dir"
-ign gazebo --force-version 6 ${HEADLESS+-s} -r "$2"
+export GZ_SIM_RESOURCE_PATH=$px4_dir/../../../srl_sim_gz/share/srl_sim_gz/resources/:$GZ_SIM_RESOURCE_PATH
+export GZ_SIM_SYSTEM_PLUGIN_PATH=$px4_dir/../../../srl_sim_gz/share/srl_sim_gz/:$GZ_SIM_SYSTEM_PLUGIN_PATH
+gz sim ${HEADLESS+-s} -r $world
