@@ -12,7 +12,8 @@ cameras:
         principal_point: [320.581665, 237.712845],
         cam_model: pinhole,
         camera_type: gray+depth,
-        mapping: true}
+        mapping: true,
+        slam_use: okvis}
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -25,7 +26,23 @@ cameras:
         focal_length: [390.598938, 390.598938],
         principal_point: [320.581665, 237.712845],
         cam_model: pinhole,
-        camera_type: gray}
+        camera_type: gray,
+        slam_use: okvis}
+
+     - {T_SC:
+        [1.0, 0.0, 0.0, -0.0302200001,
+         0.0, 1.0, 0.0,  0.0074000000,
+         0.0, 0.0, 1.0,  0.0160200000,
+          0.0, 0.0, 0.0, 1.0000000000],
+        image_dimension: [640, 480],
+        distortion_coefficients: [0.0, 0.0, 0.0, 0.0],
+        distortion_type: radialtangential,
+        focal_length: [390.598938, 390.598938],
+        principal_point: [320.581665, 237.712845],
+        cam_model: pinhole,
+        camera_type: rgb,
+        mapping: true,
+        slam_use: none}
 
 # lidar:
 #     width:                      360
