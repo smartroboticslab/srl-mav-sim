@@ -26,10 +26,20 @@ if __name__ == '__main__':
     rate = node.create_rate(10)
     loginfo('all services available')
 
-    while not arm_client.call(mavros_msgs.srv.CommandBool.Request(value=True)).success:
+    while True:
+        arm_req = mavros_msgs.srv.CommandBool.Request(value=True)
+        arm_future = arm_client.call_async(arm_req)
+        rclpy.spin_until_future_complete(node, arm_future)
+        if arm_future.result() is not None and arm_future.result().success:
+            break
         rate.sleep()
     loginfo('MAV armed')
 
-    while not mode_client.call(mavros_msgs.srv.SetMode.Request(custom_mode='OFFBOARD')).mode_sent:
+    while True:
+        mode_req = mavros_msgs.srv.SetMode.Request(custom_mode='OFFBOARD')
+        mode_future = mode_client.call_async(mode_req)
+        rclpy.spin_until_future_complete(node, mode_future)
+        if mode_future.result() is not None and mode_future.result().mode_sent:
+            break
         rate.sleep()
     loginfo('MAV switched to OFFBOARD mode')
