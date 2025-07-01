@@ -12,4 +12,4 @@
 [submodule "srl_sim_gz/px4-gzsim-plugins"]
 	path = srl_sim_gz/px4-gzsim-plugins
 	url = git@github.com:smartroboticslab/px4-gzsim-plugins.git
-	branch = master
+	branch = task/lf/adjust_for_srl_sim_gz
