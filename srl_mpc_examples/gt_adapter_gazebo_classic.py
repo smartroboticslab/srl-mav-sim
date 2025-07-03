@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 import rospy
 
-from gazebo_msgs.msg import LinkStates
+from gz_msgs.msg import LinkStates
 from geometry_msgs.msg import TransformStamped
 from typing import List, Optional
 

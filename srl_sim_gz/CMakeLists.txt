@@ -13,7 +13,7 @@ set(PX4_DIR "${CMAKE_SOURCE_DIR}/../PX4-Autopilot")
 # catkin build process.
 add_custom_command(
 	OUTPUT "${PX4_DIR}/build/px4_sitl_default"
-	COMMAND ${CMAKE_COMMAND} -E chdir "${PX4_DIR}" env DONT_RUN=1 make px4_sitl
+	COMMAND ${CMAKE_COMMAND} -E chdir "${PX4_DIR}" make px4_sitl_default
 	WORKING_DIRECTORY "${PX4_DIR}"
 	COMMENT "Building PX4 SITL target"
 )
@@ -57,8 +57,10 @@ install(FILES
 )
 
 # install launch files
-install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
-install(DIRECTORY resources DESTINATION share/${PROJECT_NAME}/)
-install(DIRECTORY config DESTINATION share/${PROJECT_NAME}/)
+install(DIRECTORY 
+	launch
+	resources
+	config
+	DESTINATION share/${PROJECT_NAME}/)
 ament_package()
 
