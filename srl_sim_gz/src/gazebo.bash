@@ -16,4 +16,4 @@ world="$2"
 
 export GZ_SIM_RESOURCE_PATH=$px4_dir/../../../srl_sim_gz/share/srl_sim_gz/resources/:$GZ_SIM_RESOURCE_PATH
 export GZ_SIM_SYSTEM_PLUGIN_PATH=$px4_dir/../../../srl_sim_gz/share/srl_sim_gz/:$GZ_SIM_SYSTEM_PLUGIN_PATH
-gz sim ${HEADLESS+-s} -r $world
+gz sim ${HEADLESS+-s} -r "$world"
