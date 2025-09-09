@@ -10,10 +10,18 @@ from [here](https://docs.ros.org/en/jazzy/Installation.html) and then install th
 common dependencies.
 
 ``` sh
-# MAVROS and catkin
+# MAVROS
 sudo apt install ros-jazzy-depth-image-proc ros-jazzy-mavlink ros-jazzy-mavros ros-jazzy-mavros-msgs
+# GZ Messages
+sudo apt install ros-jazzy-gz-msgs-vendor ros-jazzy-ros-gz
 # Other dependencies
 sudo apt install libgflags-dev
+```
+
+Install the Geoids Dataset
+```sh
+cd /opt/ros/${ROS_DISTRO}/lib/mavros
+sudo bash ./install_geographiclib_datasets.sh
 ```
 
 Create a new ROS2 workspace.
