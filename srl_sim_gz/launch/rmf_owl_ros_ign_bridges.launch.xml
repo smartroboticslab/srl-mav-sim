@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="world"      default="$(find-pkg-share srl_sim_gz)/resources/worlds/depot.world"/>
+  <arg name="robot_name" default="rmf_owl"/>
+
+  <!-- Use the filename without the extension for the world name and hope for the best. -->
+  <!-- <arg name="world_name" default='$(eval "$(arg world)".rsplit("/", 1)[-1].rsplit(".", 1)[0])'/> -->
+  <arg name="world_name" default="depot"/>
+  
+  <arg name="sensor_prefix" default="/world/$(var world_name)/model/$(var robot_name)/link/body/sensor"/>
+
+  <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_clock"
+    args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock" output="log">
+  </node>
+
+  <group>
+    <push_ros_namespace namespace="$(var robot_name)" />
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_tf"
+      args="/model/$(var robot_name)/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V" output="log">
+      <remap from="/model/$(var robot_name)/pose" to="/tf"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_tf_static"
+      args="/model/$(var robot_name)/pose_static@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V" output="log">
+      <remap from="/model/$(var robot_name)/pose_static" to="/tf_static"/>
+      <param name="qos_overrides./tf_static.publisher.durability" value="transient_local"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_cmd_vel"
+      args="/model/$(var robot_name)/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist" output="log">
+      <remap from="/model/$(var robot_name)/cmd_vel" to="cmd_vel"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_odometry"
+      args="/model/$(var robot_name)/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry" output="log">
+      <remap from="/model/$(var robot_name)/odometry" to="odom"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_imuo"
+      args="/imu@sensor_msgs/msg/Imu[gz.msgs.IMU" output="log">
+      <remap from="/imu" to="imu0"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_okvis_imuo"
+      args="/okvis_imu@sensor_msgs/msg/Imu[gz.msgs.IMU" output="log">
+      <remap from="/okvis_imu" to="okvis_imu0"/>
+    </node>
+
+    <node pkg="ros_gz_image" exec="image_bridge" name="ros_gz_image_depth"
+      args="$(var sensor_prefix)/camera_depth/depth_image">
+      <remap from="$(var sensor_prefix)/camera_depth/depth_image" to="depth0/depth_image"/>
+    </node>
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_depth_info"
+      args="$(var sensor_prefix)/camera_depth/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" output="log">
+      <remap from="$(var sensor_prefix)/camera_depth/camera_info" to="depth0/camera_info"/>
+    </node>
+
+    <node pkg="ros_gz_image" exec="image_bridge" name="ros_gz_image_ir_left"
+      args="$(var sensor_prefix)/camera_left/image">
+      <remap from="$(var sensor_prefix)/camera_left/image" to="cam0/image_raw"/>
+    </node>
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_image_ir_left_info"
+      args="$(var sensor_prefix)/camera_left/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" output="log">
+      <remap from="$(var sensor_prefix)/camera_left/camera_info" to="cam0/camera_info"/>
+    </node>
+
+    <node pkg="ros_gz_image" exec="image_bridge" name="ros_gz_image_ir_right"
+      args="$(var sensor_prefix)/camera_right/image">
+      <remap from="$(var sensor_prefix)/camera_right/image" to="cam1/image_raw"/>
+    </node>
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_ir_right_info"
+      args="$(var sensor_prefix)/camera_right/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" output="log">
+      <remap from="$(var sensor_prefix)/camera_right/camera_info" to="cam1/camera_info"/>
+    </node>
+
+    <node pkg="ros_gz_image" exec="image_bridge" name="ros_gz_image_rgb_cam"
+      args="$(var sensor_prefix)/rgb_camera/image">
+      <remap from="$(var sensor_prefix)/rgb_camera/image" to="rgb1/image_raw"/>
+    </node>
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_rgb_info"
+      args="$(var sensor_prefix)/rgb_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo" output="log">
+      <remap from="$(var sensor_prefix)/rgb_camera/camera_info" to="rgb1/camera_info"/>
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_lidary"
+        args="$(var sensor_prefix)/front_laser/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan" output="log">
+      <remap from="$(var sensor_prefix)/front_laser/scan" to="lidar"/>
+    </node>
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_lidar_points"
+      args="$(var sensor_prefix)/front_laser/scan/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked" output="log">
+      <remap from="$(var sensor_prefix)/front_laser/scan/points" to="lidar/points"/>
+    </node>
+  </group>
+</launch>

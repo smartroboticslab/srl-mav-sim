@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="vehicle" default="dji_f450_srl"/>
+
+  <include file="$(find-pkg-share srl_mpc_examples)/launch/pose_estimator_gazebo_classic.launch.xml">
+    <arg name="vehicle" value="$(var vehicle)"/>
+  </include>
+
+  <node pkg="srl_mpc_examples"
+        exec="example_mpc_path.py"
+        name="example_mpc_path"
+        output="screen">
+    <param name="vehicle" value="$(var vehicle)"/>
+    <remap from="~/path" to="/out"/>
+  </node>
+
+  <node pkg="mpc_ros"
+        exec="mpc_node"
+        name="mpc_node"
+        output="screen">
+    <param name="config_file_autopilot" value="$(find-pkg-share srl_mpc_examples)/config/$(var vehicle).yaml"/>
+    <remap from="/mavros/odometry/data" to="/estimated/odometry"/>
+  </node>
+</launch>

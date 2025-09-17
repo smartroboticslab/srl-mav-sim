@@ -4,7 +4,12 @@
 	branch = main
 [submodule "ros_gz"]
 	path = ros_gz
-	url = https://github.com/gazebosim/ros_gz.git
+	url = git@github.com:gazebosim/ros_gz.git
+	branch = jazzy
 [submodule "mav_interface_msgs"]
 	path = mav_interface_msgs
 	url = ../mav_interface_msgs.git
+[submodule "srl_sim_gz/px4-gzsim-plugins"]
+	path = srl_sim_gz/px4-gzsim-plugins
+	url = git@github.com:smartroboticslab/px4-gzsim-plugins.git
+	branch = task/lf/adjust_for_srl_sim_gz

@@ -11,6 +11,6 @@ then
 	exit 2
 fi
 
-build_dir="$1/build/px4_sitl_default"
+build_dir="$1/share/srl_sim_gz"
 
-env PX4_SIM_MODEL="$2" "$build_dir/bin/px4" -d -s etc/init.d-posix/rcS "$build_dir/etc"
+env PX4_SIM_MODEL="$2" "$build_dir/bin/px4" -d -s "$build_dir/etc/init.d-posix/rcS" "$build_dir/etc"

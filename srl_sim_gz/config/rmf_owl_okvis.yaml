@@ -8,11 +8,12 @@ cameras:
         image_dimension: [640, 480],
         distortion_coefficients: [0.0, 0.0, 0.0, 0.0],
         distortion_type: radialtangential,
-        focal_length: [390.598938, 390.598938],
-        principal_point: [320.581665, 237.712845],
+        focal_length: [390.6, 390.6],
+        principal_point: [320, 240],
         cam_model: pinhole,
         camera_type: gray+depth,
-        mapping: true}
+        mapping: true,
+        slam_use: okvis}
 
      - {T_SC:
         [1.0, 0.0, 0.0,  0.0646901205,
@@ -22,9 +23,26 @@ cameras:
         image_dimension: [640, 480],
         distortion_coefficients: [0.0, 0.0, 0.0, 0.0],
         distortion_type: radialtangential,
-        focal_length: [390.598938, 390.598938],
-        principal_point: [320.581665, 237.712845],
-        cam_model: pinhole}
+        focal_length: [390.6, 390.6],
+        principal_point: [320, 240],
+        cam_model: pinhole,
+        camera_type: gray,
+        slam_use: okvis}
+
+     - {T_SC:
+        [1.0, 0.0, 0.0, -0.0302200001,
+         0.0, 1.0, 0.0,  0.0074000000,
+         0.0, 0.0, 1.0,  0.0160200000,
+          0.0, 0.0, 0.0, 1.0000000000],
+        image_dimension: [640, 480],
+        distortion_coefficients: [0.0, 0.0, 0.0, 0.0],
+        distortion_type: radialtangential,
+        focal_length: [390.6, 390.6],
+        principal_point: [320, 240],
+        cam_model: pinhole,
+        camera_type: rgb,
+        mapping: true,
+        slam_use: none}
 
 # lidar:
 #     width:                      360
@@ -39,16 +57,19 @@ camera_parameters:
     timestamp_tolerance: 0.005 # [s] stereo frame out-of-sync tolerance
     image_delay: 0.0 # [s] timestamp_camera_correct = timestamp_camera - image_delay -0.00780146
     sync_cameras: [0, 1]
+    fov_scale: 1.0 # scale factor for the field of view
     online_calibration: # some parameters to set the online
         do_extrinsics_final_ba: false
         do_extrinsics: false # Do we online-calibrate extrinsics?
         do_extrinsics_final_ba: true
         sigma_r: 0.001 # T_SCi position prior stdev [m]
+        sigma_r_final_ba: 0.003 # T_SCi position prior stdev in final BA [m]
         sigma_alpha: 0.01 # T_SCi orientation prior stdev [rad]
+        sigma_alpha_final_ba: 0.016 # T_SCi orientation prior stdev in final BA [rad]
 
 # the IMU sensor model
 imu_parameters:
-    used: true # enable IMU
+    use: true # enable IMU
     a_max: 160.0 # acceleration saturation [m/s^2]
     g_max: 10.0 # gyro saturation [rad/s]
     sigma_g_c: 0.001 # gyro noise density [rad/s/sqrt(Hz)]
@@ -93,6 +114,8 @@ estimator_parameters:
     realtime_num_threads: 5 # number of threads for the realtime optimisation
     full_graph_iterations: 15 # don't do more than these for the full (background) optimisation
     full_graph_num_threads: 1 # number of threads for the full (background) optimisation
+    p_dbow: 0.4 # Match threshold for dBoW -- unfortunately this varies with setups.
+    drift_percentage_heuristic: 1.35 # % allowed drift in loop closures rel. to dist. travelled.
 
 # some options for how and what to output
 output_parameters:

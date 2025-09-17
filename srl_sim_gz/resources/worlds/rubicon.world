@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
-  <world name="cave">
+  <world name="rubicon">
     <scene>
       <ambient>.4 .4 .4</ambient>
       <sky></sky>
@@ -36,16 +36,14 @@
     </plugin>
 
     <include>
-      <name>Cave</name>
-      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cave</uri>
-      <!-- Move the origin near the cave entrance looking inside. -->
-      <pose>4 -0.3 0 0 0 -1.5707963267948966</pose>
+      <name>Rubicon</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Rubicon</uri>
     </include>
 
     <include>
       <uri>model://robots/rmf_owl</uri>
-      <pose>0 0 0.1 0 0 0</pose>
-      <plugin filename="libignition-gazebo6-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+      <pose> -3 -3.5 4 0 0 0</pose>
+      <plugin filename="libignition-gazebo-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
         <odom_frame>depot</odom_frame>
         <robot_base_frame>gt_body</robot_base_frame>
         <odom_publish_frequency>100</odom_publish_frequency>

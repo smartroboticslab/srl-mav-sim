@@ -13,7 +13,7 @@
   </node>
 
   <node pkg="mav_ekf"
-        type="mav_ekf_node"
+        exec="mav_ekf_node.py"
         name="mav_ekf_node"
         output="screen"
         required="true">

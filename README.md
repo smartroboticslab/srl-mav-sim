@@ -1,27 +1,34 @@
 # Simulator for SRL MAVs
 
-The simulators have been tested on Ubuntu 20.04 using ROS Noetic.
+The simulators have been tested on Ubuntu 24.04 using ROS2 Jazzy.
 
 
 ## Setup
 
-Install the `ros-noetic-desktop-full` package by following the instructions
-from [here](http://wiki.ros.org/noetic/Installation) and then install the
+Install the `ros-jazzy-desktop` package by following the instructions
+from [here](https://docs.ros.org/en/jazzy/Installation.html) and then install the
 common dependencies.
 
 ``` sh
-# MAVROS and catkin
-sudo apt install ros-noetic-depth-image-proc ros-noetic-mavlink ros-noetic-mavros ros-noetic-mavros-msgs python3-catkin-tools
+# MAVROS
+sudo apt install ros-jazzy-depth-image-proc ros-jazzy-mavlink ros-jazzy-mavros ros-jazzy-mavros-msgs
+# GZ Messages
+sudo apt install ros-jazzy-gz-msgs-vendor ros-jazzy-ros-gz
 # Other dependencies
 sudo apt install libgflags-dev
 ```
 
-Create a new ROS workspace.
+Install the Geoids Dataset
+```sh
+cd /opt/ros/${ROS_DISTRO}/lib/mavros
+sudo bash ./install_geographiclib_datasets.sh
+```
+
+Create a new ROS2 workspace.
 
 ``` sh
 mkdir -p ~/srl_mav_sim_ws/src
 cd ~/srl_mav_sim_ws
-catkin init
 ```
 
 Clone this repository and all submodules.
@@ -41,18 +48,13 @@ Install the PX4 dependencies.
 ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
 ```
 
-To build PX4, go to the base directory and run
-```sh
-DONT_RUN=1 make px4_sitl ignition
-```
-
-See [`srl_sim_gazebo_ignition`](srl_sim_gazebo_ignition/README.md) on how to
-build and use the MAV simulator based on Ignition Gazebo. See
+See [`srl_sim_gz`](srl_sim_gz/README.md) on how to
+build and use the MAV simulator based on GZ. See
 [`srl_mpc_examples`](srl_mpc_examples/README.md) for usage examples of the SRL
 linear MPC.
 
 
 ## MAVROS
 
-[MAVROS](http://wiki.ros.org/mavros) allows communicating with the PX4 through
+[MAVROS](https://docs.ros.org/en/jazzy/p/mavros/) allows communicating with the PX4 through
 ROS. It is the interface used by SRL controllers.

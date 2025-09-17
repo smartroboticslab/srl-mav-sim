@@ -9,24 +9,23 @@
   <arg name="airframe" default="rmf_owl"/>
 
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
-  <arg name="world" default="$(find srl_sim_gazebo_ignition)/resources/worlds/depot.world"/>
+  <arg name="world" default="$(find-pkg-share srl_sim_gz)/resources/worlds/depot.world"/>
 
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
   <!-- Gazebo -->
-  <node pkg="srl_sim_gazebo_ignition"
-        type="gazebo.bash"
+  <set_env name="HEADLESS" value="1" unless="$(var gui)"/>
+  <node pkg="srl_sim_gz"
+        exec="gazebo.bash"
         name="gazebo"
-        args="$(find px4) $(arg world)"
-        required="true"
+        args="$(find-pkg-share srl_sim_gz) $(var world)"
         output="screen">
-    <env unless="$(arg gui)" name="HEADLESS" value="1"/>
   </node>
 
   <!-- Bridges between Gazebo and ROS. -->
-  <include file="$(find srl_sim_gazebo_ignition)/launch/rmf_owl_ros_ign_bridges.launch">
-    <arg name="world"      value="$(arg world)"/>
-    <arg name="robot_name" value="$(arg airframe)"/>
+  <include file="$(find-pkg-share srl_sim_gz)/launch/rmf_owl_ros_ign_bridges.launch.xml">
+    <arg name="world"      value="$(var world)"/>
+    <arg name="robot_name" value="$(var airframe)"/>
   </include>
 </launch>

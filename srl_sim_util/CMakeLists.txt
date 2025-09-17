@@ -1,23 +1,25 @@
 # SPDX-FileCopyrightText: 2023 Smart Robotics Lab, Imperial College London, Technical University of Munich
 # SPDX-FileCopyrightText: 2023 Sotiris Papatheodorou
 # SPDX-License-Identifier: CC0-1.0
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.8..3.30)
 project(srl_sim_util VERSION 0.1.0)
 
-find_package(catkin REQUIRED
-	COMPONENTS
-		roscpp
-		rospy
+find_package(ament_cmake REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
+
+# Install Python scripts
+install(
+	PROGRAMS 
+		src/odometry_to_transformstamped.py
+		src/px4_arm_offboard.py
+	DESTINATION lib/${PROJECT_NAME}
 )
 
-catkin_package()
-
-catkin_install_python(
-	PROGRAMS src/odometry_to_transformstamped.py
-	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# Install launch files
+install(
+	DIRECTORY launch
+	DESTINATION share/${PROJECT_NAME}/
 )
 
-catkin_install_python(
-	PROGRAMS src/px4_arm_offboard.py
-	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+ament_package()
