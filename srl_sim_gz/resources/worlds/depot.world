@@ -472,6 +472,81 @@
       </link>
     </model>
 
+    <model name='window_blockers'>
+      <pose>7.19009 1.09982 0 0 0 0</pose>
+      <link name='box_link'>
+        <inertial>
+          <inertia>
+            <ixx>0.16666</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.16666</iyy>
+            <iyz>0</iyz>
+            <izz>0.16666</izz>
+          </inertia>
+          <mass>1</mass>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+
+        <visual name='wall1'>
+          <pose>0 -8 4.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>30.167000000000002 0.080000000000000002 9</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material>
+        </visual>
+        <visual name='wall2'>
+          <pose>0 8 4.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>30.167000000000002 0.080000000000000002 9</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material>
+        </visual>
+        <visual name='wall3'>
+          <pose>-15.3 0 4.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.080000000000000002 15.359999999999999 9</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material>
+        </visual>
+        <visual name='wall4'>
+          <pose>15.3 0 4.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.080000000000000002 15.359999999999999 9</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.300000012 0.300000012 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.699999988 0.699999988 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <enable_wind>false</enable_wind>
+      </link>
+      <static>true</static>
+      <self_collide>false</self_collide>
+    </model>
+
     <include>
       <uri>model://robots/rmf_owl</uri>
       <pose>0 0 0.1 0 0 0</pose>
