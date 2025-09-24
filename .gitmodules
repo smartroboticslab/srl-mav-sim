@@ -9,3 +9,7 @@
 	path = srl_sim_gz/px4-gzsim-plugins
 	url = git@github.com:smartroboticslab/px4-gzsim-plugins.git
 	branch = task/lf/adjust_for_srl_sim_gz
+[submodule "PegasusSimulator"]
+	path = PegasusSimulator
+	url = git@github.com:felix-muller/PegasusSimulator.git
+	branch = port2IS5
