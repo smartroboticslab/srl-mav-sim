@@ -1,8 +1,4 @@
-ARG TARGET_ROS_VERSION=jazzy
-FROM ros:${TARGET_ROS_VERSION}
-
-ARG TARGET_ROS_VERSION=jazzy
-ENV TARGET_ROS_VERSION=${TARGET_ROS_VERSION}
+FROM ros:jazzy
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,18 +19,18 @@ RUN apt-get update && apt-get install -y curl gpg lsb-release && \
 # ---  Install all dependencies, including ROS Desktop and MAVROS ---
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # Full ROS Desktop experience
-    ros-${TARGET_ROS_VERSION}-desktop \
+    ros-jazzy-desktop \
     # MAVROS packages
-    ros-${TARGET_ROS_VERSION}-depth-image-proc \
-    ros-${TARGET_ROS_VERSION}-mavlink \
-    ros-${TARGET_ROS_VERSION}-mavros \
-    ros-${TARGET_ROS_VERSION}-mavros-msgs \
+    ros-jazzy-depth-image-proc \
+    ros-jazzy-mavlink \
+    ros-jazzy-mavros \
+    ros-jazzy-mavros-msgs \
     # Gazebo and its development files
     gz-harmonic \
     libgz-sim8-dev \
     # ROS <-> Gazebo integration
-    ros-${TARGET_ROS_VERSION}-ros-gz \
-    ros-${TARGET_ROS_VERSION}-ros-gz-interfaces \
+    ros-jazzy-ros-gz \
+    ros-jazzy-ros-gz-interfaces \
     # Standard development tools
     git \
     vim \
@@ -59,23 +55,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # ---  Install MAVROS GeographicLib Datasets ---
-# This is required for MAVROS to handle geographic coordinate conversions.
-RUN cd /opt/ros/${TARGET_ROS_VERSION}/lib/mavros && bash ./install_geographiclib_datasets.sh
+RUN cd /opt/ros/jazzy/lib/mavros && bash ./install_geographiclib_datasets.sh
 
-# Create a ROS 2 workspace
+# --- Create and set up ROS 2 workspace ---
 RUN mkdir -p /ros2_ws/src/srl-mav-sim
 WORKDIR /ros2_ws
-
-# Copy and set up the entrypoint script
 COPY . /ros2_ws/src/srl-mav-sim
 # remove any existing build directories to avoid conflicts
 RUN rm -rf /ros2_ws/src/srl-mav-sim/srl_sim_gz/px4-gzsim-plugins/build /ros2_ws/src/PX4-Autopilot/build
 # build the workspace
-RUN apt-get update && \
-    . /opt/ros/${TARGET_ROS_VERSION}/setup.sh && \
+RUN . /opt/ros/jazzy/setup.sh && \
     rm -rf /ros2_ws/build /ros2_ws/log /ros2_ws/install && \
     colcon build && \
     echo 'source /ros2_ws/install/setup.bash' >> ~/.bashrc
 
-# Set the default command to start a shell
 CMD ["bash"]
