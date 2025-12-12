@@ -52,7 +52,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcli11-dev \
     # GUI/OpenGL libraries
     libgl1 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+
+# --- Install Python dependencies for PX4 ---
+RUN pip3 install --break-system-packages --no-cache-dir "empy<4" pyros-genmsg setuptools jinja2 jsonschema numpy future
 
 # ---  Install MAVROS GeographicLib Datasets ---
 RUN cd /opt/ros/jazzy/lib/mavros && bash ./install_geographiclib_datasets.sh
