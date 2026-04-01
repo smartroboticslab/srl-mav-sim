@@ -1,0 +1,17 @@
+services:
+  sim: 
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        TARGET_ROS_VERSION: jazzy
+    container_name: srl_mav_sim
+    tty: true
+    stdin_open: true
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    command: bash -c "cd /ros2_ws && source install/setup.bash && ros2 launch srl_sim_gz sim.launch.xml"

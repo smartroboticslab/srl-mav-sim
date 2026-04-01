@@ -1,78 +1,76 @@
-FROM osrf/ros:noetic-desktop-full
-SHELL ["/bin/bash", "-c"]
+FROM ros:jazzy
 
-# Settings
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Permissions
-RUN apt-get update && apt-get install -y sudo
-ARG USER=docker
-ARG PASS=docker
-ARG UID=1000
-ARG GID=1000
-ARG SSH_PRIV_KEY
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PASS}" | chpasswd
-RUN adduser ${USER} sudo
-ENV HOME /home/$USER
+# ---  Set up locale and add universe repository ---
+RUN apt-get update && apt-get install -y locales software-properties-common && \
+    locale-gen en_US en_US.UTF-8 && \
+    update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
+    add-apt-repository universe && \
+    rm -rf /var/lib/apt/lists/*
+ENV LANG=en_US.UTF-8
 
-# Install some basic tools and dependencies.
-RUN apt-get -y update && apt-get install -y \
-    iputils-ping \
-    net-tools \
-    wget \
+# ---  Add the official Gazebo repository ---
+RUN apt-get update && apt-get install -y curl gpg lsb-release && \
+    curl -sSL https://packages.osrfoundation.org/gazebo.gpg | gpg --dearmor -o /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" > /etc/apt/sources.list.d/gazebo-stable.list && \
+    rm -rf /var/lib/apt/lists/*
+
+# ---  Install all dependencies, including ROS Desktop and MAVROS ---
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    # Full ROS Desktop experience
+    ros-jazzy-desktop \
+    # MAVROS packages
+    ros-jazzy-depth-image-proc \
+    ros-jazzy-mavlink \
+    ros-jazzy-mavros \
+    ros-jazzy-mavros-msgs \
+    # Gazebo and its development files
+    gz-harmonic \
+    libgz-sim8-dev \
+    # ROS <-> Gazebo integration
+    ros-jazzy-ros-gz \
+    ros-jazzy-ros-gz-interfaces \
+    # Standard development tools
     git \
-    openssh-client \
-    htop \
+    vim \
+    tmux \
+    ros-dev-tools \
+    python3-vcstool \
+    python3-kconfiglib \
+    # Other system dependencies
+    libgflags-dev \
+    libtinyxml-dev \
+    libboost-filesystem-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    libgz-common6-dev \
+    libsuitesparse-dev \
+    libompl-dev \
     libgoogle-glog-dev \
-    python3-catkin-tools \
-    ros-noetic-mavros-msgs \
-    ros-noetic-depth-image-proc \
-    ros-noetic-mavlink \
-    ros-noetic-mavros
+    # CLI11 library for CMake find_package
+    libcli11-dev \
+    # GUI/OpenGL libraries
+    libgl1 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Setup ssh keys.
-RUN mkdir $HOME/.ssh/
-RUN echo "$SSH_PRIV_KEY" > $HOME/.ssh/id_rsa
-RUN chmod 600 $HOME/.ssh/id_rsa
-RUN touch $HOME/.ssh/known_hosts
-RUN ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-RUN ssh-keyscan bitbucket.org >> $HOME/.ssh/known_hosts
+# --- Install Python dependencies for PX4 ---
+RUN pip3 install --break-system-packages --no-cache-dir "empy<4" pyros-genmsg setuptools jinja2 jsonschema numpy future
 
-# Create a catkin workspace.
-WORKDIR $HOME
-RUN mkdir -p $HOME/catkin_ws/src
-WORKDIR $HOME/catkin_ws/src
-RUN git clone https://github.com/smartroboticslab/srl-mav-sim.git \
-    && cd srl-mav-sim \
-    && git submodule update --init --recursive
-RUN /bin/bash -c "source /opt/ros/noetic/setup.bash"
-RUN echo "source /opt/ros/noetic/setup.sh" >> /root/.bashrc
+# ---  Install MAVROS GeographicLib Datasets ---
+RUN cd /opt/ros/jazzy/lib/mavros && bash ./install_geographiclib_datasets.sh
 
-# Setup the simulation environment.
-WORKDIR $HOME
-ENV IGNITION_VERSION fortress
-RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-RUN apt-get update
-RUN apt-get install -y ignition-fortress
+# --- Create and set up ROS 2 workspace ---
+RUN mkdir -p /ros2_ws/src/srl-mav-sim
+WORKDIR /ros2_ws
+COPY . /ros2_ws/src/srl-mav-sim
+# remove any existing build directories to avoid conflicts
+RUN rm -rf /ros2_ws/src/srl-mav-sim/srl_sim_gz/px4-gzsim-plugins/build /ros2_ws/src/PX4-Autopilot/build
+# build the workspace
+RUN . /opt/ros/jazzy/setup.sh && \
+    rm -rf /ros2_ws/build /ros2_ws/log /ros2_ws/install && \
+    colcon build && \
+    echo 'source /ros2_ws/install/setup.bash' >> ~/.bashrc
 
-WORKDIR /
-RUN wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
-RUN chmod +x install_geographiclib_datasets.sh
-RUN sudo ./install_geographiclib_datasets.sh
-RUN rm install_geographiclib_datasets.sh
-
-COPY requirements.txt .
-RUN apt-get install python3-pip -qy
-RUN pip3 install -r requirements.txt
-
-WORKDIR $HOME/catkin_ws/src/srl-mav-sim
-RUN ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
-# WORKDIR $HOME/catkin_ws/src/srl-mav-sim/PX4-Autopilot
-# RUN DONT_RUN=1 make px4_sitl gazebo
-
-# Remove SSH keys.
-RUN rm -rf $HOME/.ssh/id_rsa
-
-# Set working directory.
-WORKDIR $HOME
+CMD ["bash"]

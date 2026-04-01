@@ -4,13 +4,13 @@
   <arg name="robot_name" default="rmf_owl"/>
 
   <!-- Use the filename without the extension for the world name and hope for the best. -->
-  <!-- <arg name="world_name" default='$(eval "$(arg world)".rsplit("/", 1)[-1].rsplit(".", 1)[0])'/> -->
-  <arg name="world_name" default="depot"/>
+  <arg name="world_name" default='$(eval "$(var world)".rsplit("/", 1)[-1].rsplit(".", 1)[0])'/>
   
   <arg name="sensor_prefix" default="/world/$(var world_name)/model/$(var robot_name)/link/body/sensor"/>
 
   <node pkg="ros_gz_bridge" exec="parameter_bridge" name="ros_gz_bridge_clock"
-    args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock" output="log">
+    args="/world/$(var world_name)/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock" output="log">
+    <remap from="/world/$(var world_name)/clock" to="/clock"/>
   </node>
 
   <group>
