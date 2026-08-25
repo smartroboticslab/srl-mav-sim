@@ -11,6 +11,9 @@
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
   <arg name="world" default="$(find-pkg-share srl_sim_gz)/resources/worlds/depot.world"/>
 
+  <!-- The world name (filename without directory or extension); must match world. -->
+  <arg name="world_name" default="depot"/>
+
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
@@ -21,6 +24,7 @@
   <include file="$(find-pkg-share srl_sim_gz)/launch/gazebo.launch.xml">
     <arg name="airframe" value="$(var airframe)"/>
     <arg name="world" value="$(var world)"/>
+    <arg name="world_name" value="$(var world_name)"/>
     <arg name="gui" value="$(var gui)"/>
   </include>
 </launch>

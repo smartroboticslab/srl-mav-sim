@@ -3,8 +3,17 @@
   <arg name="world"      default="$(find-pkg-share srl_sim_gz)/resources/worlds/depot.world"/>
   <arg name="robot_name" default="rmf_owl"/>
 
-  <!-- Use the filename without the extension for the world name and hope for the best. -->
-  <arg name="world_name" default='$(eval "$(var world)".rsplit("/", 1)[-1].rsplit(".", 1)[0])'/>
+  <!--
+  The Gazebo world name, i.e. the world filename without directory or extension.
+  It has to match, or the /clock and sensor bridges subscribe to Gazebo topics
+  that do not exist and stay silent.
+
+  This used to be derived from $(var world) with $(eval ...), but the ROS 2 XML
+  launch frontend only accepts a restricted expression grammar and rejects the
+  method calls that needed ("No terminal matches '.'"), so it is passed in
+  explicitly instead.
+  -->
+  <arg name="world_name" default="depot"/>
   
   <arg name="sensor_prefix" default="/world/$(var world_name)/model/$(var robot_name)/link/body/sensor"/>
 

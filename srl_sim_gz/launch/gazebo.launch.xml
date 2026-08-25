@@ -11,6 +11,9 @@
   <!-- The world to load in Gazebo. It must contain the MAV model. -->
   <arg name="world" default="$(find-pkg-share srl_sim_gz)/resources/worlds/depot.world"/>
 
+  <!-- The world name (filename without directory or extension). -->
+  <arg name="world_name" default="depot"/>
+
   <!-- Whether to show the Gazebo GUI. -->
   <arg name="gui" default="true"/>
 
@@ -26,6 +29,7 @@
   <!-- Bridges between Gazebo and ROS. -->
   <include file="$(find-pkg-share srl_sim_gz)/launch/rmf_owl_ros_ign_bridges.launch.xml">
     <arg name="world"      value="$(var world)"/>
+    <arg name="world_name" value="$(var world_name)"/>
     <arg name="robot_name" value="$(var airframe)"/>
   </include>
 </launch>
